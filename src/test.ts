@@ -1,4 +1,6 @@
 export function stuff(val: number): string {
-    console.log(val)
-    return val.toString();
+
+    document.body.innerHTML = `<h1>HI</h1>`
+
+    return '';
 }
