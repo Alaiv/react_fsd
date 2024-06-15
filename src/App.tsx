@@ -1,14 +1,20 @@
 import React, {Suspense} from 'react';
 import {Routes} from 'react-router';
-import "./index.scss"
+import "./styles/index.scss"
 import {Link, Route} from "react-router-dom";
-import {MainPageAsync} from "./components/mainPage/MainPageAsync";
-import {AboutPageAsync} from "./components/aboutPage/AboutPageAsync";
+import {MainPageAsync} from "./pages/mainPage/MainPageAsync";
+import {AboutPageAsync} from "./pages/aboutPage/AboutPageAsync";
+import {useTheme} from "./theme/useTheme";
+import {classNames} from "./helpers/classNames/classNames";
+
 
 const App = () => {
+    const {theme, toggleTheme} = useTheme();
+
     return (
-        <div className="app">
-            <div>s
+        <div className={classNames('app', {}, [theme])}>
+            <div>
+                <button onClick={toggleTheme}>Change theme</button>
                 <Link to={"/"}>MainPage</Link>
                 <Link to={"/about"}>AboutPage</Link>
             </div>
