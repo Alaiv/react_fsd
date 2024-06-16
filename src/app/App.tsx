@@ -1,11 +1,9 @@
-import React, {Suspense} from 'react';
-import {Routes} from 'react-router';
+import React from 'react';
 import "./styles/index.scss"
-import {Link, Route} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {classNames} from "shared/lib/classNames";
-import {useTheme} from "app/providers";
-import {MainPage} from "pages/mainPage";
-import {AboutPage} from "pages/aboutPage";
+import {useTheme} from "app/providers/themeProvider";
+import {AppRouter} from "app/providers/router";
 
 
 const App = () => {
@@ -18,12 +16,7 @@ const App = () => {
                 <Link to={"/"}>MainPage</Link>
                 <Link to={"/about"}>AboutPage</Link>
             </div>
-            <Suspense fallback={<div>Loading...</div>}>
-                <Routes>
-                    <Route path={'/'} element={<MainPage/>}/>
-                    <Route path={'/about'} element={<AboutPage/>}/>
-                </Routes>
-            </Suspense>
+            <AppRouter/>
         </div>
     );
 };
