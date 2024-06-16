@@ -1,24 +1,23 @@
 .link {
-  text-decoration: none; // Remove default underline
+    text-decoration: none; // Remove default underline
 
-  &:hover {
-    text-decoration: underline; // Underline on hover
-  }
+    &:hover {
+        text-decoration: underline; // Underline on hover
+    }
 
-  &:focus {
-    outline: none; // Remove default focus outline
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); // Example focus style
-  }
+    &:focus {
+        outline: none; // Remove default focus outline
+        box-shadow: 0 0 0 2px rgb(0 123 255 / 50%); // Example focus style
+    }
 
-  padding: 3px;
-
-  cursor: pointer;
+    padding: 3px;
+    cursor: pointer;
 }
 
 .primary {
-  color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .secondary {
-  color: var(--inverted-primary-color);
+    color: var(--inverted-primary-color);
 }

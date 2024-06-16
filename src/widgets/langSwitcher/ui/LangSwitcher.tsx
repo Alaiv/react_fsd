@@ -1,7 +1,6 @@
 import { classNames } from 'shared/lib/classNames';
 import { Button, ButtonText, ButtonType } from 'shared/ui/button/Button';
 import { useTranslation } from 'react-i18next';
-import cl from './LangSwitcher.module.scss';
 
 export interface LangSwitcherProps {
     extraClassName?: string;
@@ -15,7 +14,7 @@ export const LangSwitcher = ({ extraClassName }: LangSwitcherProps) => {
     };
 
     return (
-        <div className={classNames(cl.LangSwitcher, {}, [extraClassName])}>
+        <div className={classNames('', {}, [extraClassName])}>
             <Button
                 btnType={ButtonType.CLEAR}
                 btnText={ButtonText.INVERTED}
