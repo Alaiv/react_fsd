@@ -10,7 +10,7 @@ const AppRouter = () => {
                 {AppRoutes.map(({path, element}: RouteProps) => (
                     <Route path={path} element={(
                         <div className="page-wrapper">
-                            element
+                            {element}
                         </div>
                     )} key={path}/>
                 ))}

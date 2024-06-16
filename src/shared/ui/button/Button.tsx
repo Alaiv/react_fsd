@@ -6,9 +6,15 @@ export const enum ButtonType {
     CLEAR = 'clear'
 }
 
+export const enum ButtonText {
+    PRIMARY = 'primary',
+    INVERTED = 'inverted'
+}
+
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     extraClassName?: string;
-    btnType?: ButtonType
+    btnType?: ButtonType;
+    btnText?: ButtonText;
 }
 
 export const Button: FC<ButtonProps> = (props) => {
@@ -16,12 +22,13 @@ export const Button: FC<ButtonProps> = (props) => {
         extraClassName,
         children,
         btnType = ButtonType.CLEAR,
+        btnText = ButtonText.PRIMARY,
         ...otherProps
     } = props;
 
     return (
         <button
-            className={classNames(cl.Button, {}, [extraClassName, cl[btnType]])}
+            className={classNames(cl.Button, {}, [extraClassName, cl[btnType], cl[btnText]])}
             {...otherProps}
         >
             {children}
