@@ -1,7 +1,7 @@
-import {Link, LinkProps} from "react-router-dom";
-import {classNames} from "shared/lib/classNames";
-import cl from "./MyLink.module.scss"
-import {FC} from "react";
+import { Link, LinkProps } from 'react-router-dom';
+import { classNames } from 'shared/lib/classNames';
+import { FC } from 'react';
+import cl from './MyLink.module.scss';
 
 export const enum LinkTheme {
     PRIMARY = 'primary',
@@ -18,7 +18,7 @@ export const MyLink: FC<MyLinkProps> = (props) => {
         to,
         children,
         extraClassName,
-        theme = LinkTheme.PRIMARY
+        theme = LinkTheme.PRIMARY,
     } = props;
 
     return (

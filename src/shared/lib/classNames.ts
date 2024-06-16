@@ -8,9 +8,9 @@ export function classNames(mainClass: string, mods: Mods = {}, additional: strin
         mainClass,
         classMods,
         ...additional.filter(Boolean),
-    ]
+    ];
 
     return classes.join(' ');
 }
 
-classNames("btn", {hovered: true}, ["man"])
+classNames('btn', { hovered: true }, ['man']);

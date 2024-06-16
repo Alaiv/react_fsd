@@ -10,7 +10,8 @@ declare module '*.png';
 declare module '*.jpg';
 declare module '*.gif';
 
-declare module "*.svg" {
+declare module '*.svg' {
+    // eslint-disable-next-line no-undef
     const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
     export default content;
 }

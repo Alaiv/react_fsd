@@ -1,3 +1,3 @@
-import {SideBar} from "widgets/sidebar/sidebar/SideBar";
+import { SideBar } from 'widgets/sidebar/sidebar/SideBar';
 
-export {SideBar}
+export { SideBar };
