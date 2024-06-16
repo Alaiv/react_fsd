@@ -22,7 +22,16 @@ export const MyLink: FC<MyLinkProps> = (props) => {
     } = props;
 
     return (
-        <Link className={classNames(cl.link, {}, [extraClassName, cl[theme]])} to={to}>
+        <Link
+            className={
+                classNames(
+                    cl.link,
+                    {},
+                    [extraClassName, cl[theme]],
+                )
+            }
+            to={to}
+        >
             {children}
         </Link>
     );

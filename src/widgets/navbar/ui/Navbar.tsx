@@ -14,7 +14,10 @@ export const Navbar = ({ extraClassName }: NavbarProps) => {
     return (
         <div className={classNames(cl.Navbar, {}, [extraClassName])}>
             <div className={cl.links}>
-                <MyLink to="/" extraClassName={cl.link} theme={LinkTheme.SECONDARY}>{t('На главную')}</MyLink>
+                <MyLink to="/" extraClassName={cl.link} theme={LinkTheme.SECONDARY}>
+                    {t('На главную')}
+                </MyLink>
+                {/* eslint-disable-next-line i18next/no-literal-string */}
                 <MyLink to="/about" theme={LinkTheme.SECONDARY}>{t('О нас')}</MyLink>
             </div>
         </div>
