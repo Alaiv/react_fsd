@@ -9,8 +9,8 @@ export interface LangSwitcherProps {
 export const LangSwitcher = ({ extraClassName }: LangSwitcherProps) => {
     const { t, i18n } = useTranslation();
 
-    const changeLanguage = () => {
-        i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
+    const changeLanguage = async () => {
+        await i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
     };
 
     return (

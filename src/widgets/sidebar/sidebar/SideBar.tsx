@@ -18,8 +18,11 @@ export const SideBar = ({ extraClassName }: SideBarProps) => {
     };
 
     return (
-        <div className={classNames(cl.SideBar, { [cl.collapsed]: expanded }, [extraClassName])}>
-            <Button onClick={onToggle}>
+        <div
+            data-testid="side-bar"
+            className={classNames(cl.SideBar, { [cl.collapsed]: expanded }, [extraClassName])}
+        >
+            <Button onClick={onToggle} data-testid="toggle-btn">
                 {' '}
                 {t('Развернуть')}
                 {' '}
