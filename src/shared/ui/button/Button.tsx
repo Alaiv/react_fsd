@@ -3,7 +3,8 @@ import { ButtonHTMLAttributes, FC } from 'react';
 import cl from './Button.module.scss';
 
 export const enum ButtonType {
-    CLEAR = 'clear'
+    CLEAR = 'clear',
+    OUTLINE = 'outline'
 }
 
 export const enum ButtonText {
@@ -21,7 +22,7 @@ export const Button: FC<ButtonProps> = (props) => {
     const {
         extraClassName,
         children,
-        btnType = ButtonType.CLEAR,
+        btnType,
         btnText = ButtonText.PRIMARY,
         ...otherProps
     } = props;
