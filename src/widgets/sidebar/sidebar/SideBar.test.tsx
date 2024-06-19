@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 import { SideBar } from 'widgets/sidebar';
-import { RenderWithTranslation } from 'shared/lib/tests/RenderWithTranslation';
+import { RenderWithTranslation } from '../../../shared/lib/tests/RenderWithTranslation';
 
 describe('Sidebar', () => {
     test('shows sidebar', () => {
