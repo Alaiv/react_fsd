@@ -4,9 +4,10 @@ import { useTranslation } from 'react-i18next';
 
 export interface LangSwitcherProps {
     extraClassName?: string;
+    shortLang?: boolean
 }
 
-export const LangSwitcher = ({ extraClassName }: LangSwitcherProps) => {
+export const LangSwitcher = ({ extraClassName, shortLang }: LangSwitcherProps) => {
     const { t, i18n } = useTranslation();
 
     const changeLanguage = async () => {
@@ -20,7 +21,7 @@ export const LangSwitcher = ({ extraClassName }: LangSwitcherProps) => {
                 btnText={ButtonText.INVERTED}
                 onClick={changeLanguage}
             >
-                {t('Язык')}
+                {shortLang ? t('Мини язык') : t('Язык')}
             </Button>
         </div>
     );

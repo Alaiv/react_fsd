@@ -1,16 +1,16 @@
 import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 import { SideBar } from 'widgets/sidebar';
-import { RenderWithTranslation } from 'shared/lib/tests/renderWithTranslation';
+import { RenderForTest } from 'shared/lib/tests/renderForTest';
 
 describe('Sidebar', () => {
     test('shows sidebar', () => {
-        RenderWithTranslation(<SideBar />);
+        RenderForTest(<SideBar />);
         expect(screen.getByTestId('side-bar')).toBeInTheDocument();
     });
 
     test('collapse sidebar', () => {
-        RenderWithTranslation(<SideBar />);
+        RenderForTest(<SideBar />);
 
         screen.getByTestId('toggle-btn').click();
         expect(screen.getByTestId('side-bar')).toHaveClass('collapsed');
