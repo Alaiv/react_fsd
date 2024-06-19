@@ -26,6 +26,6 @@ jobs:
       - name: lint ts
         run: npm run lint:ts
       - name: lint scss
-        run: num run lint:scss
+        run: npm run lint:scss
       - name: run tests
-        run: num run test:unit
+        run: npm run test:unit
