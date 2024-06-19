@@ -32,4 +32,4 @@ jobs:
       - name: build storybook
         run: npm run storybook:build
       - name: run loki ui tests
-        run: num run test:ui:ci
+        run: npm run test:ui:ci
