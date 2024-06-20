@@ -31,7 +31,7 @@ export const Navbar = ({ extraClassName }: NavbarProps) => {
                 {t('Войти')}
             </Button>
             <Modal isOpen={isOpen} onClose={setModalStateCb}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, saepe.
+                {t('Модалка')}
             </Modal>
         </div>
     );

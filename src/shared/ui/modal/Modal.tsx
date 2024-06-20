@@ -69,9 +69,6 @@ export const Modal = (props: ModalProps) => {
             >
                 <div className={cl.area}>
                     <div className={cl.content} onClick={(e) => e.stopPropagation()}>
-                        Theme:
-                        {' '}
-                        {theme}
                         {children}
                     </div>
                 </div>
