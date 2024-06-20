@@ -4,19 +4,25 @@ import * as React from 'react';
 import { ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import { StateSchema, StoreProvider } from 'app/providers/storeProvider';
+import { DeepPartial } from '@reduxjs/toolkit';
 
 interface RenderForTestProps {
     path?: string;
+    initialState?: DeepPartial<StateSchema>;
 }
 
 export const RenderForTest = (component: ReactNode, props: RenderForTestProps = {}) => {
-    const { path = '/' } = props;
+    const { path = '/', initialState } = props;
 
     render(
-        <MemoryRouter initialEntries={[path]}>
-            <I18nextProvider i18n={i18n}>
-                {component}
-            </I18nextProvider>
-        </MemoryRouter>,
+        <StoreProvider initialState={initialState as StateSchema}>
+            <MemoryRouter initialEntries={[path]}>
+                <I18nextProvider i18n={i18n}>
+                    {component}
+                </I18nextProvider>
+            </MemoryRouter>
+        </StoreProvider>,
+
     );
 };

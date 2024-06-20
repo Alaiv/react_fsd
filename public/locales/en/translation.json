@@ -10,5 +10,7 @@
   "Обновить страницу": "Refresh page",
   "Мини язык": "En",
   "Войти": "Login",
-  "Модалка": "Модалка"
+  "Модалка": "Модалка",
+  "decrement": "decrement",
+  "increment": "increment"
 }
