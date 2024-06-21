@@ -20,7 +20,8 @@
     "test:report:json": "node scripts/generate-visual-json-report.js",
     "test:report:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:report": "npm run test:report:json && npm run test:report:html",
-    "start-server": "npx json-server ./json-server/db.json --port 8000"
+    "start-server": "npx json-server ./json-server/db.json --port 8000",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -64,6 +65,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^9.0.11",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
     "json-server": "^0.17.0",
