@@ -12,5 +12,7 @@
   "Войти": "Login",
   "Модалка": "Модалка",
   "decrement": "decrement",
-  "increment": "increment"
+  "increment": "increment",
+  "Введите пароль": "Введите пароль",
+  "Введите имя": "Введите имя"
 }

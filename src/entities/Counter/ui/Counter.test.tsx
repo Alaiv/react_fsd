@@ -5,11 +5,12 @@ import { userEvent } from '@storybook/testing-library';
 import { StateSchema } from 'app/providers/storeProvider';
 import { RenderForTest } from 'shared/lib/tests/renderForTest';
 import * as React from 'react';
+import { DeepPartial } from '@reduxjs/toolkit';
 import { Counter } from './Counter';
 
 describe('Counter.test', () => {
     test('all elements are showed', () => {
-        const state: StateSchema = {
+        const state: DeepPartial<StateSchema> = {
             counter: { value: 5 },
         };
 
@@ -21,7 +22,7 @@ describe('Counter.test', () => {
     });
 
     test('increment', () => {
-        const state: StateSchema = {
+        const state: DeepPartial<StateSchema> = {
             counter: { value: 5 },
         };
 
@@ -32,7 +33,7 @@ describe('Counter.test', () => {
     });
 
     test('decrement', () => {
-        const state: StateSchema = {
+        const state: DeepPartial<StateSchema> = {
             counter: { value: 5 },
         };
 
