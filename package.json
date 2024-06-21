@@ -19,7 +19,8 @@
     "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
     "test:report:json": "node scripts/generate-visual-json-report.js",
     "test:report:html": "reg-cli --from .loki/report.json --report .loki/report.html",
-    "test:report": "npm run test:report:json && npm run test:report:html"
+    "test:report": "npm run test:report:json && npm run test:report:html",
+    "start-server": "npx json-server ./json-server/db.json --port 8000"
   },
   "keywords": [],
   "author": "",
@@ -65,6 +66,7 @@
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
+    "json-server": "^0.17.0",
     "loki": "^0.28.1",
     "mini-css-extract-plugin": "^2.5.3",
     "react-redux": "^7.2.6",
