@@ -20,7 +20,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 
     useEffect(() => {
         document.body.className = theme;
-    }, []);
+    }, [theme]);
 
     const defaultProps = useMemo(() => ({
         theme,
