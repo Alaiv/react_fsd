@@ -17,10 +17,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
     } = props;
 
     const [theme, setTheme] = useState<Theme>(initialTheme || currentTheme);
-
-    useEffect(() => {
-        document.body.className = theme;
-    }, [theme]);
+    document.body.className = theme;
 
     const defaultProps = useMemo(() => ({
         theme,
