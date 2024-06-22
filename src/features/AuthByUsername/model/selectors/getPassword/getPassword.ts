@@ -3,5 +3,5 @@ import { getAuthState } from 'features/AuthByUsername/model/selectors/getAuthSta
 
 export const getPassword = createSelector(
     getAuthState,
-    (auth) => auth.password,
+    (auth) => auth?.password,
 );
