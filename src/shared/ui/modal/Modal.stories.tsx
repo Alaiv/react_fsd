@@ -11,9 +11,7 @@ export default {
         backgroundColor: { control: 'color' },
     },
 } as ComponentMeta<typeof Modal>;
-console.log(document.body.className);
-document.body.className = 'dark_theme';
-console.log(document.body);
+
 const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;
 
 export const ModalLight = Template.bind({});

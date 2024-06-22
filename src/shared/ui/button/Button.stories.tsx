@@ -88,3 +88,10 @@ BtnXL.args = {
     children: '>',
     buttonSize: ButtonSize.XL,
 };
+
+export const BtnDisabled = Template.bind({});
+BtnDisabled.args = {
+    children: 'test',
+    btnType: ButtonType.OUTLINE,
+    disabled: true,
+};

@@ -1,6 +1,6 @@
 export interface IUser {
     id: number,
-    title: string,
+    username: string,
 }
 
 export interface UserSchema {
