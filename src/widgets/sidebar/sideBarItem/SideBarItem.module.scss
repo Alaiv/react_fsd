@@ -1,0 +1,12 @@
+.link {
+    margin-left: 10px;
+}
+
+.icon {
+    fill: var(--bg-color);
+}
+
+.collapsedLink {
+    display: none;
+    transition: display 200ms ease-in-out;
+}

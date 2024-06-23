@@ -24,14 +24,6 @@
     bottom: 100px;
 }
 
-.link {
-    margin-left: 10px;
-}
-
-.icon {
-    fill: var(--bg-color);
-}
-
 .links {
     display: flex;
     flex-direction: column;
@@ -47,10 +39,5 @@
     .switchers {
         display: flex;
         flex-direction: column;
-    }
-
-    .link {
-        display: none;
-        transition: display 200ms ease-in-out;
     }
 }

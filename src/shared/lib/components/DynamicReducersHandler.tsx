@@ -2,6 +2,8 @@ import { useStore } from 'react-redux';
 import { StateSchemaKey, StoreWithManager } from 'app/providers/storeProvider';
 import { FC, useEffect } from 'react';
 import { Reducer } from '@reduxjs/toolkit';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import LoginForm from 'features/AuthByUsername/ui/LoginForm/LoginForm';
 
 export type ReducersList = {
     [name in StateSchemaKey]?: Reducer;
@@ -16,6 +18,7 @@ export interface DynamicReducersHandlerProps {
 
 export const DynamicReducersHandler: FC<DynamicReducersHandlerProps> = (props) => {
     const store = useStore() as StoreWithManager;
+    const dispatch = useAppDispatch();
     const {
         children,
         isRemove,
@@ -25,13 +28,17 @@ export const DynamicReducersHandler: FC<DynamicReducersHandlerProps> = (props) =
     useEffect(() => {
         Object.entries(reducers).forEach(([name, reducer]: ReducerEntry) => {
             store.reducerManager.add(name, reducer);
-
-            return () => {
-                if (isRemove) {
-                    store.reducerManager.remove(name);
-                }
-            };
+            dispatch({ type: `@INIT ${name} reducer` });
         });
+
+        return () => {
+            if (isRemove) {
+                Object.entries(reducers).forEach(([name]: ReducerEntry) => {
+                    store.reducerManager.remove(name);
+                    dispatch({ type: `@DESTROY ${name} reducer` });
+                });
+            }
+        };
         // eslint-disable-next-line
     }, []);
 

@@ -3,11 +3,8 @@ import React, { useState } from 'react';
 import { Button, ButtonSize, ButtonType } from 'shared/ui/button/Button';
 import { ThemeSwitcher } from 'widgets/themeSwitcher';
 import { LangSwitcher } from 'widgets/langSwitcher';
-import { LinkTheme, MyLink } from 'shared/ui/link/MyLink';
-import { useTranslation } from 'react-i18next';
-import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
-import About from 'shared/assets/icons/About.svg';
-import Home from 'shared/assets/icons/Home.svg';
+import { sideBarItems } from 'widgets/sidebar/model/items';
+import { SideBarItem } from 'widgets/sidebar/sideBarItem/SideBarItem';
 import cl from './SideBar.module.scss';
 
 export interface SideBarProps {
@@ -15,36 +12,20 @@ export interface SideBarProps {
 }
 
 export const SideBar = ({ extraClassName }: SideBarProps) => {
-    const [expanded, setExpanded] = useState(false);
-    const { t } = useTranslation();
+    const [collapsed, setCollapsed] = useState(false);
     const onToggle = () => {
-        setExpanded(!expanded);
+        setCollapsed(!collapsed);
     };
 
     return (
         <div
             data-testid="side-bar"
-            className={classNames(cl.SideBar, { [cl.collapsed]: expanded }, [extraClassName])}
+            className={classNames(cl.SideBar, { [cl.collapsed]: collapsed }, [extraClassName])}
         >
             <div className={cl.links}>
-                <MyLink
-                    to={RoutePaths.main}
-                    theme={LinkTheme.SECONDARY}
-                >
-                    <Home className={cl.icon} />
-                    <span className={cl.link}>
-                        {t('На главную')}
-                    </span>
-                </MyLink>
-                <MyLink
-                    to={RoutePaths.about}
-                    theme={LinkTheme.SECONDARY}
-                >
-                    <About className={cl.icon} />
-                    <span className={cl.link}>
-                        {t('О нас')}
-                    </span>
-                </MyLink>
+                {sideBarItems.map(({ path, text, Icon }) => (
+                    <SideBarItem key={path} path={path} text={text} Icon={Icon} collapsed={collapsed} />
+                ))}
             </div>
             <Button
                 onClick={onToggle}
@@ -54,11 +35,11 @@ export const SideBar = ({ extraClassName }: SideBarProps) => {
                 square
                 buttonSize={ButtonSize.XL}
             >
-                {expanded ? '<' : '>'}
+                {collapsed ? '<' : '>'}
             </Button>
             <div className={cl.switchers}>
                 <ThemeSwitcher />
-                <LangSwitcher shortLang={expanded} extraClassName={cl.lang} />
+                <LangSwitcher shortLang={collapsed} extraClassName={cl.lang} />
             </div>
         </div>
     );

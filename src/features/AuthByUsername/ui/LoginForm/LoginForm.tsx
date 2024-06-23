@@ -2,10 +2,11 @@ import { classNames } from 'shared/lib/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonType } from 'shared/ui/button/Button';
 import { ConsoleInput } from 'shared/ui/input/ConsoleInput/ConsoleInput';
-import { useDispatch, useSelector } from 'react-redux';
-import { useCallback } from 'react';
+import { useSelector } from 'react-redux';
+import { memo, useCallback } from 'react';
 import { Text, TextColor } from 'shared/ui/text/Text';
 import { DynamicReducersHandler, ReducersList } from 'shared/lib/components/DynamicReducersHandler';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { getUsername } from '../../model/selectors/getUsername/getUsername';
 import { getPassword } from '../../model/selectors/getPassword/getPassword';
 import { getIsLoading } from '../../model/selectors/getIsLoading/getIsLoading';
@@ -16,15 +17,16 @@ import cl from './LoginForm.module.scss';
 
 export interface LoginFormProps {
     extraClassName?: string;
+    onSuccess: () => void;
 }
 
 const baseReducers: ReducersList = {
     auth: AuthReducer,
 };
 
-const LoginForm = ({ extraClassName }: LoginFormProps) => {
+const LoginForm = memo(({ extraClassName, onSuccess }: LoginFormProps) => {
     const { t } = useTranslation();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const username = useSelector(getUsername);
     const password = useSelector(getPassword);
     const isLoading = useSelector(getIsLoading);
@@ -38,9 +40,14 @@ const LoginForm = ({ extraClassName }: LoginFormProps) => {
         dispatch(AuthActions.setPassword(password));
     }, [dispatch]);
 
-    const loginClickHandler = useCallback(() => {
-        dispatch(loginByUsername({ username, password }));
-    }, [dispatch, password, username]);
+    const loginClickHandler = useCallback(async () => {
+        const dispatchResult = await dispatch(loginByUsername({ username, password }));
+        if (dispatchResult.meta.requestStatus === 'fulfilled') {
+            onSuccess();
+            dispatch(AuthActions.setUsername(''));
+            dispatch(AuthActions.setPassword(''));
+        }
+    }, [dispatch, onSuccess, password, username]);
 
     return (
         <DynamicReducersHandler reducers={baseReducers}>
@@ -72,6 +79,6 @@ const LoginForm = ({ extraClassName }: LoginFormProps) => {
             </div>
         </DynamicReducersHandler>
     );
-};
+});
 
 export default LoginForm;

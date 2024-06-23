@@ -1,6 +1,8 @@
 import { StoreProvider } from './ui/StoreProvider';
-import { StateSchema, StoreWithManager, StateSchemaKey } from './config/StateSchema';
+import {
+    StateSchema, StoreWithManager, StateSchemaKey, DispatchType,
+} from './config/StateSchema';
 
 export {
-    StoreProvider, StateSchema, StoreWithManager, StateSchemaKey,
+    StoreProvider, StateSchema, StoreWithManager, StateSchemaKey, DispatchType,
 };

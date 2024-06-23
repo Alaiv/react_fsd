@@ -24,7 +24,7 @@ export const LoginModal = (props: LoginModalProps) => {
             onClose={onClose}
             lazy
         >
-            <LoginFormAsync />
+            <LoginFormAsync onSuccess={onClose} />
         </Modal>
     );
 };

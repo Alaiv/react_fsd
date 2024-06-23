@@ -1,13 +1,14 @@
 import { classNames } from 'shared/lib/classNames';
 import { Button, ButtonText, ButtonType } from 'shared/ui/button/Button';
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 
 export interface LangSwitcherProps {
     extraClassName?: string;
     shortLang?: boolean
 }
 
-export const LangSwitcher = ({ extraClassName, shortLang }: LangSwitcherProps) => {
+export const LangSwitcher = memo(({ extraClassName, shortLang }: LangSwitcherProps) => {
     const { t, i18n } = useTranslation();
 
     const changeLanguage = async () => {
@@ -25,4 +26,4 @@ export const LangSwitcher = ({ extraClassName, shortLang }: LangSwitcherProps) =
             </Button>
         </div>
     );
-};
+});

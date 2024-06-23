@@ -23,6 +23,5 @@ export const RenderForTest = (component: ReactNode, props: RenderForTestProps = 
                 </I18nextProvider>
             </MemoryRouter>
         </StoreProvider>,
-
     );
 };
