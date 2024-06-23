@@ -1,10 +1,12 @@
 import { Story } from '@storybook/react';
 import { StateSchema, StoreProvider } from 'app/providers/storeProvider';
-import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
 import { AuthReducer } from 'features/AuthByUsername';
+import { ReducersList } from 'shared/lib/components/DynamicReducersHandler';
+import { ProfileSliceReducer } from 'entities/Profile';
 
-const initialReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
+const initialReducers: ReducersList = {
     auth: AuthReducer,
+    profile: ProfileSliceReducer,
 };
 
 export const StoreDecorator = (initialState: DeepPartial<StateSchema>) => (StoryComponent: Story) => (

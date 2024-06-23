@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames';
+import { AdditionalMods, classNames } from 'shared/lib/classNames';
 import { ButtonHTMLAttributes, FC } from 'react';
 import cl from './Button.module.scss';
 
@@ -33,7 +33,7 @@ export const Button: FC<ButtonProps> = (props) => {
     const {
         extraClassName,
         children,
-        btnType,
+        btnType = ButtonType.BACKGROUND,
         btnText = ButtonText.PRIMARY,
         square = false,
         buttonSize = ButtonSize.M,
@@ -41,7 +41,7 @@ export const Button: FC<ButtonProps> = (props) => {
         ...otherProps
     } = props;
 
-    const additionalClasses = [
+    const additionalClasses: AdditionalMods = [
         extraClassName,
         cl[btnType],
         cl[btnText],

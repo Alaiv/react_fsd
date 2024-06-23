@@ -5,7 +5,6 @@ import { ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { StateSchema, StoreProvider } from 'app/providers/storeProvider';
-import { DeepPartial } from '@reduxjs/toolkit';
 
 interface RenderForTestProps {
     path?: string;
@@ -16,12 +15,12 @@ export const RenderForTest = (component: ReactNode, props: RenderForTestProps = 
     const { path = '/', initialState } = props;
 
     render(
-        <StoreProvider initialState={initialState as StateSchema}>
-            <MemoryRouter initialEntries={[path]}>
+        <MemoryRouter initialEntries={[path]}>
+            <StoreProvider initialState={initialState as StateSchema}>
                 <I18nextProvider i18n={i18n}>
                     {component}
                 </I18nextProvider>
-            </MemoryRouter>
-        </StoreProvider>,
+            </StoreProvider>
+        </MemoryRouter>,
     );
 };

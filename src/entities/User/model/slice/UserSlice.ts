@@ -3,7 +3,7 @@ import { IUser, UserSchema } from 'entities/User/model/types/UserSchema';
 import { LOCAL_STORAGE_USER_KEY } from 'shared/const/localStorageConst';
 
 const initialState: UserSchema = {
-    authData: null,
+    authData: undefined,
 };
 
 const userSlice = createSlice({
@@ -15,11 +15,13 @@ const userSlice = createSlice({
         },
         removeAuthData: (state) => {
             localStorage.removeItem(LOCAL_STORAGE_USER_KEY);
-            state.authData = null;
+            state.authData = undefined;
         },
         initAuthData: (state) => {
             const user = localStorage.getItem(LOCAL_STORAGE_USER_KEY);
-            state.authData = JSON.parse(user);
+            if (user) {
+                state.authData = JSON.parse(user);
+            }
         },
     },
 });

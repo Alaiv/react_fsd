@@ -3,13 +3,10 @@ import { StateSchemaKey, StoreWithManager } from 'app/providers/storeProvider';
 import { FC, useEffect } from 'react';
 import { Reducer } from '@reduxjs/toolkit';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import LoginForm from 'features/AuthByUsername/ui/LoginForm/LoginForm';
 
 export type ReducersList = {
     [name in StateSchemaKey]?: Reducer;
 }
-
-type ReducerEntry = [StateSchemaKey, Reducer];
 
 export interface DynamicReducersHandlerProps {
     reducers: ReducersList,
@@ -26,15 +23,15 @@ export const DynamicReducersHandler: FC<DynamicReducersHandlerProps> = (props) =
     } = props;
 
     useEffect(() => {
-        Object.entries(reducers).forEach(([name, reducer]: ReducerEntry) => {
-            store.reducerManager.add(name, reducer);
+        Object.entries(reducers).forEach(([name, reducer]) => {
+            store.reducerManager.add(name as StateSchemaKey, reducer);
             dispatch({ type: `@INIT ${name} reducer` });
         });
 
         return () => {
             if (isRemove) {
-                Object.entries(reducers).forEach(([name]: ReducerEntry) => {
-                    store.reducerManager.remove(name);
+                Object.entries(reducers).forEach(([name]) => {
+                    store.reducerManager.remove(name as StateSchemaKey);
                     dispatch({ type: `@DESTROY ${name} reducer` });
                 });
             }

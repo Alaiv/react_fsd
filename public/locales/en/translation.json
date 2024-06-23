@@ -15,7 +15,7 @@
   "increment": "increment",
   "Введите пароль": "Enter password",
   "Введите имя": "Enter name",
-  "Введен некорректный логин или пароль": "Wrong username of password",
+  "error": "Wrong username of password",
   "Форма авторизации": "Auth form",
   "Выйти": "Logout",
   "Страница профиля": "Profile page",

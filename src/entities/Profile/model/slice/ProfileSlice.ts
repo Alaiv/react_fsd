@@ -14,7 +14,7 @@ const ProfileSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchProfileInfoData.pending, (state, _) => {
+            .addCase(fetchProfileInfoData.pending, (state, action) => {
                 state.error = '';
                 state.isLoading = true;
             })
@@ -24,7 +24,7 @@ const ProfileSlice = createSlice({
 
                 state.profileInfo = action.payload;
             })
-            .addCase(fetchProfileInfoData.rejected, (state, action: PayloadAction<string>) => {
+            .addCase(fetchProfileInfoData.rejected, (state, action: PayloadAction<string | undefined>) => {
                 state.isLoading = false;
                 state.error = action.payload;
             });

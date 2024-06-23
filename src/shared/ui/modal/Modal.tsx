@@ -1,5 +1,6 @@
 import { classNames } from 'shared/lib/classNames';
 import {
+    MutableRefObject,
     ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
 import { Portal } from 'shared/ui/portal/Portal';
@@ -26,7 +27,7 @@ export const Modal = (props: ModalProps) => {
 
     const [isClosing, setIsClosing] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
-    const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+    const timeoutRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
     const mods = {
         [cl.open]: isOpen,
         [cl.closing]: isClosing,

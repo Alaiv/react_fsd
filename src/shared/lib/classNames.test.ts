@@ -23,15 +23,11 @@ describe('classNames', () => {
 
     test('test with mods undefined and null', () => {
         const expected = 'stuff';
-        expect(classNames('stuff', { do: undefined, da: null }, []))
+        expect(classNames('stuff', { do: undefined }, []))
             .toBe(expected);
     });
 
     test('test with no params', () => {
         expect(classNames('')).toBe('');
-    });
-
-    test('test with null main param', () => {
-        expect(classNames(null)).toBe('');
     });
 });

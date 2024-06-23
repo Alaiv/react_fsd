@@ -1,4 +1,3 @@
-import { CounterSchema } from 'entities/Counter/model/types/CounterSchema';
 import { UserSchema } from 'entities/User';
 import { AuthSchema } from 'features/AuthByUsername/model/type/authSchema';
 import { EnhancedStore } from '@reduxjs/toolkit';
@@ -9,7 +8,6 @@ import { createStore } from './store';
 import { IReducerManager } from './reducerManager';
 
 export interface StateSchema {
-    counter: CounterSchema,
     user: UserSchema,
     auth?: AuthSchema,
     profile?: ProfileSchema,
@@ -24,7 +22,7 @@ export type DispatchType = ReturnType<typeof createStore>['dispatch'];
 
 export interface ThunkExtra {
     api: AxiosInstance;
-    navigate: NavigateFunction;
+    navigate?: NavigateFunction;
 }
 
 export interface ThunkConfig<T> {

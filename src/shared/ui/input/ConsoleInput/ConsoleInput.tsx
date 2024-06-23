@@ -26,7 +26,7 @@ export const ConsoleInput = memo((props: ConsoleInputProps) => {
 
     const [focused, setIsFocused] = useState<boolean>(false);
     const [position, setPosition] = useState(0);
-    const inputRef = useRef<HTMLInputElement>();
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const onChangeHandler = useCallback((e) => {
         onChange?.(e.target.value);
@@ -48,7 +48,7 @@ export const ConsoleInput = memo((props: ConsoleInputProps) => {
     useEffect(() => {
         if (autoFocus) {
             setIsFocused(true);
-            inputRef.current.focus();
+            inputRef?.current?.focus();
         }
     }, [autoFocus]);
 

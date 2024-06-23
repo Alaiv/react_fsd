@@ -17,7 +17,7 @@ import cl from './LoginForm.module.scss';
 
 export interface LoginFormProps {
     extraClassName?: string;
-    onSuccess: () => void;
+    onSuccess?: () => void;
 }
 
 const baseReducers: ReducersList = {
@@ -43,7 +43,7 @@ const LoginForm = memo(({ extraClassName, onSuccess }: LoginFormProps) => {
     const loginClickHandler = useCallback(async () => {
         const dispatchResult = await dispatch(loginByUsername({ username, password }));
         if (dispatchResult.meta.requestStatus === 'fulfilled') {
-            onSuccess();
+            onSuccess?.();
             dispatch(AuthActions.setUsername(''));
             dispatch(AuthActions.setPassword(''));
         }
@@ -53,7 +53,7 @@ const LoginForm = memo(({ extraClassName, onSuccess }: LoginFormProps) => {
         <DynamicReducersHandler reducers={baseReducers}>
             <div className={classNames(cl.LoginForm, {}, [extraClassName])}>
                 <Text title={t('Форма авторизации')} />
-                {error && <Text text={error} textColor={TextColor.ERROR} />}
+                {error && <Text text={t(error)} textColor={TextColor.ERROR} />}
 
                 <ConsoleInput
                     placeholder={t('Введите имя')}

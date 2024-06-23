@@ -6,8 +6,8 @@ import { RouteName, RoutePaths } from 'shared/config/routeConfig/RouteConfig';
 import { ThunkConfig, ThunkExtra } from 'app/providers/storeProvider';
 
 export interface LoginByUsernameProps {
-    username: string;
-    password: string;
+    username?: string;
+    password?: string;
 }
 
 export const loginByUsername = createAsyncThunk<IUser, LoginByUsernameProps, ThunkConfig<string>>(
@@ -19,13 +19,17 @@ export const loginByUsername = createAsyncThunk<IUser, LoginByUsernameProps, Thu
             const response = await extra.api.post<IUser>('/login', props);
             const userData = response.data;
 
+            if (!userData) {
+                throw new Error();
+            }
+
             localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(userData));
             dispatch(UserAction.setAuthData(userData));
-            extra.navigate(RoutePaths[RouteName.PROFILE]);
+            extra?.navigate?.(RoutePaths[RouteName.PROFILE]);
             return userData;
         } catch (error) {
             console.log(error);
-            return rejectWithValue(i18n.t('Введен некорректный логин или пароль'));
+            return rejectWithValue('error');
         }
     },
 );

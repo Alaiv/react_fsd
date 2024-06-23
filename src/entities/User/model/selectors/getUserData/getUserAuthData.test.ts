@@ -1,4 +1,3 @@
-import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/storeProvider';
 import { UserSchema } from 'entities/User';
 import { getUserAuthData } from 'entities/User/model/selectors/getUserData/getUserAuthData';
@@ -21,13 +20,13 @@ describe('getPassword.test', () => {
 
     test('gets correct state value undefined', () => {
         const schema: UserSchema = {
-            authData: null,
+            authData: undefined,
         };
 
         const state: DeepPartial<StateSchema> = {
             user: schema,
         };
 
-        expect(getUserAuthData(state as StateSchema)).toEqual(null);
+        expect(getUserAuthData(state as StateSchema)).toEqual(undefined);
     });
 });
