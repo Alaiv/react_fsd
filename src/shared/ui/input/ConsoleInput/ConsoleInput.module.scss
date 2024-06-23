@@ -15,6 +15,11 @@
     }
 }
 
+.readonly {
+    opacity: 0.75;
+    pointer-events: none;
+}
+
 .caretInput {
     flex-grow: 1;
     position: relative;

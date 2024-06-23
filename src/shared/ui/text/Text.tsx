@@ -7,11 +7,18 @@ export enum TextColor {
     ERROR = 'error',
 }
 
+export enum TextAlignment {
+    CENTER = 'center',
+    LEFT = 'left',
+    RIGHT = 'right',
+}
+
 export interface TextProps {
     extraClassName?: string;
     title?: string;
     text?: string;
     textColor?: TextColor;
+    align?: TextAlignment;
 }
 
 export const Text = memo((props: TextProps) => {
@@ -20,10 +27,11 @@ export const Text = memo((props: TextProps) => {
         text,
         title,
         textColor = TextColor.NORMAL,
+        align = TextAlignment.LEFT,
     } = props;
 
     return (
-        <div className={classNames(cl.Text, {}, [extraClassName, cl[textColor]])}>
+        <div className={classNames(cl.Text, {}, [extraClassName, cl[textColor], cl[align]])}>
             {title && <p className={cl.title}>{title}</p>}
             {text && <p className={cl.text}>{text}</p>}
         </div>

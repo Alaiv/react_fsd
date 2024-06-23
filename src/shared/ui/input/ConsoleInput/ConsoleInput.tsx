@@ -4,13 +4,14 @@ import {
 } from 'react';
 import cl from './ConsoleInput.module.scss';
 
-type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readonly'>
 
 export interface ConsoleInputProps extends HtmlInputProps {
     extraClassName?: string;
     value?: string;
     onChange?: (value: string) => void;
     autoFocus?: boolean;
+    readonly?: boolean;
 }
 
 export const ConsoleInput = memo((props: ConsoleInputProps) => {
@@ -21,6 +22,7 @@ export const ConsoleInput = memo((props: ConsoleInputProps) => {
         type = 'text',
         placeholder,
         autoFocus = false,
+        readonly = false,
         ...otherProps
     } = props;
 
@@ -53,7 +55,7 @@ export const ConsoleInput = memo((props: ConsoleInputProps) => {
     }, [autoFocus]);
 
     return (
-        <div className={classNames(cl.ConsoleInput, {}, [extraClassName])}>
+        <div className={classNames(cl.ConsoleInput, { [cl.readonly]: readonly }, [extraClassName])}>
             {placeholder && (
                 <div className={cl.placeHolder}>{`${placeholder}>`}</div>
             )}

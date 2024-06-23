@@ -1,34 +1,43 @@
 import { classNames } from 'shared/lib/classNames';
 import { useTranslation } from 'react-i18next';
-import { Text } from 'shared/ui/text/Text';
-import { memo } from 'react';
-import { useSelector } from 'react-redux';
-import { Button, ButtonType } from 'shared/ui/button/Button';
+import React, { memo } from 'react';
 import { ConsoleInput } from 'shared/ui/input/ConsoleInput/ConsoleInput';
 import { Loader } from 'shared/ui/loader/Loader';
-import { getProfileInfoData } from '../model/selectors/getAuthInfoData/getProfileInfoData';
+import { IProfile } from 'entities/Profile';
+import { Text, TextAlignment, TextColor } from 'shared/ui/text/Text';
 import cl from './Profile.module.scss';
-import { getIsLoading } from '../model/selectors/getIsLoading/getIsLoading';
-import { getError } from '../model/selectors/getError/getError';
 
 export interface ProfileProps {
     extraClassName?: string;
+    isLoading?: boolean;
+    profileData?: IProfile;
+    isReadonly?: boolean;
+    error?: string
 }
 
-export const Profile = memo(({ extraClassName }: ProfileProps) => {
+export const Profile = memo((props: ProfileProps) => {
     const { t } = useTranslation('profile');
-    const profileData = useSelector(getProfileInfoData);
-    const isLoading = useSelector(getIsLoading);
-    const error = useSelector(getError);
+    const {
+        extraClassName,
+        isLoading,
+        profileData,
+        isReadonly = false,
+        error,
+    } = props;
+
+    if (error) {
+        return (
+            <Text
+                title={t('Что-то пошло не так при загрузке профиля.')}
+                text={t('Попробуйте обновить страницу.')}
+                textColor={TextColor.ERROR}
+                align={TextAlignment.CENTER}
+            />
+        );
+    }
 
     return (
         <div className={classNames(cl.Profile, {}, [extraClassName])}>
-            <div className={cl.profileHeader}>
-                <Text title={t('Профиль')} />
-                <Button btnType={ButtonType.OUTLINE} extraClassName={cl.editBtn}>
-                    {t('Редактировать')}
-                </Button>
-            </div>
             {
                 isLoading
                     ? <Loader />
@@ -38,16 +47,13 @@ export const Profile = memo(({ extraClassName }: ProfileProps) => {
                                 placeholder={t('Введите имя')}
                                 value={profileData?.first}
                                 extraClassName={cl.profileInput}
+                                readonly={isReadonly}
                             />
                             <ConsoleInput
                                 placeholder={t('Введите фамилию')}
                                 value={profileData?.lastname}
                                 extraClassName={cl.profileInput}
-                            />
-                            <ConsoleInput
-                                placeholder={t('Введите город')}
-                                value={profileData?.city}
-                                extraClassName={cl.profileInput}
+                                readonly={isReadonly}
                             />
                         </div>
                     )
