@@ -15,6 +15,16 @@ const ProfileSlice = createSlice({
         setReadonly: (state, action: PayloadAction<boolean>) => {
             state.readonly = action.payload;
         },
+        cancelEditing: (state) => {
+            state.formData = state.profileInfo;
+            state.readonly = true;
+        },
+        editProfileData: (state, action: PayloadAction<IProfile>) => {
+            state.formData = {
+                ...state.profileInfo,
+                ...action.payload,
+            };
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -27,6 +37,7 @@ const ProfileSlice = createSlice({
                 state.isLoading = false;
 
                 state.profileInfo = action.payload;
+                state.formData = action.payload;
             })
             .addCase(fetchProfileInfoData.rejected, (state, action: PayloadAction<string | undefined>) => {
                 state.isLoading = false;

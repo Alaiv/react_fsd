@@ -29,6 +29,7 @@ export const ConsoleInput = memo((props: ConsoleInputProps) => {
     const [focused, setIsFocused] = useState<boolean>(false);
     const [position, setPosition] = useState(0);
     const inputRef = useRef<HTMLInputElement>(null);
+    const isCaretVisible = focused && !readonly;
 
     const onChangeHandler = useCallback((e) => {
         onChange?.(e.target.value);
@@ -72,7 +73,7 @@ export const ConsoleInput = memo((props: ConsoleInputProps) => {
                     onSelect={onSelect}
                 />
                 {
-                    focused && <span className={cl.caret} style={{ left: position * 9 }} />
+                    isCaretVisible && <span className={cl.caret} style={{ left: position * 9 }} />
                 }
             </div>
         </div>

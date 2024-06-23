@@ -1,28 +1,35 @@
 import { classNames } from 'shared/lib/classNames';
 import { useTranslation } from 'react-i18next';
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { ConsoleInput } from 'shared/ui/input/ConsoleInput/ConsoleInput';
 import { Loader } from 'shared/ui/loader/Loader';
-import { IProfile } from 'entities/Profile';
+import { IProfile, ProfileSliceActions } from 'entities/Profile';
 import { Text, TextAlignment, TextColor } from 'shared/ui/text/Text';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import cl from './Profile.module.scss';
 
 export interface ProfileProps {
     extraClassName?: string;
     isLoading?: boolean;
-    profileData?: IProfile;
+    formData?: IProfile;
     isReadonly?: boolean;
-    error?: string
+    error?: string;
+    onFirstNameChange?: (value: string) => void;
+    onLastNameChange?: (value: string) => void;
 }
 
 export const Profile = memo((props: ProfileProps) => {
     const { t } = useTranslation('profile');
+    const dispatch = useAppDispatch();
+
     const {
         extraClassName,
         isLoading,
-        profileData,
+        formData,
         isReadonly = false,
         error,
+        onFirstNameChange,
+        onLastNameChange,
     } = props;
 
     if (error) {
@@ -45,15 +52,17 @@ export const Profile = memo((props: ProfileProps) => {
                         <div className={cl.profileInfo}>
                             <ConsoleInput
                                 placeholder={t('Введите имя')}
-                                value={profileData?.first}
+                                value={formData?.first}
                                 extraClassName={cl.profileInput}
                                 readonly={isReadonly}
+                                onChange={onFirstNameChange}
                             />
                             <ConsoleInput
                                 placeholder={t('Введите фамилию')}
-                                value={profileData?.lastname}
+                                value={formData?.lastname}
                                 extraClassName={cl.profileInput}
                                 readonly={isReadonly}
+                                onChange={onLastNameChange}
                             />
                         </div>
                     )

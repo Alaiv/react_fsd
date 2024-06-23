@@ -23,7 +23,7 @@ export const ProfileHeader = ({ extraClassName }: ProfileHeaderProps) => {
     }, [dispatch]);
 
     const cancelEditMode = useCallback(() => {
-        dispatch(ProfileSliceActions.setReadonly(true));
+        dispatch(ProfileSliceActions.cancelEditing());
     }, [dispatch]);
 
     return (
