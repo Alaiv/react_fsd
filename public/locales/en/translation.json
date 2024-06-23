@@ -19,5 +19,6 @@
   "Форма авторизации": "Auth form",
   "Выйти": "Logout",
   "Страница профиля": "Profile page",
-  "Профиль": "Profile"
+  "Профиль": "Profile",
+  "error fetching profile data": "error fetching profile data"
 }

@@ -40,12 +40,14 @@ server.post('/login', (req, res) => {
 
 // eslint-disable-next-line
 server.use((req, res, next) => {
-    if (!req.headers.authorization) {
+    if (noAuth(req.headers.authorization)) {
         return res.status(403).json({ message: 'unauthorized error' });
     }
 
     next();
 });
+
+const noAuth = (authValue) => !authValue || authValue === 'null' || authValue === 'undefined';
 
 server.use(router);
 

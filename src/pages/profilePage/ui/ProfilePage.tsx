@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DynamicReducersHandler, ReducersList } from 'shared/lib/components/DynamicReducersHandler';
-import { ProfileSliceReducer } from 'entities/Profile';
+import { fetchProfileInfoData, Profile, ProfileSliceReducer } from 'entities/Profile';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 
 const baseReducers: ReducersList = {
     profile: ProfileSliceReducer,
@@ -9,12 +10,15 @@ const baseReducers: ReducersList = {
 
 const ProfilePage = () => {
     const { t } = useTranslation();
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(fetchProfileInfoData());
+    }, [dispatch]);
 
     return (
         <DynamicReducersHandler reducers={baseReducers} isRemove>
-            <div>
-                {t('Страница профиля')}
-            </div>
+            <Profile />
         </DynamicReducersHandler>
     );
 };
