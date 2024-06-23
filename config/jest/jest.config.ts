@@ -47,6 +47,7 @@ module.exports = {
     },
     globals: {
         __IS_DEV__: true,
+        __API_URL__: true,
     },
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
