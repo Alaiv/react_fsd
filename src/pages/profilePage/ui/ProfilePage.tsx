@@ -4,15 +4,17 @@ import {
     fetchProfileInfoData,
     getError,
     getIsLoading,
-    getProfileInfoData,
     getReadonly,
-    Profile, ProfileSliceActions,
+    Profile,
+    ProfileSliceActions,
     ProfileSliceReducer,
 } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { getFormData } from 'entities/Profile/model/selectors/getFormData/getFormData';
+import { Currency } from 'entities/Currency';
+import { Country } from 'entities/Country';
 import { ProfileHeader } from './ProfileHeader/ProfileHeader';
 
 const baseReducers: ReducersList = {
@@ -33,11 +35,39 @@ const ProfilePage = () => {
     }, [dispatch]);
 
     const onFirstNameChange = useCallback((value: string) => {
-        dispatch(ProfileSliceActions.editProfileData({ first: value }));
+        dispatch(ProfileSliceActions.editProfileData({ first: value || '' }));
     }, [dispatch]);
 
     const onLastNameChange = useCallback((value: string) => {
-        dispatch(ProfileSliceActions.editProfileData({ lastname: value }));
+        dispatch(ProfileSliceActions.editProfileData({ lastname: value || '' }));
+    }, [dispatch]);
+
+    const onAgeChange = useCallback((value: string) => {
+        const valueIsNumber = /^\d+$/.test(value);
+
+        if (valueIsNumber || !value.length) {
+            dispatch(ProfileSliceActions.editProfileData({ age: Number(value) || 0 }));
+        }
+    }, [dispatch]);
+
+    const onCityChange = useCallback((value: string) => {
+        dispatch(ProfileSliceActions.editProfileData({ city: value || '' }));
+    }, [dispatch]);
+
+    const onUsernameChange = useCallback((value: string) => {
+        dispatch(ProfileSliceActions.editProfileData({ username: value || '' }));
+    }, [dispatch]);
+
+    const onAvatarChange = useCallback((value: string) => {
+        dispatch(ProfileSliceActions.editProfileData({ avatar: value || '' }));
+    }, [dispatch]);
+
+    const onCurrencyChange = useCallback((cur: Currency) => {
+        dispatch(ProfileSliceActions.editProfileData({ currency: cur }));
+    }, [dispatch]);
+
+    const onCountryChange = useCallback((countryValue: Country) => {
+        dispatch(ProfileSliceActions.editProfileData({ country: countryValue }));
     }, [dispatch]);
 
     return (
@@ -50,6 +80,12 @@ const ProfilePage = () => {
                 error={error}
                 onFirstNameChange={onFirstNameChange}
                 onLastNameChange={onLastNameChange}
+                onAgeChange={onAgeChange}
+                onCityChange={onCityChange}
+                onUsernameChange={onUsernameChange}
+                onAvatarChange={onAvatarChange}
+                onCurrencyChange={onCurrencyChange}
+                onCountryChange={onCountryChange}
             />
         </DynamicReducersHandler>
     );

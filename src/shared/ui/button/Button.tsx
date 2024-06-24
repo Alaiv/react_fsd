@@ -5,6 +5,7 @@ import cl from './Button.module.scss';
 export const enum ButtonType {
     CLEAR = 'clear',
     OUTLINE = 'outline',
+    OUTLINE_RED = 'outline_red',
     BACKGROUND = 'background',
     BACKGROUND_INVERTED = 'backgroundInverted',
 }

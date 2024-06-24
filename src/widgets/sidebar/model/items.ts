@@ -6,7 +6,8 @@ import Home from 'shared/assets/icons/Home.svg';
 export interface ISideBarItem {
     path: string,
     text: string,
-    Icon: FunctionComponent<SVGAttributes<SVGElement>>
+    Icon: FunctionComponent<SVGAttributes<SVGElement>>,
+    authOnly?: boolean
 }
 
 export const sideBarItems: ISideBarItem[] = [
@@ -24,5 +25,6 @@ export const sideBarItems: ISideBarItem[] = [
         path: RoutePaths.profile,
         text: 'Профиль',
         Icon: About,
+        authOnly: true,
     },
 ];

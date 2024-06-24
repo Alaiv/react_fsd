@@ -1,0 +1,27 @@
+.SelectWrapper {
+    display: flex;
+}
+
+.label {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.select {
+    background: none;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.option {
+    background: var(--inverted-bg-color);
+    color: var(--inverted-primary-color);
+}
+
+.readonly {
+    opacity: 0.75;
+    pointer-events: none;
+}

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Text } from 'shared/ui/text/Text';
 import { Button, ButtonType } from 'shared/ui/button/Button';
 import { useSelector } from 'react-redux';
-import { getReadonly, ProfileSliceActions } from 'entities/Profile';
+import { getReadonly, ProfileSliceActions, saveProfileInfoData } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useCallback } from 'react';
 import cl from './ProfileHeader.module.scss';
@@ -22,8 +22,13 @@ export const ProfileHeader = ({ extraClassName }: ProfileHeaderProps) => {
         dispatch(ProfileSliceActions.setReadonly(false));
     }, [dispatch]);
 
-    const cancelEditMode = useCallback(() => {
+    const cancelChanges = useCallback(() => {
         dispatch(ProfileSliceActions.cancelEditing());
+    }, [dispatch]);
+
+    const saveChanges = useCallback(() => {
+        dispatch(saveProfileInfoData());
+        dispatch(ProfileSliceActions.setReadonly(true));
     }, [dispatch]);
 
     return (
@@ -41,13 +46,22 @@ export const ProfileHeader = ({ extraClassName }: ProfileHeaderProps) => {
                         </Button>
                     )
                     : (
-                        <Button
-                            btnType={ButtonType.OUTLINE}
-                            extraClassName={cl.editBtn}
-                            onClick={cancelEditMode}
-                        >
-                            {t('Отменить')}
-                        </Button>
+                        <div className={cl.profileBtns}>
+                            <Button
+                                btnType={ButtonType.OUTLINE}
+                                extraClassName={cl.editBtn}
+                                onClick={saveChanges}
+                            >
+                                {t('Сохранить')}
+                            </Button>
+                            <Button
+                                btnType={ButtonType.OUTLINE_RED}
+                                extraClassName={cl.editBtn}
+                                onClick={cancelChanges}
+                            >
+                                {t('Отменить')}
+                            </Button>
+                        </div>
                     )
             }
         </div>

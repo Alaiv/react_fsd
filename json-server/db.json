@@ -26,13 +26,13 @@
     }
   ],
   "profile": {
-    "first": "Александр",
-    "lastname": "Кудрявцев",
-    "age": 28,
+    "first": "Aleksandr",
+    "lastname": "asdsdd",
+    "age": 123,
+    "city": "sadzxczxc",
+    "avatar": "https://cs13.pikabu.ru/post_img/2023/10/28/2/1698456437194820220.jpg",
     "currency": "RUB",
-    "country": "Russia",
-    "city": "SaintPetersburg",
-    "username": "admin",
-    "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
+    "username": "ds",
+    "country": "Russia"
   }
 }

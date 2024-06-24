@@ -8,7 +8,7 @@ type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onC
 
 export interface ConsoleInputProps extends HtmlInputProps {
     extraClassName?: string;
-    value?: string;
+    value?: string | number;
     onChange?: (value: string) => void;
     autoFocus?: boolean;
     readonly?: boolean;
@@ -33,8 +33,8 @@ export const ConsoleInput = memo((props: ConsoleInputProps) => {
 
     const onChangeHandler = useCallback((e) => {
         onChange?.(e.target.value);
-        setPosition(value.length);
-    }, [onChange, value.length]);
+        setPosition(e.target.value.length);
+    }, [onChange]);
 
     const onBlurAction = () => {
         setIsFocused(false);

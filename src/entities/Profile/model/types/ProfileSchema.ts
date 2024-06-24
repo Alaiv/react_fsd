@@ -1,6 +1,7 @@
-import { Country, Currency } from 'shared/const/commonTypes';
+import { Currency } from 'entities/Currency/model/types/types';
+import { Country } from 'entities/Country/model/types/types';
 
-export interface IProfile{
+export interface IProfile {
     first?: string,
     lastname?: string,
     age?: number,

@@ -21,5 +21,9 @@
   "Страница профиля": "Profile page",
   "Профиль": "Profile",
   "error fetching profile data": "error fetching profile data",
-  "Отменить": "Отменить"
+  "Отменить": "Отменить",
+  "Сохранить": "Сохранить",
+  "error saving profile data": "error saving profile data",
+  "Выберите валюту": "Выберите валюту",
+  "Выберите страну": "Выберите страну"
 }

@@ -15,6 +15,12 @@
     background: none;
 }
 
+.outline_red {
+    border: 2px solid var(--red-color-main);
+    color: var(--red-color-main) !important;
+    background: none;
+}
+
 .primary {
     color: var(--primary-color);
 }
