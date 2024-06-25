@@ -3,9 +3,9 @@ import { DynamicReducersHandler, ReducersList } from 'shared/lib/components/Dyna
 import {
     fetchProfileInfoData,
     getError,
-    getIsLoading,
+    getIsLoading, getProfileValidationErrors,
     getReadonly,
-    Profile,
+    Profile, ProfileError,
     ProfileSliceActions,
     ProfileSliceReducer,
 } from 'entities/Profile';
@@ -15,6 +15,7 @@ import { useTranslation } from 'react-i18next';
 import { getFormData } from 'entities/Profile/model/selectors/getFormData/getFormData';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
+import { Text, TextColor } from 'shared/ui/text/Text';
 import { ProfileHeader } from './ProfileHeader/ProfileHeader';
 
 const baseReducers: ReducersList = {
@@ -29,6 +30,15 @@ const ProfilePage = () => {
     const isLoading = useSelector(getIsLoading);
     const error = useSelector(getError);
     const readonly = useSelector(getReadonly);
+    const validationErrors = useSelector(getProfileValidationErrors);
+
+    const validationErrorTranslations = {
+        [ProfileError.WRONG_CITY]: t('Некорректный город'),
+        [ProfileError.WRONG_AGE]: t('Некорректный возраст'),
+        [ProfileError.WRONG_USER_DATA]: t('Некорректные данные пользователя'),
+        [ProfileError.SERVER_ERROR]: t('Ошибка сервера'),
+        [ProfileError.EMPTY_DATA]: t('Не указаны данные'),
+    };
 
     useEffect(() => {
         dispatch(fetchProfileInfoData());
@@ -70,9 +80,13 @@ const ProfilePage = () => {
         dispatch(ProfileSliceActions.editProfileData({ country: countryValue }));
     }, [dispatch]);
 
+    const errors = validationErrors?.map((err) => (
+        <Text textColor={TextColor.ERROR} key={err} text={validationErrorTranslations[err]} />));
+
     return (
         <DynamicReducersHandler reducers={baseReducers} isRemove>
             <ProfileHeader />
+            {validationErrors && errors}
             <Profile
                 formData={formData}
                 isLoading={isLoading}

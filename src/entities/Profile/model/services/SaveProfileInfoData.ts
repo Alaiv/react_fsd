@@ -1,15 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import i18n from 'i18next';
 import { ThunkConfig } from 'app/providers/storeProvider';
 import { LOCAL_STORAGE_USER_KEY } from 'shared/const/localStorageConst';
 import { getFormData } from 'entities/Profile';
-import { IProfile } from '../types/ProfileSchema';
+import { validateProfileData } from 'entities/Profile/model/validate/validateProfileData';
+import { IProfile, ProfileError } from '../types/ProfileSchema';
 
-export const saveProfileInfoData = createAsyncThunk<IProfile, void, ThunkConfig<string>>(
+export const saveProfileInfoData = createAsyncThunk<IProfile, void, ThunkConfig<ProfileError[]>>(
     'profile/savePorfileInfoData',
     async (props, thunkAPI) => {
         const { rejectWithValue, extra, getState } = thunkAPI;
         const formData = getFormData(getState());
+
+        const errors = validateProfileData(formData);
+
+        if (errors.length) {
+            return rejectWithValue(errors);
+        }
 
         try {
             const response = await extra.api.post<IProfile>('/profile', formData, {
@@ -21,7 +27,7 @@ export const saveProfileInfoData = createAsyncThunk<IProfile, void, ThunkConfig<
             return response.data;
         } catch (error) {
             console.log(error);
-            return rejectWithValue(i18n.t('error saving profile data'));
+            return rejectWithValue([ProfileError.SERVER_ERROR]);
         }
     },
 );

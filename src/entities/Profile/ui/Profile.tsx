@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import React, { memo } from 'react';
 import { ConsoleInput } from 'shared/ui/input/ConsoleInput/ConsoleInput';
 import { Loader } from 'shared/ui/loader/Loader';
-import { IProfile } from 'entities/Profile';
+import { IProfile, ProfileError } from 'entities/Profile';
 import { Text, TextAlignment, TextColor } from 'shared/ui/text/Text';
 import { Avatar } from 'shared/ui/avatar/Avatar';
 import { Currency, CurrencySelector } from 'entities/Currency';
@@ -64,7 +64,6 @@ export const Profile = memo((props: ProfileProps) => {
                     : (
                         <div className={cl.profileInfo}>
                             {formData?.avatar && <Avatar src={formData?.avatar} size={200} alt="avatar" />}
-
                             <ConsoleInput
                                 placeholder={t('Введите имя')}
                                 value={formData?.first}

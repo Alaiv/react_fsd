@@ -28,7 +28,6 @@ export const ProfileHeader = ({ extraClassName }: ProfileHeaderProps) => {
 
     const saveChanges = useCallback(() => {
         dispatch(saveProfileInfoData());
-        dispatch(ProfileSliceActions.setReadonly(true));
     }, [dispatch]);
 
     return (
