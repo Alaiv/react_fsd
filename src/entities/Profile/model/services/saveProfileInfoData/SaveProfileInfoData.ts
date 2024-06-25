@@ -3,7 +3,7 @@ import { ThunkConfig } from 'app/providers/storeProvider';
 import { LOCAL_STORAGE_USER_KEY } from 'shared/const/localStorageConst';
 import { getFormData } from 'entities/Profile';
 import { validateProfileData } from 'entities/Profile/model/validate/validateProfileData';
-import { IProfile, ProfileError } from '../types/ProfileSchema';
+import { IProfile, ProfileError } from '../../types/ProfileSchema';
 
 export const saveProfileInfoData = createAsyncThunk<IProfile, void, ThunkConfig<ProfileError[]>>(
     'profile/savePorfileInfoData',
@@ -18,11 +18,15 @@ export const saveProfileInfoData = createAsyncThunk<IProfile, void, ThunkConfig<
         }
 
         try {
-            const response = await extra.api.post<IProfile>('/profile', formData, {
+            const response = await extra.api.put<IProfile>('/profile', formData, {
                 headers: {
                     authorization: localStorage.getItem(LOCAL_STORAGE_USER_KEY) || '',
                 },
             });
+
+            if (!response.data) {
+                throw new Error();
+            }
 
             return response.data;
         } catch (error) {

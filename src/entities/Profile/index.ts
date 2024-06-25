@@ -1,7 +1,7 @@
 export { ProfileSliceReducer, ProfileSliceActions } from './model/slice/ProfileSlice';
 export { IProfile, ProfileSchema, ProfileError } from './model/types/ProfileSchema';
-export { fetchProfileInfoData } from './model/services/FetchProfileInfoData';
-export { saveProfileInfoData } from './model/services/SaveProfileInfoData';
+export { fetchProfileInfoData } from './model/services/fetchProfileInfoData/FetchProfileInfoData';
+export { saveProfileInfoData } from './model/services/saveProfileInfoData/SaveProfileInfoData';
 export { Profile } from './ui/Profile';
 export { getFormData } from 'entities/Profile/model/selectors/getFormData/getFormData';
 export { getIsLoading } from './model/selectors/getIsLoading/getIsLoading';

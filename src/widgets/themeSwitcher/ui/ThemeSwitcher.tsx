@@ -12,7 +12,7 @@ export interface ThemeSwitcherProps {
 
 export const ThemeSwitcher = memo(({ extraClassName }: ThemeSwitcherProps) => {
     const { theme, toggleTheme } = useTheme();
-    console.log(theme);
+
     return (
         <div className={classNames(cl.ThemeSwitcher, {}, [extraClassName])}>
             <Button
