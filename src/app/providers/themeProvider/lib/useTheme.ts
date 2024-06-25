@@ -6,11 +6,24 @@ interface UseThemeResult {
     toggleTheme: () => void,
 }
 
+const chooseTheme = (theme: Theme | undefined) => {
+    switch (theme) {
+    case Theme.LIGHT:
+        return Theme.DARK;
+    case Theme.DARK:
+        return Theme.PURPLE;
+    case Theme.PURPLE:
+        return Theme.LIGHT;
+    default:
+        return Theme.LIGHT;
+    }
+};
+
 export const useTheme = (): UseThemeResult => {
     const { theme, setTheme } = useContext(ThemeContext);
 
     const toggleTheme = () => {
-        const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
+        const newTheme = chooseTheme(theme);
         setTheme?.(newTheme);
         document.body.className = newTheme;
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
