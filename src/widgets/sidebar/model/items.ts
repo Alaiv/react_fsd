@@ -2,6 +2,8 @@ import { FunctionComponent, SVGAttributes } from 'react';
 import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
 import About from 'shared/assets/icons/About.svg';
 import Home from 'shared/assets/icons/Home.svg';
+import Profile from 'shared/assets/icons/profile_icon.svg';
+import Article from 'shared/assets/icons/articles_icon.svg';
 
 export interface ISideBarItem {
     path: string,
@@ -24,7 +26,13 @@ export const sideBarItems: ISideBarItem[] = [
     {
         path: RoutePaths.profile,
         text: 'Профиль',
-        Icon: About,
+        Icon: Profile,
+        authOnly: true,
+    },
+    {
+        path: RoutePaths.article,
+        text: 'Статьи',
+        Icon: Article,
         authOnly: true,
     },
 ];

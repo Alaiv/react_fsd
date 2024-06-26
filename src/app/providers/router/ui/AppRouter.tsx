@@ -4,8 +4,6 @@ import { AppRouteProps, AppRoutes } from 'shared/config/routeConfig/RouteConfig'
 import { PageLoader } from 'widgets/PageLoader';
 import { RequireAuthRoute } from 'app/providers/router';
 import { Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User';
 
 const AppRouter = () => {
     const renderWithWrapper = useCallback(({ path, element, authOnly }: AppRouteProps) => {
