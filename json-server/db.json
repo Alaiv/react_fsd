@@ -99,7 +99,7 @@
       "id": "3",
       "text": "some comment 3",
       "articleId": "1",
-      "userId": "1"
+      "userId": "2"
     }
   ],
   "users": [
@@ -107,13 +107,15 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJzG0ODho5ISyWcGc7-ww5GaAEh4FwZz_Fgw&s"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "https://styles.redditmedia.com/t5_6o8gf/styles/communityIcon_mzkqy732d3p31.png"
     }
   ],
   "profile": {
@@ -124,6 +126,6 @@
     "country": "Belarus",
     "city": "Moscow",
     "username": "admin213",
-    "avatar": "https://yt3.ggpht.com/ytc/AAUvwngFzM_Rf6MNwOnFcuphoj93k7VFjlIrj-kSMxbh=s900-c-k-c0x00ffffff-no-rj"
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJzG0ODho5ISyWcGc7-ww5GaAEh4FwZz_Fgw&s"
   }
 }

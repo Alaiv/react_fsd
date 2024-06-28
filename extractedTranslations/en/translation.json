@@ -1,6 +1,7 @@
 {
   "decrement": "decrement",
   "error fetching articles data": "error fetching articles data",
+  "error fetching comments data": "error fetching comments data",
   "error fetching profile data": "error fetching profile data",
   "error saving profile data": "error saving profile data",
   "increment": "increment",
@@ -20,6 +21,8 @@
   "Главная": "Главная",
   "Домой": "",
   "Информация о статье": "Информация о статье",
+  "Комментарии": "Комментарии",
+  "Комментарии отсутствуют": "Комментарии отсутствуют",
   "Копировать": "Копировать",
   "Логин": "Логин",
   "Мини язык": "En",
