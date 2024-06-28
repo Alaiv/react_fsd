@@ -1,0 +1,18 @@
+.CodeBlock {
+    border: 1px solid var(--code-border);
+    background: var(--code-bg);
+    padding: 15px;
+    position: relative;
+    overflow: auto;
+}
+
+.copyBtn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.icon {
+    fill: var(--bg-color);
+    stroke: var(--inverted-bg-color);
+}

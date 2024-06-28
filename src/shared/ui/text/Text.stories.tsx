@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/themeProvider';
-import { Text, TextColor } from './Text';
+import { Text, TextColor, TextSize } from './Text';
 
 export default {
     title: 'shared/Text',
@@ -44,3 +44,17 @@ TextDarkTheme.args = {
 };
 
 TextDarkTheme.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const TextL = Template.bind({});
+TextL.args = {
+    title: 'На главную',
+    text: 'ipsa iure laborum magnam, odit quasi rerum, sapiente totam, vero?',
+    size: TextSize.L,
+};
+
+export const TextxL = Template.bind({});
+TextxL.args = {
+    title: 'На главную',
+    text: 'ipsa iure laborum magnam, odit quasi rerum, sapiente totam, vero?',
+    size: TextSize.XL,
+};

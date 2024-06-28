@@ -4,6 +4,7 @@
     width: var(--sidebar-width);
     position: relative;
     transition: all 100ms ease-in-out;
+    flex-shrink: 0;
 }
 
 .switchers {

@@ -26,5 +26,7 @@
   "error saving profile data": "error saving profile data",
   "Выберите валюту": "Выберите валюту",
   "Выберите страну": "Выберите страну",
-  "Статьи": "Articles"
+  "Статьи": "Articles",
+  "error fetching articles data": "error fetching articles data",
+  "Ошибка при загрузке статьи": "Ошибка при загрузке статьи"
 }
