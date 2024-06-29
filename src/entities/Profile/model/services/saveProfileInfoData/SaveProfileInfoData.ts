@@ -18,7 +18,7 @@ export const saveProfileInfoData = createAsyncThunk<IProfile, void, ThunkConfig<
         }
 
         try {
-            const response = await extra.api.put<IProfile>('/profile', formData, {
+            const response = await extra.api.put<IProfile>(`/profile/${formData?.id}`, formData, {
                 headers: {
                     authorization: localStorage.getItem(LOCAL_STORAGE_USER_KEY) || '',
                 },

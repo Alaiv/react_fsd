@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import i18n from 'i18next';
 import { ThunkConfig } from 'app/providers/storeProvider';
 import { LOCAL_STORAGE_USER_KEY } from 'shared/const/localStorageConst';
-import { IComment } from '../types';
+import { IComment } from '../../types';
 
 type idType = string | number | undefined
 

@@ -24,3 +24,8 @@ Base.args = {
         text: 'Введен некорректный логин или пароль 123',
     },
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+    isLoading: true,
+};

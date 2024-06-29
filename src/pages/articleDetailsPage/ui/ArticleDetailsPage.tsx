@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames';
 import { useTranslation } from 'react-i18next';
-import { memo, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 import { ArticleDetails } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import { Text, TextColor, TextSize } from 'shared/ui/text/Text';
@@ -9,8 +9,10 @@ import { useSelector } from 'react-redux';
 import { CommentList } from 'entities/Comment';
 import { DynamicReducersHandler } from 'shared/lib/components/DynamicReducersHandler';
 import { useConditionalEffect } from 'shared/lib/hooks/useConditionalEffect';
-import { CommentSliceReducer, commentsSelectors } from '../model/slice/CommentSlice';
-import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId';
+import { AddNewCommentForm } from 'features/addNewComment';
+import { sendArticleComment } from '../model/services/sendArticleComment/sendArticleComment';
+import { ArticleDetailsCommentSliceReducer, commentsSelectors } from '../model/slice/ArticleDetailsCommentSlice';
+import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import cl from './ArticleDetailsPage.module.scss';
 
 export interface ArticleDetailsPageProps {
@@ -18,7 +20,7 @@ export interface ArticleDetailsPageProps {
 }
 
 const reducers = {
-    comments: CommentSliceReducer,
+    articleComments: ArticleDetailsCommentSliceReducer,
 };
 
 const ArticleDetailsPage = ({ extraClassName }: ArticleDetailsPageProps) => {
@@ -32,6 +34,10 @@ const ArticleDetailsPage = ({ extraClassName }: ArticleDetailsPageProps) => {
     useConditionalEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
     });
+
+    const sendCommentHandler = useCallback((text: string | undefined) => {
+        dispatch(sendArticleComment(text));
+    }, [dispatch]);
 
     if (!id && isNotStoryBook) {
         return (
@@ -47,6 +53,7 @@ const ArticleDetailsPage = ({ extraClassName }: ArticleDetailsPageProps) => {
                 <ArticleDetails id={id || '1'} />
                 <div className={cl.commentsBlock}>
                     <Text title={t('Комментарии')} size={TextSize.L} />
+                    <AddNewCommentForm sendComment={sendCommentHandler} />
                     <CommentList comments={comments} />
                 </div>
             </div>

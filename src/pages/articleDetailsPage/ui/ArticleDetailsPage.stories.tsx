@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ArticleTypes, BlockType } from 'entities/Article/model/types/types';
+import { SuspenseDecorator } from 'shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
 import ArticleDetailsPage from './ArticleDetailsPage';
 
 export default {
@@ -12,14 +13,7 @@ export default {
     },
 } as ComponentMeta<typeof ArticleDetailsPage>;
 
-const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => <ArticleDetailsPage {...args} />;
-
-export const ArticleDetailsPageBasic = Template.bind({});
-ArticleDetailsPageBasic.args = {
-
-};
-
-ArticleDetailsPageBasic.decorators = [StoreDecorator({
+const storeData = {
     articleDetails: {
         article: {
             id: '1',
@@ -54,4 +48,36 @@ ArticleDetailsPageBasic.decorators = [StoreDecorator({
             ],
         },
     },
-})];
+    articleComments: {
+        ids: ['1', '2'],
+        entities: {
+            1: {
+                id: '1',
+                articleId: '1',
+                user: {
+                    id: 1,
+                    username: 'user1',
+                },
+                text: 'cool comment',
+            },
+            2: {
+                id: '2',
+                articleId: '1',
+                user: {
+                    id: 1,
+                    username: 'user1',
+                },
+                text: 'some random text',
+            },
+        },
+    },
+};
+
+const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => <ArticleDetailsPage {...args} />;
+
+export const ArticleDetailsPageBasic = Template.bind({});
+ArticleDetailsPageBasic.args = {
+
+};
+
+ArticleDetailsPageBasic.decorators = [SuspenseDecorator, StoreDecorator(storeData)];

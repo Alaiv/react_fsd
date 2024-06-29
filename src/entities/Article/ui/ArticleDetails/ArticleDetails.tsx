@@ -120,6 +120,5 @@ export const ArticleDetails = memo(({ extraClassName, id }: ArticleDetailsProps)
                 {content}
             </div>
         </DynamicReducersHandler>
-
     );
 });

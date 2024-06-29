@@ -1,11 +1,13 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { DynamicReducersHandler, ReducersList } from 'shared/lib/components/DynamicReducersHandler';
 import {
     fetchProfileInfoData,
     getError,
-    getIsLoading, getProfileValidationErrors,
+    getIsLoading,
+    getProfileValidationErrors,
     getReadonly,
-    Profile, ProfileError,
+    Profile,
+    ProfileError,
     ProfileSliceActions,
     ProfileSliceReducer,
 } from 'entities/Profile';
@@ -88,7 +90,7 @@ const ProfilePage = () => {
 
     return (
         <DynamicReducersHandler reducers={baseReducers} isRemove>
-            <ProfileHeader />
+            <ProfileHeader profileId={id} />
             {validationErrors && errors}
             <Profile
                 formData={formData}
