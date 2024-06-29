@@ -10,6 +10,7 @@ export enum ProfileError {
 }
 
 export interface IProfile {
+    id?: string,
     first?: string,
     lastname?: string,
     age?: number,

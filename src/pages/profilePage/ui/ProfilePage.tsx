@@ -16,6 +16,8 @@ import { getFormData } from 'entities/Profile/model/selectors/getFormData/getFor
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { Text, TextColor } from 'shared/ui/text/Text';
+import { useConditionalEffect } from 'shared/lib/hooks/useConditionalEffect';
+import { useParams } from 'react-router-dom';
 import { ProfileHeader } from './ProfileHeader/ProfileHeader';
 
 const baseReducers: ReducersList = {
@@ -25,6 +27,7 @@ const baseReducers: ReducersList = {
 const ProfilePage = () => {
     const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
+    const { id } = useParams<{ id: string }>();
 
     const formData = useSelector(getFormData);
     const isLoading = useSelector(getIsLoading);
@@ -40,11 +43,9 @@ const ProfilePage = () => {
         [ProfileError.EMPTY_DATA]: t('Не указаны данные'),
     };
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileInfoData());
-        }
-    }, [dispatch]);
+    useConditionalEffect(() => {
+        dispatch(fetchProfileInfoData(id));
+    });
 
     const onFirstNameChange = useCallback((value: string) => {
         dispatch(ProfileSliceActions.editProfileData({ first: value || '' }));

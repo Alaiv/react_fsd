@@ -3,6 +3,8 @@ import { IComment } from 'pages/articleDetailsPage/model/types';
 import { Text } from 'shared/ui/text/Text';
 import { Avatar } from 'shared/ui/avatar/Avatar';
 import { memo } from 'react';
+import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
+import { MyLink } from 'shared/ui/link/MyLink';
 import cl from './Comment.module.scss';
 
 export interface CommentProps {
@@ -18,10 +20,10 @@ export const Comment = memo((props: CommentProps) => {
 
     return (
         <div className={classNames(cl.Comment, {}, [extraClassName])}>
-            <div className={cl.userInfo}>
+            <MyLink extraClassName={cl.userInfo} to={`${RoutePaths.profile}${comment?.user?.id}`}>
                 {comment.user.avatar && <Avatar size={30} src={comment.user.avatar} alt={comment.user.username} />}
                 <Text text={comment.user.username} />
-            </div>
+            </MyLink>
             <Text text={comment.text || ''} />
         </div>
     );

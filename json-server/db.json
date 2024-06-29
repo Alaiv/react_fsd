@@ -118,14 +118,28 @@
       "avatar": "https://styles.redditmedia.com/t5_6o8gf/styles/communityIcon_mzkqy732d3p31.png"
     }
   ],
-  "profile": {
-    "first": "jgh",
-    "lastname": "asf",
-    "age": 465,
-    "currency": "RUB",
-    "country": "Belarus",
-    "city": "Moscow",
-    "username": "admin213",
-    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJzG0ODho5ISyWcGc7-ww5GaAEh4FwZz_Fgw&s"
-  }
+  "profile": [
+    {
+      "id": 1,
+      "first": "jgh",
+      "lastname": "asf",
+      "age": 465,
+      "currency": "RUB",
+      "country": "Belarus",
+      "city": "Moscow",
+      "username": "admin213",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJzG0ODho5ISyWcGc7-ww5GaAEh4FwZz_Fgw&s"
+    },
+    {
+      "id": 2,
+      "first": "jgh123",
+      "lastname": "asfdsad",
+      "age": 415,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "user",
+      "avatar": "https://styles.redditmedia.com/t5_6o8gf/styles/communityIcon_mzkqy732d3p31.png"
+    }
+  ]
 }

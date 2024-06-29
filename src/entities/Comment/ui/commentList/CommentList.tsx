@@ -1,13 +1,16 @@
 import { classNames } from 'shared/lib/classNames';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { IComment } from 'pages/articleDetailsPage/model/types';
 import { Loader } from 'shared/ui/loader/Loader';
 import { Text, TextColor } from 'shared/ui/text/Text';
 import { useTranslation } from 'react-i18next';
 import { getError, getIsLoading } from 'pages/articleDetailsPage/model/selectors/commentSelectors';
-import cl from './CommentList.module.scss';
+import { navigate } from '@storybook/addon-links';
+import { Navigate } from 'react-router-dom';
+import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
 import { Comment } from '../../ui/comment/Comment';
+import cl from './CommentList.module.scss';
 
 export interface CommentListProps {
     extraClassName?: string;
@@ -37,7 +40,11 @@ export const CommentList = memo((props: CommentListProps) => {
             {
                 comments?.length
                     ? comments.map((comment) => (
-                        <Comment key={comment.id} comment={comment} extraClassName={cl.comment} />
+                        <Comment
+                            key={comment.id}
+                            comment={comment}
+                            extraClassName={cl.comment}
+                        />
                     ))
                     : <Text text={t('Комментарии отсутствуют')} />
             }

@@ -4,13 +4,17 @@ import { ThunkConfig } from 'app/providers/storeProvider';
 import { LOCAL_STORAGE_USER_KEY } from 'shared/const/localStorageConst';
 import { IProfile } from '../../types/ProfileSchema';
 
-export const fetchProfileInfoData = createAsyncThunk<IProfile, void, ThunkConfig<string>>(
+export const fetchProfileInfoData = createAsyncThunk<IProfile, string | undefined, ThunkConfig<string>>(
     'profile/fetchProfileInfoData',
-    async (props, thunkAPI) => {
-        const { rejectWithValue, extra, dispatch } = thunkAPI;
+    async (userId, thunkAPI) => {
+        const { rejectWithValue, extra } = thunkAPI;
+
+        if (!userId) {
+            return rejectWithValue('error');
+        }
 
         try {
-            const response = await extra.api.get<IProfile>('/profile', {
+            const response = await extra.api.get<IProfile>(`/profile/${userId}`, {
                 headers: {
                     authorization: localStorage.getItem(LOCAL_STORAGE_USER_KEY) || '',
                 },

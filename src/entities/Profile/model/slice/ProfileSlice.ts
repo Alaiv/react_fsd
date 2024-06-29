@@ -47,7 +47,7 @@ const ProfileSlice = createSlice({
             });
 
         builder
-            .addCase(saveProfileInfoData.pending, (state, action) => {
+            .addCase(saveProfileInfoData.pending, (state) => {
                 state.validationErrors = undefined;
                 state.isLoading = true;
             })
