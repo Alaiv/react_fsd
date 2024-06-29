@@ -25,7 +25,6 @@ const data = {
     lastname: 'kudr',
     country: Country.England,
     currency: Currency.RUB,
-    avatar,
 };
 
 export const ProfileLight = Template.bind({});
