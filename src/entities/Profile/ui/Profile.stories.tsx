@@ -19,7 +19,7 @@ const Template: ComponentStory<typeof Profile> = (args) => <Profile {...args} />
 
 const data = {
     username: 'Aleks',
-    age: 22,
+    age: 24,
     city: 'spb',
     first: 'aleksandr',
     lastname: 'kudr',
@@ -46,4 +46,5 @@ export const ProfileEditable = Template.bind({});
 ProfileEditable.args = {
     isReadonly: false,
     formData: data,
+
 };

@@ -32,6 +32,7 @@ MainPageLight.decorators = [StoreDecorator({
             currency: Currency.RUB,
             avatar,
         },
+        readonly: true,
     },
 })];
 
@@ -50,6 +51,7 @@ MainPageDark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
             currency: Currency.RUB,
             avatar,
         },
+        readonly: true,
     },
 })];
 
