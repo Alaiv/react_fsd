@@ -1,11 +1,7 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
-import { UserAction } from 'entities/User';
-import {
-    fetchCommentsByArticleId,
-} from 'pages/articleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import { IComment } from 'pages/articleDetailsPage/model/types';
 import { Article } from 'entities/Article';
-import { fetchAllArticles } from './fetchAllArticles';
+import { StateSchema } from 'app/providers/storeProvider';
+import { fetchArticlesList, FetchArticlesListResult } from './fetchArticlesList';
 
 describe('fetchCommentsByArticleId.test', () => {
     const articles = {
@@ -85,24 +81,43 @@ describe('fetchCommentsByArticleId.test', () => {
         ],
     } as Article;
 
-    test('succsess', async () => {
-        const testThunk = new TestAsyncThunk(fetchAllArticles);
-        testThunk.api.get.mockReturnValue(Promise.resolve({ data: [articles] }));
+    const state: DeepPartial<StateSchema> = {
+        articlePage: {
+            isLoading: true,
+            page: 2,
+            limit: 4,
+            hasMore: false,
+            entities: {},
+            ids: [],
+        },
+    };
 
-        const result = await testThunk.callAsyncThunk();
+    test('succsess', async () => {
+        const testThunk = new TestAsyncThunk(fetchArticlesList, () => state as StateSchema);
+        testThunk.api.get.mockReturnValue(Promise.resolve({
+            data: [articles],
+            headers: {
+                'x-total-count': 1,
+            },
+        }));
+
+        const result = await testThunk.callAsyncThunk({ page: 1 });
 
         expect(testThunk.dispatch).toHaveBeenCalledTimes(2);
         expect(result.meta.requestStatus).toEqual('fulfilled');
         expect(testThunk.api.get).toBeCalled();
-        expect(result.payload).toEqual([articles]);
+        expect(result.payload).toEqual({
+            articles: [articles],
+            totalCount: 1,
+        });
     });
 
     test('no data returned', async () => {
-        const testThunk = new TestAsyncThunk(fetchAllArticles);
+        const testThunk = new TestAsyncThunk(fetchArticlesList, () => state as StateSchema);
 
         testThunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
 
-        const result = await testThunk.callAsyncThunk();
+        const result = await testThunk.callAsyncThunk({ page: 1 });
 
         expect(testThunk.dispatch).toHaveBeenCalledTimes(2);
         expect(result.meta.requestStatus).toEqual('rejected');

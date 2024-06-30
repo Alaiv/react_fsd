@@ -10,6 +10,7 @@ import { CommentList } from 'entities/Comment';
 import { DynamicReducersHandler } from 'shared/lib/components/DynamicReducersHandler';
 import { useConditionalEffect } from 'shared/lib/hooks/useConditionalEffect';
 import { AddNewCommentForm } from 'features/addNewComment';
+import { Page } from 'shared/ui/Page/Page';
 import { sendArticleComment } from '../model/services/sendArticleComment/sendArticleComment';
 import { ArticleDetailsCommentSliceReducer, commentsSelectors } from '../model/slice/ArticleDetailsCommentSlice';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
@@ -49,14 +50,14 @@ const ArticleDetailsPage = ({ extraClassName }: ArticleDetailsPageProps) => {
 
     return (
         <DynamicReducersHandler reducers={reducers} isRemove>
-            <div className={classNames(cl.ArticleDetailsPage, {}, [extraClassName])}>
+            <Page extraClassName={classNames(cl.ArticleDetailsPage, {}, [extraClassName])}>
                 <ArticleDetails id={id || '1'} />
                 <div className={cl.commentsBlock}>
                     <Text title={t('Комментарии')} size={TextSize.L} />
                     <AddNewCommentForm sendComment={sendCommentHandler} />
                     <CommentList comments={comments} />
                 </div>
-            </div>
+            </Page>
         </DynamicReducersHandler>
     );
 };

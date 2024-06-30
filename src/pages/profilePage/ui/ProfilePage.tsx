@@ -20,6 +20,7 @@ import { Country } from 'entities/Country';
 import { Text, TextColor } from 'shared/ui/text/Text';
 import { useConditionalEffect } from 'shared/lib/hooks/useConditionalEffect';
 import { useParams } from 'react-router-dom';
+import { Page } from 'shared/ui/Page/Page';
 import { ProfileHeader } from './ProfileHeader/ProfileHeader';
 
 const baseReducers: ReducersList = {
@@ -90,22 +91,24 @@ const ProfilePage = () => {
 
     return (
         <DynamicReducersHandler reducers={baseReducers} isRemove>
-            <ProfileHeader profileId={id} />
-            {validationErrors && errors}
-            <Profile
-                formData={formData}
-                isLoading={isLoading}
-                isReadonly={readonly}
-                error={error}
-                onFirstNameChange={onFirstNameChange}
-                onLastNameChange={onLastNameChange}
-                onAgeChange={onAgeChange}
-                onCityChange={onCityChange}
-                onUsernameChange={onUsernameChange}
-                onAvatarChange={onAvatarChange}
-                onCurrencyChange={onCurrencyChange}
-                onCountryChange={onCountryChange}
-            />
+            <Page>
+                <ProfileHeader profileId={id} />
+                {validationErrors && errors}
+                <Profile
+                    formData={formData}
+                    isLoading={isLoading}
+                    isReadonly={readonly}
+                    error={error}
+                    onFirstNameChange={onFirstNameChange}
+                    onLastNameChange={onLastNameChange}
+                    onAgeChange={onAgeChange}
+                    onCityChange={onCityChange}
+                    onUsernameChange={onUsernameChange}
+                    onAvatarChange={onAvatarChange}
+                    onCurrencyChange={onCurrencyChange}
+                    onCountryChange={onCountryChange}
+                />
+            </Page>
         </DynamicReducersHandler>
     );
 };

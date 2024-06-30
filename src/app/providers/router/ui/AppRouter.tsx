@@ -8,9 +8,9 @@ import { Route } from 'react-router-dom';
 const AppRouter = () => {
     const renderWithWrapper = useCallback(({ path, element, authOnly }: AppRouteProps) => {
         const elem = (
-            <div className="page-wrapper">
+            <Suspense fallback={<PageLoader />}>
                 {element}
-            </div>
+            </Suspense>
         );
 
         return (
@@ -23,11 +23,9 @@ const AppRouter = () => {
     }, []);
 
     return (
-        <Suspense fallback={<PageLoader />}>
-            <Routes>
-                {AppRoutes.map(renderWithWrapper)}
-            </Routes>
-        </Suspense>
+        <Routes>
+            {AppRoutes.map(renderWithWrapper)}
+        </Routes>
     );
 };
 

@@ -29,14 +29,6 @@ export const ArticleList = (props: ArticleListProps) => {
         isLoading,
     } = props;
 
-    if (isLoading) {
-        return (
-            <div className={classNames(cl.ArticleList, {}, [extraClassName, cl[viewType]])}>
-                {renderSkeleton(viewType)}
-            </div>
-        );
-    }
-
     return (
         <div className={classNames(cl.ArticleList, {}, [extraClassName])}>
             {
@@ -49,6 +41,15 @@ export const ArticleList = (props: ArticleListProps) => {
                         />
                     ))
                     : null
+            }
+            {
+                isLoading && (
+                    <div
+                        className={classNames(cl.ArticleList, {}, [extraClassName, cl[viewType]])}
+                    >
+                        {renderSkeleton(viewType)}
+                    </div>
+                )
             }
         </div>
     );

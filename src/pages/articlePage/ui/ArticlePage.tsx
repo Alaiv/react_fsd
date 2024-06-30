@@ -9,11 +9,15 @@ import { useSelector } from 'react-redux';
 import { Text, TextColor } from 'shared/ui/text/Text';
 import { ArticleViewType } from 'entities/Article/model/types/types';
 import { ViewSwitcher } from 'widgets/viewSwitcher';
-import { fetchAllArticles } from '../model/services/fetchAllArticles';
+import { Page } from 'shared/ui/Page/Page';
+import { fetchNextArticles } from '../model/services/fetchNextArticles/fetchNextArticles';
+import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
 import { ArticlePageActions, ArticlePageReducer, articlePageSelectors } from '../model/slice/articlePageSlice';
 import {
     getArticlePageError,
+    getArticlePageHasMore,
     getArticlePageIsLoading,
+    getArticlePagePage,
     getArticlePageView,
 } from '../model/selectors/articlePageSelectors';
 import cl from './ArticlePage.module.scss';
@@ -35,29 +39,39 @@ const ArticlePage = ({ extraClassName }: ArticlePageProps) => {
     const viewType = useSelector(getArticlePageView);
 
     useConditionalEffect(() => {
-        dispatch(fetchAllArticles());
         dispatch(ArticlePageActions.init());
+        dispatch(fetchArticlesList({ page: 1 }));
     });
 
     const setViewHandler = useCallback((view: ArticleViewType) => {
         dispatch(ArticlePageActions.setView(view));
     }, [dispatch]);
 
+    const infiniteScrollHandler = useCallback(() => {
+        dispatch(fetchNextArticles());
+    }, [dispatch]);
+
     if (error) {
         return (
-            <div className={classNames(cl.ArticleDetailsPage, {}, [extraClassName])}>
+            <Page
+                scrollIntersectionHandler={infiniteScrollHandler}
+                extraClassName={classNames(cl.ArticleDetailsPage, {}, [extraClassName])}
+            >
                 <Text
                     textColor={TextColor.ERROR}
                     title={t('Произошла ошибка при загрузке статей')}
                     text={t('Попробуйте обновить страницу.')}
                 />
-            </div>
+            </Page>
         );
     }
 
     return (
         <DynamicReducersHandler reducers={reducers}>
-            <div className={classNames(cl.ArticlePage, {}, [extraClassName])}>
+            <Page
+                scrollIntersectionHandler={infiniteScrollHandler}
+                extraClassName={classNames(cl.ArticlePage, {}, [extraClassName])}
+            >
                 <div className={cl.header}>
                     <ViewSwitcher
                         view={viewType}
@@ -71,8 +85,9 @@ const ArticlePage = ({ extraClassName }: ArticlePageProps) => {
                         articles={articles}
                         viewType={viewType}
                     />
+
                 </div>
-            </div>
+            </Page>
         </DynamicReducersHandler>
     );
 };

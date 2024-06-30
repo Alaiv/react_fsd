@@ -5,5 +5,8 @@ import { ArticleViewType } from 'entities/Article/model/types/types';
 export interface ArticlePageSchema extends EntityState<Article> {
     isLoading: boolean,
     error?: string,
-    view: ArticleViewType
+    view: ArticleViewType,
+    page: number,
+    limit?: number,
+    hasMore: boolean,
 }
