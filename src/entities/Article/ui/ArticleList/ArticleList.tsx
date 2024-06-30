@@ -1,5 +1,4 @@
 import { classNames } from 'shared/lib/classNames';
-import { useTranslation } from 'react-i18next';
 import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../../ui/ArticleListItem/ArticleListItem';
 import { Article, ArticleViewType } from '../../model/types/types';
@@ -18,12 +17,11 @@ const renderSkeleton = (view: ArticleViewType) => {
         : Array(9).fill(0);
 
     return (
-        arr.map(() => <ArticleListItemSkeleton viewType={view} />)
+        arr.map((_, i) => <ArticleListItemSkeleton key={i} viewType={view} />)
     );
 };
 
 export const ArticleList = (props: ArticleListProps) => {
-    const { t } = useTranslation();
     const {
         extraClassName,
         viewType = ArticleViewType.CARD,
@@ -43,7 +41,13 @@ export const ArticleList = (props: ArticleListProps) => {
         <div className={classNames(cl.ArticleList, {}, [extraClassName])}>
             {
                 articles.length
-                    ? articles.map((article) => <ArticleListItem article={article} viewType={viewType} />)
+                    ? articles.map((article) => (
+                        <ArticleListItem
+                            key={article.id}
+                            article={article}
+                            viewType={viewType}
+                        />
+                    ))
                     : null
             }
         </div>

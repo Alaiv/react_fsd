@@ -1,3 +1,17 @@
 .ArticlePage {
+    padding: 20px;
+}
+
+.content {
     display: flex;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.viewControls {
+    margin-left: auto;
 }

@@ -6,6 +6,7 @@ import { ProfileSliceReducer } from 'entities/Profile';
 import { ArticleDetailsReducer } from 'entities/Article';
 import { ArticleDetailsCommentSliceReducer } from 'pages/articleDetailsPage';
 import { AddNewCommentReducer } from 'features/addNewComment';
+import { ArticlePageReducer } from 'pages/articlePage/model/slice/articlePageSlice';
 
 const initialReducers: ReducersList = {
     auth: AuthReducer,
@@ -13,6 +14,7 @@ const initialReducers: ReducersList = {
     articleDetails: ArticleDetailsReducer,
     articleComments: ArticleDetailsCommentSliceReducer,
     addNewComment: AddNewCommentReducer,
+    articlePage: ArticlePageReducer,
 };
 
 export const StoreDecorator = (initialState: DeepPartial<StateSchema>) => (StoryComponent: Story) => (
