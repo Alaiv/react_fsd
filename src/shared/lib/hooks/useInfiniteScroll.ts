@@ -14,8 +14,11 @@ export const useInfiniteScroll = (props: UseInfiniteScrollProps) => {
     } = props;
 
     useEffect(() => {
+        const root = rootRef.current;
+        const trigger = triggerRef.current;
+
         const options = {
-            root: rootRef.current,
+            root,
             rootMargin: '0px',
             threshold: 1.0,
         };
@@ -26,13 +29,13 @@ export const useInfiniteScroll = (props: UseInfiniteScrollProps) => {
             }
         }, options);
 
-        if (callback) {
-            observer.observe(triggerRef?.current);
+        if (callback && trigger) {
+            observer.observe(triggerRef.current);
         }
 
         return () => {
             if (observer) {
-                observer.disconnect();
+                observer.unobserve(trigger);
             }
         };
     }, [callback, rootRef, triggerRef]);
