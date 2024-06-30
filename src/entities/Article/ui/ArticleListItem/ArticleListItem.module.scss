@@ -1,0 +1,101 @@
+.LINE {
+    width: 100%;
+
+    .header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .date {
+        margin-left: auto;
+    }
+
+    .title {
+        margin-top: 8px;
+    }
+
+    .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .image {
+        width: 100%;
+        max-height: 250px;
+        margin-top: 15px;
+        object-fit: cover;
+    }
+
+    .textBlock {
+        max-height: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+.CARD {
+    width: 230px;
+    transition: 0.2s;
+    cursor: pointer;
+
+    .date {
+        position: absolute;
+        top: -7px;
+        right: 6px;
+        display: none;
+    }
+
+    &:hover {
+        opacity: 0.8;
+        transform: scale(1.01);
+
+        .date {
+            display: block;
+        }
+    }
+
+    .preview {
+        position: relative;
+    }
+
+    .image {
+        width: 200px;
+        height: 200px;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .types p {
+        overflow: auto;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .info {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .title p {
+        overflow: auto;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

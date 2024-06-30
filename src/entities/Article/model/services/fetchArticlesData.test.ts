@@ -1,6 +1,3 @@
-import { fetchProfileInfoData, IProfile } from 'entities/Profile';
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
 import { Article } from 'entities/Article';
 import { ArticleTypes, BlockType } from 'entities/Article/model/types/types';
@@ -11,6 +8,10 @@ const article: Article = {
     title: 'Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+    user: {
+        id: 1,
+        username: 'Javascript news',
+    },
     views: 1022,
     createdAt: '26.02.2022',
     type: [ArticleTypes.IT],

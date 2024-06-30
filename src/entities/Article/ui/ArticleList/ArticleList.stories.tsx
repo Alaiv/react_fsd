@@ -1,14 +1,18 @@
-import { Link } from 'react-router-dom';
-import { classNames } from 'shared/lib/classNames';
-import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
-import { Article, ArticleList, getIsLoading } from 'entities/Article';
-import { useSelector } from 'react-redux';
-import cl from './ArticlePage.module.scss';
+import React from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Article } from 'entities/Article';
+import { ArticleViewType } from 'entities/Article/model/types/types';
+import { ArticleList } from './ArticleList';
 
-export interface ArticlePageProps {
-    extraClassName?: string;
-}
+export default {
+    title: 'entities/ArticleList',
+    component: ArticleList,
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
+} as ComponentMeta<typeof ArticleList>;
+
+const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />;
 
 const article = {
     id: '1',
@@ -85,17 +89,28 @@ const article = {
             ],
         },
     ],
-} as Article;
-
-const ArticlePage = ({ extraClassName }: ArticlePageProps) => {
-    const { t } = useTranslation('article');
-    const isLoading = useSelector(getIsLoading);
-
-    return (
-        <div className={classNames(cl.ArticlePage, {}, [extraClassName])}>
-            <ArticleList isLoading={isLoading} articles={[article]} />
-        </div>
-    );
 };
 
-export default memo(ArticlePage);
+export const NormalCard = Template.bind({});
+NormalCard.args = {
+    articles: Array(9).fill(article as Article),
+    viewType: ArticleViewType.CARD,
+};
+
+export const NormalLine = Template.bind({});
+NormalLine.args = {
+    articles: Array(3).fill(article as Article),
+    viewType: ArticleViewType.LINE,
+};
+
+export const LoadingCard = Template.bind({});
+LoadingCard.args = {
+    isLoading: true,
+    viewType: ArticleViewType.CARD,
+};
+
+export const LoadingLine = Template.bind({});
+LoadingLine.args = {
+    isLoading: true,
+    viewType: ArticleViewType.LINE,
+};
