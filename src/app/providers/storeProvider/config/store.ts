@@ -5,12 +5,10 @@ import { StateSchema, ThunkExtra } from 'app/providers/storeProvider/config/Stat
 import { UserReducer } from 'entities/User';
 import { createReducerManager } from 'app/providers/storeProvider/config/reducerManager';
 import { $api } from 'shared/lib/api/api';
-import { NavigateFunction } from 'react-router';
 
 export function createStore(
     initialState?: StateSchema,
     extraReducers?: ReducersMapObject<StateSchema>,
-    navigate?: NavigateFunction,
 ) {
     const rootReducer: ReducersMapObject<StateSchema> = {
         user: UserReducer,
@@ -21,8 +19,8 @@ export function createStore(
 
     const extraArgs: ThunkExtra = {
         api: $api,
-        navigate,
     };
+    console.log('RENDER_STORE');
 
     const store = configureStore({
         reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,

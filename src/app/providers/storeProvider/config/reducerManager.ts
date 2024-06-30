@@ -5,7 +5,7 @@ import { StateSchema } from 'app/providers/storeProvider';
 import { StateSchemaKey } from 'app/providers/storeProvider/config/StateSchema';
 
 export interface IReducerManager {
-    getReducerMap: ReducersMapObject<StateSchema>;
+    getReducerMap: () => ReducersMapObject<StateSchema>;
     reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>,
     add: (key: StateSchemaKey, reducer: Reducer) => void,
     remove: (key: StateSchemaKey) => void

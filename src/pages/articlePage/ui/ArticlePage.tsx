@@ -10,12 +10,13 @@ import { Text, TextColor } from 'shared/ui/text/Text';
 import { ArticleViewType } from 'entities/Article/model/types/types';
 import { ViewSwitcher } from 'widgets/viewSwitcher';
 import { Page } from 'shared/ui/Page/Page';
+import { initArticlePageState } from 'pages/articlePage/model/services/initArticlePageState/initArticlePageState';
 import { fetchNextArticles } from '../model/services/fetchNextArticles/fetchNextArticles';
 import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
 import { ArticlePageActions, ArticlePageReducer, articlePageSelectors } from '../model/slice/articlePageSlice';
 import {
     getArticlePageError,
-    getArticlePageHasMore,
+    getArticlePageHasMore, getArticlePageInited,
     getArticlePageIsLoading,
     getArticlePagePage,
     getArticlePageView,
@@ -39,8 +40,7 @@ const ArticlePage = ({ extraClassName }: ArticlePageProps) => {
     const viewType = useSelector(getArticlePageView);
 
     useConditionalEffect(() => {
-        dispatch(ArticlePageActions.init());
-        dispatch(fetchArticlesList({ page: 1 }));
+        dispatch(initArticlePageState());
     });
 
     const setViewHandler = useCallback((view: ArticleViewType) => {
@@ -67,7 +67,7 @@ const ArticlePage = ({ extraClassName }: ArticlePageProps) => {
     }
 
     return (
-        <DynamicReducersHandler reducers={reducers}>
+        <DynamicReducersHandler reducers={reducers} isRemove={false}>
             <Page
                 scrollIntersectionHandler={infiniteScrollHandler}
                 extraClassName={classNames(cl.ArticlePage, {}, [extraClassName])}

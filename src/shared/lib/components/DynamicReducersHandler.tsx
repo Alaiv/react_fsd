@@ -23,9 +23,13 @@ export const DynamicReducersHandler: FC<DynamicReducersHandlerProps> = (props) =
     } = props;
 
     useEffect(() => {
+        const initedReducers = store.reducerManager.getReducerMap();
+
         Object.entries(reducers).forEach(([name, reducer]) => {
-            store.reducerManager.add(name as StateSchemaKey, reducer);
-            dispatch({ type: `@INIT ${name} reducer` });
+            if (!(name in initedReducers)) {
+                store.reducerManager.add(name as StateSchemaKey, reducer);
+                dispatch({ type: `@INIT ${name} reducer` });
+            }
         });
 
         return () => {

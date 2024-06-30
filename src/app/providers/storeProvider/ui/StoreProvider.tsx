@@ -18,9 +18,7 @@ export const StoreProvider = (props: StoreProviderProps) => {
         extraReducers,
     } = props;
 
-    const navigate = useNavigate();
-
-    const store = createStore(initialState, extraReducers as ReducersMapObject<StateSchema>, navigate);
+    const store = createStore(initialState, extraReducers as ReducersMapObject<StateSchema>);
 
     return (
         <Provider store={store}>

@@ -21,6 +21,7 @@ export const ArticlePageSlice = createSlice({
         error: undefined,
         view: ArticleViewType.CARD,
         hasMore: true,
+        _inited: false,
         page: 1,
         ids: [],
         entities: {},
@@ -39,6 +40,7 @@ export const ArticlePageSlice = createSlice({
 
             state.view = parsedView;
             state.limit = parsedView === ArticleViewType.LINE ? 3 : 9;
+            state._inited = true;
         },
     },
     extraReducers: (builder) => builder
@@ -50,8 +52,8 @@ export const ArticlePageSlice = createSlice({
             state.error = '';
             state.isLoading = false;
 
-            state.hasMore = state.ids.length < +action.payload.totalCount;
             articlesAdapter.addMany(state, action.payload.articles);
+            state.hasMore = state.ids.length < +action.payload.totalCount;
         })
         .addCase(fetchArticlesList.rejected, (state, action: PayloadAction<string | undefined>) => {
             state.isLoading = false;

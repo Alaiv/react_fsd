@@ -1,9 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { IUser, UserAction } from 'entities/User';
-import i18n from 'i18next';
 import { LOCAL_STORAGE_USER_KEY } from 'shared/const/localStorageConst';
-import { RouteName, RoutePaths } from 'shared/config/routeConfig/RouteConfig';
-import { ThunkConfig, ThunkExtra } from 'app/providers/storeProvider';
+import { ThunkConfig } from 'app/providers/storeProvider';
 
 export interface LoginByUsernameProps {
     username?: string;
@@ -25,7 +23,7 @@ export const loginByUsername = createAsyncThunk<IUser, LoginByUsernameProps, Thu
 
             localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(userData));
             dispatch(UserAction.setAuthData(userData));
-            extra?.navigate?.(RoutePaths[RouteName.PROFILE]);
+
             return userData;
         } catch (error) {
             console.log(error);
