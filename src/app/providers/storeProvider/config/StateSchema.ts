@@ -8,11 +8,13 @@ import { ArticleDetailsSchema } from 'entities/Article';
 import { ArticleCommentSchema } from 'pages/articleDetailsPage';
 import { AddNewCommentSchema } from 'features/addNewComment';
 import { ArticlePageSchema } from 'pages/articlePage/model/types/articlePageSchema';
+import { PageSchema } from 'widgets/Page';
 import { createStore } from './store';
 import { IReducerManager } from './reducerManager';
 
 export interface StateSchema {
     user: UserSchema,
+    page: PageSchema,
     auth?: AuthSchema,
     profile?: ProfileSchema,
     articleDetails?: ArticleDetailsSchema,

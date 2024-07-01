@@ -5,6 +5,7 @@ import { StateSchema, ThunkExtra } from 'app/providers/storeProvider/config/Stat
 import { UserReducer } from 'entities/User';
 import { createReducerManager } from 'app/providers/storeProvider/config/reducerManager';
 import { $api } from 'shared/lib/api/api';
+import { PageSliceReducer } from 'widgets/Page';
 
 export function createStore(
     initialState?: StateSchema,
@@ -12,6 +13,7 @@ export function createStore(
 ) {
     const rootReducer: ReducersMapObject<StateSchema> = {
         user: UserReducer,
+        page: PageSliceReducer,
         ...extraReducers,
     };
 

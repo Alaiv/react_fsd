@@ -20,7 +20,7 @@ import { Country } from 'entities/Country';
 import { Text, TextColor } from 'shared/ui/text/Text';
 import { useConditionalEffect } from 'shared/lib/hooks/useConditionalEffect';
 import { useParams } from 'react-router-dom';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/ui/Page';
 import { ProfileHeader } from './ProfileHeader/ProfileHeader';
 
 const baseReducers: ReducersList = {

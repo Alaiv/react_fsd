@@ -10,7 +10,7 @@ import { CommentList } from 'entities/Comment';
 import { DynamicReducersHandler } from 'shared/lib/components/DynamicReducersHandler';
 import { useConditionalEffect } from 'shared/lib/hooks/useConditionalEffect';
 import { AddNewCommentForm } from 'features/addNewComment';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/ui/Page';
 import { sendArticleComment } from '../model/services/sendArticleComment/sendArticleComment';
 import { ArticleDetailsCommentSliceReducer, commentsSelectors } from '../model/slice/ArticleDetailsCommentSlice';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';

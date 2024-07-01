@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { Text, TextColor } from 'shared/ui/text/Text';
 import { ArticleViewType } from 'entities/Article/model/types/types';
 import { ViewSwitcher } from 'widgets/viewSwitcher';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/ui/Page';
 import { initArticlePageState } from 'pages/articlePage/model/services/initArticlePageState/initArticlePageState';
 import { fetchNextArticles } from '../model/services/fetchNextArticles/fetchNextArticles';
 import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
