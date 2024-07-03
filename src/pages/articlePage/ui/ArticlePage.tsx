@@ -7,18 +7,15 @@ import { useConditionalEffect } from 'shared/lib/hooks/useConditionalEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { Text, TextColor } from 'shared/ui/text/Text';
-import { ArticleViewType } from 'entities/Article/model/types/types';
-import { ViewSwitcher } from 'widgets/viewSwitcher';
 import { Page } from 'widgets/Page/ui/Page';
 import { initArticlePageState } from 'pages/articlePage/model/services/initArticlePageState/initArticlePageState';
+import { ArticlePageFilters } from 'pages/articlePage/ui/ArticlePageFilters/ArticlePageFilters';
+import { useSearchParams } from 'react-router-dom';
 import { fetchNextArticles } from '../model/services/fetchNextArticles/fetchNextArticles';
-import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
-import { ArticlePageActions, ArticlePageReducer, articlePageSelectors } from '../model/slice/articlePageSlice';
+import { ArticlePageReducer, articlePageSelectors } from '../model/slice/articlePageSlice';
 import {
     getArticlePageError,
-    getArticlePageHasMore, getArticlePageInited,
     getArticlePageIsLoading,
-    getArticlePagePage,
     getArticlePageView,
 } from '../model/selectors/articlePageSelectors';
 import cl from './ArticlePage.module.scss';
@@ -38,14 +35,11 @@ const ArticlePage = ({ extraClassName }: ArticlePageProps) => {
     const error = useSelector(getArticlePageError);
     const isLoading = useSelector(getArticlePageIsLoading);
     const viewType = useSelector(getArticlePageView);
+    const [searchParams] = useSearchParams();
 
     useConditionalEffect(() => {
-        dispatch(initArticlePageState());
+        dispatch(initArticlePageState(searchParams));
     });
-
-    const setViewHandler = useCallback((view: ArticleViewType) => {
-        dispatch(ArticlePageActions.setView(view));
-    }, [dispatch]);
 
     const infiniteScrollHandler = useCallback(() => {
         dispatch(fetchNextArticles());
@@ -73,11 +67,7 @@ const ArticlePage = ({ extraClassName }: ArticlePageProps) => {
                 extraClassName={classNames(cl.ArticlePage, {}, [extraClassName])}
             >
                 <div className={cl.header}>
-                    <ViewSwitcher
-                        view={viewType}
-                        onClick={setViewHandler}
-                        extraClassName={cl.viewControls}
-                    />
+                    <ArticlePageFilters />
                 </div>
                 <div className={cl.content}>
                     <ArticleList
@@ -85,7 +75,6 @@ const ArticlePage = ({ extraClassName }: ArticlePageProps) => {
                         articles={articles}
                         viewType={viewType}
                     />
-
                 </div>
             </Page>
         </DynamicReducersHandler>

@@ -2,10 +2,20 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import i18n from 'i18next';
 import { ThunkConfig } from 'app/providers/storeProvider';
 import { Article } from 'entities/Article';
-import { getArticlePageLimit } from 'pages/articlePage/model/selectors/articlePageSelectors';
+import {
+    getArticlePageLimit,
+    getArticlePageOrder,
+    getArticlePagePage,
+    getArticlePageSearch,
+    getArticlePageSort,
+    getArticlePageType,
+} from 'pages/articlePage/model/selectors/articlePageSelectors';
+import { setSearchParams } from 'shared/lib/url/addQueryParam/addQueryParams';
+import { ArticleTypes } from 'entities/Article/model/types/types';
 
 export interface FetchArticlesListProps {
-    page?: number
+    page?: number,
+    replace?: boolean
 }
 
 export interface FetchArticlesListResult {
@@ -17,15 +27,30 @@ export const fetchArticlesList = createAsyncThunk<FetchArticlesListResult, Fetch
     'articlePage/fetchArticlesList',
     async (props, thunkAPI) => {
         const { rejectWithValue, extra, getState } = thunkAPI;
-        const { page = 1 } = props;
+        const page = props.page || getArticlePagePage(getState());
         const limit = getArticlePageLimit(getState());
+        const order = getArticlePageOrder(getState());
+        const sort = getArticlePageSort(getState());
+        const search = getArticlePageSearch(getState());
+        const type = getArticlePageType(getState());
 
         try {
+            setSearchParams({
+                order,
+                sort,
+                search,
+                type,
+            });
+
             const response = await extra.api.get<Article[]>('/articles', {
                 params: {
                     _expand: 'user',
                     _page: page,
                     _limit: limit,
+                    _sort: sort,
+                    _order: order,
+                    q: search,
+                    type: type === ArticleTypes.ALL ? undefined : type,
                 },
             });
 
@@ -38,7 +63,6 @@ export const fetchArticlesList = createAsyncThunk<FetchArticlesListResult, Fetch
                 totalCount: response.headers['x-total-count'] || '0',
             };
 
-            console.log(result);
             return result;
         } catch (error) {
             return rejectWithValue(i18n.t('error fetching articles data'));

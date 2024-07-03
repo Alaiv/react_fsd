@@ -16,7 +16,7 @@ describe('fetchNextArticles.test', () => {
 
         const testThunk = new TestAsyncThunk(initArticlePageState, () => state as StateSchema);
 
-        const result = await testThunk.callAsyncThunk();
+        const result = await testThunk.callAsyncThunk(undefined);
 
         expect(testThunk.dispatch).toHaveBeenCalledTimes(4);
         expect(result.meta.requestStatus).toEqual('fulfilled');

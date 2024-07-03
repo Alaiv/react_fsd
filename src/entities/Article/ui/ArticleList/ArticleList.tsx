@@ -1,5 +1,7 @@
 import { classNames } from 'shared/lib/classNames';
 import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
+import { Text, TextSize } from 'shared/ui/text/Text';
+import { useTranslation } from 'react-i18next';
 import { ArticleListItem } from '../../ui/ArticleListItem/ArticleListItem';
 import { Article, ArticleViewType } from '../../model/types/types';
 import cl from './ArticleList.module.scss';
@@ -28,6 +30,15 @@ export const ArticleList = (props: ArticleListProps) => {
         articles,
         isLoading,
     } = props;
+    const { t } = useTranslation();
+
+    if (!isLoading && !articles.length) {
+        return (
+            <div className={classNames(cl.ArticleList, {}, [extraClassName])}>
+                <Text title={t('Статьи не найдены')} size={TextSize.L} />
+            </div>
+        );
+    }
 
     return (
         <div className={classNames(cl.ArticleList, {}, [extraClassName])}>

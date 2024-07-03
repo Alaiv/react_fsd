@@ -3,7 +3,6 @@ import { Select, SelectOption } from 'shared/ui/select/Select';
 import { Currency } from 'entities/Currency';
 import { classNames } from 'shared/lib/classNames';
 import { memo, useCallback } from 'react';
-import cl from './CurrencySelector.module.scss';
 
 export interface CurrencySelectorProps {
     extraClassName?: string;
@@ -12,7 +11,7 @@ export interface CurrencySelectorProps {
     readonly?: boolean
 }
 
-const currencies: SelectOption[] = [
+const currencies: SelectOption<Currency>[] = [
     { value: Currency.EUR, text: Currency.EUR },
     { value: Currency.RUB, text: Currency.RUB },
     { value: Currency.USD, text: Currency.USD },

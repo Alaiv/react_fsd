@@ -1,6 +1,7 @@
 import { IUser } from 'entities/User';
 
 export enum ArticleTypes {
+    ALL = 'ALL',
     IT = 'IT',
     SCIENCE = 'SCIENCE',
     MEDIA = 'MEDIA'
@@ -15,6 +16,12 @@ export enum BlockType {
 export enum ArticleViewType {
     CARD = 'CARD',
     LINE = 'LINE'
+}
+
+export enum ArticleSortType {
+    DATE = 'createdAt',
+    VIEWS = 'views',
+    TITLE = 'title'
 }
 
 export interface GenericBlock {
