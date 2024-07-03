@@ -3,3 +3,10 @@
     flex-direction: column;
     padding: 16px;
 }
+
+.recommends {
+    display: flex;
+    flex-flow: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+}

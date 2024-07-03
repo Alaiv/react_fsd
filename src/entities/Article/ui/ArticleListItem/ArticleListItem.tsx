@@ -4,12 +4,12 @@ import { Text, TextSize } from 'shared/ui/text/Text';
 import { Icon } from 'shared/ui/icon/Icon';
 import ViewIcon from 'shared/assets/icons/viewed.svg';
 import { Card } from 'shared/ui/Card/Card';
-import { HTMLAttributes, useCallback } from 'react';
+import { HTMLAttributeAnchorTarget, HTMLAttributes } from 'react';
 import { Avatar } from 'shared/ui/avatar/Avatar';
 import { ArticleTextBlock } from 'entities/Article/ui/ArticleTextBlock/ArticleTextBlock';
 import { Button, ButtonType } from 'shared/ui/button/Button';
-import { useNavigate } from 'react-router-dom';
 import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
+import { MyLink } from 'shared/ui/link/MyLink';
 import {
     Article, ArticleViewType, BlockType, TextBlock,
 } from '../../model/types/types';
@@ -19,15 +19,16 @@ export interface ArticleListProps extends HTMLAttributes<HTMLDivElement> {
     extraClassName?: string;
     viewType?: string;
     article: Article;
+    target?: HTMLAttributeAnchorTarget
 }
 
 export const ArticleListItem = (props: ArticleListProps) => {
     const { t } = useTranslation();
-    const navigate = useNavigate();
     const {
         extraClassName,
         viewType = ArticleViewType.CARD,
         article,
+        target,
     } = props;
 
     const types = <Text extraClassName={cl.types} text={article.type.join(', ')} />;
@@ -38,10 +39,6 @@ export const ArticleListItem = (props: ArticleListProps) => {
             <Icon Svg={ViewIcon} />
         </div>
     );
-
-    const openArticleHandler = useCallback(() => {
-        navigate(RoutePaths.articleDetail + article.id);
-    }, [article.id, navigate]);
 
     if (viewType === ArticleViewType.LINE) {
         const textBlock: TextBlock = article.blocks
@@ -60,12 +57,13 @@ export const ArticleListItem = (props: ArticleListProps) => {
                     {image}
                     <ArticleTextBlock paragraphs={textBlock.paragraphs} extraClassName={cl.textBlock} />
                     <div className={cl.footer}>
-                        <Button
-                            btnType={ButtonType.OUTLINE}
-                            onClick={openArticleHandler}
-                        >
-                            {`${t('Читать далее')}...`}
-                        </Button>
+                        <MyLink target={target} to={RoutePaths.articleDetail + article.id}>
+                            <Button
+                                btnType={ButtonType.OUTLINE}
+                            >
+                                {`${t('Читать далее')}...`}
+                            </Button>
+                        </MyLink>
                         {viewInfo}
                     </div>
                 </Card>
@@ -74,8 +72,12 @@ export const ArticleListItem = (props: ArticleListProps) => {
     }
 
     return (
-        <div className={classNames(cl.ArticleListItem, {}, [extraClassName, cl[viewType]])}>
-            <Card onClick={openArticleHandler}>
+        <MyLink
+            target={target}
+            to={RoutePaths.articleDetail + article.id}
+            extraClassName={classNames(cl.ArticleListItem, {}, [extraClassName, cl[viewType]])}
+        >
+            <Card>
                 <div className={cl.preview}>
                     <Text extraClassName={cl.date} text={article.createdAt} />
                     {image}
@@ -86,6 +88,6 @@ export const ArticleListItem = (props: ArticleListProps) => {
                 </div>
                 <Text text={article.title} extraClassName={cl.title} />
             </Card>
-        </div>
+        </MyLink>
     );
 };

@@ -1,3 +1,11 @@
 export { ArticleDetailsPageAsync as ArticleDetailsPage } from './ui/ArticleDetailsPageAsync';
-export { ArticleCommentSchema } from './model/types';
-export { ArticleDetailsCommentSliceReducer } from './model/slice/ArticleDetailsCommentSlice';
+export { ArticleCommentSchema, ArticleRecommendationSchema, ArticleDetailsPageSchema } from './model/types';
+export {
+    ArticleDetailsRecommendationsSliceReducer,
+    ArticleDetailsRecommendationsSliceActions,
+} from './model/slice/ArticleDetailsRecommendationsSlice';
+
+export {
+    ArticleDetailsCommentSliceReducer,
+    CommentSliceActions,
+} from './model/slice/ArticleDetailsCommentSlice';

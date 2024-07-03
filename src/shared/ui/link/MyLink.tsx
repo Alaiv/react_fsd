@@ -19,10 +19,12 @@ export const MyLink: FC<MyLinkProps> = (props) => {
         children,
         extraClassName,
         theme = LinkTheme.PRIMARY,
+        ...rest
     } = props;
 
     return (
         <Link
+            {...rest}
             className={
                 classNames(
                     cl.link,

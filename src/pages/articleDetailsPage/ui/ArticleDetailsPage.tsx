@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
-import { ArticleDetails } from 'entities/Article';
+import { ArticleDetails, ArticleList } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import { Text, TextColor, TextSize } from 'shared/ui/text/Text';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
@@ -11,8 +11,17 @@ import { DynamicReducersHandler } from 'shared/lib/components/DynamicReducersHan
 import { useConditionalEffect } from 'shared/lib/hooks/useConditionalEffect';
 import { AddNewCommentForm } from 'features/addNewComment';
 import { Page } from 'widgets/Page/ui/Page';
+import { recommendationSelectors } from 'pages/articleDetailsPage/model/slice/ArticleDetailsRecommendationsSlice';
+import {
+    getRecommendationsError,
+    getRecommendationsIsLoading,
+} from 'pages/articleDetailsPage/model/selectors/recommendationsSelectors';
+import {
+    fetchArticleRecommendationsList,
+} from 'pages/articleDetailsPage/model/services/fetchRecommendations/fetchRecommendations';
+import { ArticleDetailsPageReducer } from '../model/slice';
 import { sendArticleComment } from '../model/services/sendArticleComment/sendArticleComment';
-import { ArticleDetailsCommentSliceReducer, commentsSelectors } from '../model/slice/ArticleDetailsCommentSlice';
+import { commentsSelectors } from '../model/slice/ArticleDetailsCommentSlice';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import cl from './ArticleDetailsPage.module.scss';
 
@@ -21,7 +30,7 @@ export interface ArticleDetailsPageProps {
 }
 
 const reducers = {
-    articleComments: ArticleDetailsCommentSliceReducer,
+    articleDetailsPage: ArticleDetailsPageReducer,
 };
 
 const ArticleDetailsPage = ({ extraClassName }: ArticleDetailsPageProps) => {
@@ -29,11 +38,14 @@ const ArticleDetailsPage = ({ extraClassName }: ArticleDetailsPageProps) => {
     const dispatch = useAppDispatch();
     const { id } = useParams<{ id: string }>();
     const isNotStoryBook = __PROJECT__ !== 'storybook';
-
     const comments = useSelector(commentsSelectors.selectAll);
+    const recommendations = useSelector(recommendationSelectors.selectAll);
+    const recommendationsLoading = useSelector(getRecommendationsIsLoading);
+    const recommendationsError = useSelector(getRecommendationsError);
 
     useConditionalEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
+        dispatch(fetchArticleRecommendationsList());
     });
 
     const sendCommentHandler = useCallback((text: string | undefined) => {
@@ -52,11 +64,19 @@ const ArticleDetailsPage = ({ extraClassName }: ArticleDetailsPageProps) => {
         <DynamicReducersHandler reducers={reducers} isRemove>
             <Page extraClassName={classNames(cl.ArticleDetailsPage, {}, [extraClassName])}>
                 <ArticleDetails id={id || '1'} />
-                <div className={cl.commentsBlock}>
-                    <Text title={t('Комментарии')} size={TextSize.L} />
-                    <AddNewCommentForm sendComment={sendCommentHandler} />
-                    <CommentList comments={comments} />
+                <div className={cl.recommendationsBlock}>
+                    <Text title={t('Рекоммендации')} size={TextSize.L} />
+                    <ArticleList
+                        extraClassName={cl.recommends}
+                        articles={recommendations}
+                        isLoading={recommendationsLoading}
+                        error={recommendationsError}
+                        target="_blank"
+                    />
                 </div>
+                <Text title={t('Комментарии')} size={TextSize.L} />
+                <AddNewCommentForm sendComment={sendCommentHandler} />
+                <CommentList comments={comments} />
             </Page>
         </DynamicReducersHandler>
     );

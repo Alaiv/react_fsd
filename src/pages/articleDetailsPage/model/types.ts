@@ -1,5 +1,6 @@
 import { IUser } from 'entities/User';
 import { EntityState } from '@reduxjs/toolkit';
+import { Article } from 'entities/Article';
 
 export interface IComment {
     id: string
@@ -11,4 +12,14 @@ export interface IComment {
 export interface ArticleCommentSchema extends EntityState<IComment> {
     isLoading: boolean,
     error?: string,
+}
+
+export interface ArticleRecommendationSchema extends EntityState<Article> {
+    isLoading: boolean,
+    error?: string
+}
+
+export interface ArticleDetailsPageSchema {
+    articleComments: ArticleCommentSchema,
+    articleRecommendations: ArticleRecommendationSchema
 }

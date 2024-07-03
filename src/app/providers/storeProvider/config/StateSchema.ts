@@ -5,7 +5,7 @@ import { ProfileSchema } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
 import { NavigateFunction } from 'react-router';
 import { ArticleDetailsSchema } from 'entities/Article';
-import { ArticleCommentSchema } from 'pages/articleDetailsPage';
+import { ArticleDetailsPageSchema } from 'pages/articleDetailsPage';
 import { AddNewCommentSchema } from 'features/addNewComment';
 import { ArticlePageSchema } from 'pages/articlePage/model/types/articlePageSchema';
 import { PageSchema } from 'widgets/Page';
@@ -18,9 +18,9 @@ export interface StateSchema {
     auth?: AuthSchema,
     profile?: ProfileSchema,
     articleDetails?: ArticleDetailsSchema,
-    articleComments?: ArticleCommentSchema,
     addNewComment?: AddNewCommentSchema,
     articlePage?: ArticlePageSchema,
+    articleDetailsPage?: ArticleDetailsPageSchema
 }
 
 export type StateSchemaKey = keyof StateSchema;
