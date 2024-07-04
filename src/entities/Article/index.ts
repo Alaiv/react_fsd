@@ -1,7 +1,7 @@
 export { Article } from './model/types/types';
 export { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
-export { getIsLoading, getArticle, getError } from './model/selectors/articleSelectors';
+export { getIsLoading, getArticleDetailsData, getError } from './model/selectors/articleSelectors';
 export { ArticleDetailsReducer, ArticleDetailsActions } from './model/slice/ArticleDetailsSlice';
 export { ArticleList } from './ui/ArticleList/ArticleList';
 export { PageArticleTabs } from './ui/PageArticleTabs/PageArticleTabs';

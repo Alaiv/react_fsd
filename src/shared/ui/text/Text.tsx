@@ -4,6 +4,7 @@ import cl from './Text.module.scss';
 
 export enum TextColor {
     NORMAL = 'normal',
+    INVERTED = 'inverted',
     ERROR = 'error',
 }
 

@@ -5,7 +5,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { memo, useCallback, useEffect } from 'react';
 import { fetchArticlesData } from 'entities/Article/model/services/fetchArticlesData';
 import { useSelector } from 'react-redux';
-import { getArticle, getError, getIsLoading } from 'entities/Article';
+import { getArticleDetailsData, getError, getIsLoading } from 'entities/Article';
 import { Text, TextColor, TextSize } from 'shared/ui/text/Text';
 import { Skeleton } from 'shared/ui/skeleton/Skeleton';
 import { Avatar } from 'shared/ui/avatar/Avatar';
@@ -15,9 +15,6 @@ import { Icon } from 'shared/ui/icon/Icon';
 import { ArticleCodeBlock } from 'entities/Article/ui/ArticleCodeBlock/ArticleCodeBlock';
 import { ArticleTextBlock } from 'entities/Article/ui/ArticleTextBlock/ArticleTextBlock';
 import { ArticleImageBlock } from 'entities/Article/ui/ArticleImageBlock/ArticleImageBlock';
-import { Button, ButtonType } from 'shared/ui/button/Button';
-import { useNavigate } from 'react-router-dom';
-import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
 import cl from './ArticleDetails.module.scss';
 import { ArticleDetailsReducer } from '../../model/slice/ArticleDetailsSlice';
 import { ArticleBlock, BlockType } from '../../model/types/types';
@@ -36,8 +33,7 @@ export const ArticleDetails = memo(({ extraClassName, id }: ArticleDetailsProps)
     const dispatch = useAppDispatch();
     const error = useSelector(getError);
     const isLoading = useSelector(getIsLoading);
-    const articleData = useSelector(getArticle);
-    const navigate = useNavigate();
+    const articleData = useSelector(getArticleDetailsData);
 
     const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {
@@ -65,10 +61,6 @@ export const ArticleDetails = memo(({ extraClassName, id }: ArticleDetailsProps)
         }
     }, [dispatch, id]);
 
-    const returnToArticlesHandler = useCallback(() => {
-        navigate(RoutePaths.article);
-    }, [navigate]);
-
     let content;
 
     if (error) {
@@ -91,9 +83,6 @@ export const ArticleDetails = memo(({ extraClassName, id }: ArticleDetailsProps)
     } else {
         content = (
             <>
-                <Button btnType={ButtonType.OUTLINE} onClick={returnToArticlesHandler}>
-                    {t('Вернутся к списку постов')}
-                </Button>
                 <div className={cl.avatarWrapper}>
                     <Avatar
                         size={200}

@@ -350,12 +350,12 @@
     },
     {
       "id": "13",
-      "title": "Kotlin news",
-      "subtitle": "Что нового в JS за 2022 год?",
+      "title": "C# news",
+      "subtitle": "Что нового в C# за 2024 год?",
       "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
-      "userId": "1",
+      "views": 1025,
+      "createdAt": "26.02.2024",
+      "userId": "2",
       "type": [
         "IT"
       ],

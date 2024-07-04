@@ -7,6 +7,9 @@ import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData, UserAction } from 'entities/User';
+import { Text, TextColor, TextSize } from 'shared/ui/text/Text';
+import { LinkTheme, MyLink } from 'shared/ui/link/MyLink';
+import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
 import cl from './Navbar.module.scss';
 
 export interface NavbarProps {
@@ -34,6 +37,15 @@ export const Navbar = memo(({ extraClassName }: NavbarProps) => {
     if (userAuthData) {
         return (
             <header className={classNames(cl.Navbar, {}, [extraClassName])}>
+                <Text
+                    title={t('Alaiv app')}
+                    size={TextSize.L}
+                    textColor={TextColor.INVERTED}
+                    extraClassName={cl.title}
+                />
+                <MyLink to={RoutePaths.articleNew} theme={LinkTheme.SECONDARY}>
+                    {t('Создать статьи')}
+                </MyLink>
                 <Button
                     btnType={ButtonType.CLEAR}
                     btnText={ButtonText.INVERTED}

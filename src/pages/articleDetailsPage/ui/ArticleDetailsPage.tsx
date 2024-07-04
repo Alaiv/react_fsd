@@ -16,9 +16,8 @@ import {
     getRecommendationsError,
     getRecommendationsIsLoading,
 } from 'pages/articleDetailsPage/model/selectors/recommendationsSelectors';
-import {
-    fetchArticleRecommendationsList,
-} from 'pages/articleDetailsPage/model/services/fetchRecommendations/fetchRecommendations';
+import { fetchArticleRecommendationsList } from '../model/services/fetchRecommendations/fetchRecommendations';
+import { ArticleDetailsPageHeader } from '../ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { ArticleDetailsPageReducer } from '../model/slice';
 import { sendArticleComment } from '../model/services/sendArticleComment/sendArticleComment';
 import { commentsSelectors } from '../model/slice/ArticleDetailsCommentSlice';
@@ -63,6 +62,7 @@ const ArticleDetailsPage = ({ extraClassName }: ArticleDetailsPageProps) => {
     return (
         <DynamicReducersHandler reducers={reducers} isRemove>
             <Page extraClassName={classNames(cl.ArticleDetailsPage, {}, [extraClassName])}>
+                <ArticleDetailsPageHeader id={id} />
                 <ArticleDetails id={id || '1'} />
                 <div className={cl.recommendationsBlock}>
                     <Text title={t('Рекоммендации')} size={TextSize.L} />

@@ -14,6 +14,9 @@ export const fetchArticlesData = createAsyncThunk<Article, number | string, Thun
                 headers: {
                     authorization: localStorage.getItem(LOCAL_STORAGE_USER_KEY) || '',
                 },
+                params: {
+                    _expand: 'user',
+                },
             });
 
             if (!response.data) {
