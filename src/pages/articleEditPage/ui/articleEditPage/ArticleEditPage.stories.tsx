@@ -15,4 +15,4 @@ const Template: ComponentStory<typeof ArticleEditPage> = (args) => <ArticleEditP
 export const Base = Template.bind({});
 Base.args = {};
 
-ArticleDetailsPageBasic.decorators = [];
+Base.decorators = [];
