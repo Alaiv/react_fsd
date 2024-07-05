@@ -4,3 +4,15 @@
     flex-wrap: wrap;
     width: 100%;
 }
+
+.CARD {
+    .card {
+        display: inline-flex;
+        width: 240px;
+        height: 300px;
+    }
+
+    .row {
+        display: flex;
+    }
+}

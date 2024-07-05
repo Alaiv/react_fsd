@@ -18,6 +18,8 @@ export interface PageProps {
     isSaveScroll?: boolean;
 }
 
+export const PAGE_ID = 'page_id';
+
 export const Page = ({
     extraClassName, children, scrollIntersectionHandler, isSaveScroll = true,
 }: PageProps) => {
@@ -47,9 +49,9 @@ export const Page = ({
     }, 500);
 
     return (
-        <section onScroll={scrollHandler} ref={rootRef} className={classNames(cl.Page, {}, [extraClassName])}>
+        <section id={PAGE_ID} onScroll={scrollHandler} ref={rootRef} className={classNames(cl.Page, {}, [extraClassName])}>
             {children}
-            <span ref={triggerRef} />
+            <span ref={triggerRef} style={{ width: '40px', height: '40px', display: 'inline-block' }} />
         </section>
     );
 };
