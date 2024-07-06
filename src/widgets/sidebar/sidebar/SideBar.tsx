@@ -1,12 +1,11 @@
 import { classNames } from 'shared/lib/classNames';
-import React, { memo, useMemo, useState } from 'react';
+import React, { memo, useState } from 'react';
 import { Button, ButtonSize, ButtonType } from 'shared/ui/button/Button';
 import { ThemeSwitcher } from 'widgets/themeSwitcher';
 import { LangSwitcher } from 'widgets/langSwitcher';
-import { SideBarItem } from 'widgets/sidebar/sideBarItem/SideBarItem';
 import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User';
-import { getSideBarItems } from 'widgets/sidebar/model/selectors/sideBarItemsSelector/getSideBarItemSelector';
+import { SideBarItem } from '../sideBarItem/SideBarItem';
+import { getSideBarItems } from '../model/selectors/sideBarItemsSelector/getSideBarItemSelector';
 import cl from './SideBar.module.scss';
 
 export interface SideBarProps {

@@ -1,7 +1,7 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
-import { IProfile } from 'entities/Profile';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
+import { IProfile } from '../../types/ProfileSchema';
 import { fetchProfileInfoData } from './FetchProfileInfoData';
 
 describe('FetchProfileInfoData.test', () => {

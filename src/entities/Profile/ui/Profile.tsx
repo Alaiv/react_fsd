@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 import React, { memo } from 'react';
 import { ConsoleInput } from 'shared/ui/input/ConsoleInput/ConsoleInput';
 import { Loader } from 'shared/ui/loader/Loader';
-import { IProfile, ProfileError } from 'entities/Profile';
 import { Text, TextAlignment, TextColor } from 'shared/ui/text/Text';
 import { Avatar } from 'shared/ui/avatar/Avatar';
 import { Currency, CurrencySelector } from 'entities/Currency';
 import { Country, CountrySelector } from 'entities/Country';
+import { IProfile } from '../model/types/ProfileSchema';
 import cl from './Profile.module.scss';
 
 export interface ProfileProps {

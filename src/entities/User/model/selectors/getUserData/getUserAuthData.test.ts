@@ -1,6 +1,6 @@
 import { StateSchema } from 'app/providers/storeProvider';
-import { UserSchema } from 'entities/User';
-import { getUserAuthData } from 'entities/User/model/selectors/getUserData/getUserAuthData';
+import { UserSchema } from '../../types/UserSchema';
+import { getUserAuthData } from '../../../model/selectors/getUserData/getUserAuthData';
 
 describe('getPassword.test', () => {
     test('gets correct state value', () => {

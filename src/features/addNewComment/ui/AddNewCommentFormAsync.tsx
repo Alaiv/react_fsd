@@ -1,4 +1,4 @@
 import React, { FC } from 'react';
-import { AddNewCommentFormProps } from 'features/addNewComment/ui/AddNewCommentForm';
+import { AddNewCommentFormProps } from './AddNewCommentForm';
 
 export const AddNewCommentFormAsync = React.lazy<FC<AddNewCommentFormProps>>(() => import('./AddNewCommentForm'));

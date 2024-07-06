@@ -1,12 +1,7 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
-import { UserAction } from 'entities/User';
-import {
-    fetchCommentsByArticleId,
-} from 'pages/articleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import { sendArticleComment } from 'pages/articleDetailsPage/model/services/sendArticleComment/sendArticleComment';
 import { StateSchema } from 'app/providers/storeProvider';
-import { saveProfileInfoData } from 'entities/Profile';
-import { IComment } from 'pages/articleDetailsPage/model/types';
+import { sendArticleComment } from '../../../model/services/sendArticleComment/sendArticleComment';
+import { IComment } from '../../../model/types';
 
 describe('sendArticleComment.test', () => {
     const comment: IComment = {
@@ -56,8 +51,7 @@ describe('sendArticleComment.test', () => {
 
     test('fail - no auth data', async () => {
         const state: DeepPartial<StateSchema> = {
-            user: {
-            },
+            user: {},
             articleDetails: {
                 article: {
                     id: '1',

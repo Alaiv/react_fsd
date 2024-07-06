@@ -8,9 +8,9 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { Text, TextColor } from 'shared/ui/text/Text';
 import { Page } from 'widgets/Page/ui/Page';
-import { initArticlePageState } from 'pages/articlePage/model/services/initArticlePageState/initArticlePageState';
-import { ArticlePageFilters } from 'pages/articlePage/ui/ArticlePageFilters/ArticlePageFilters';
 import { useSearchParams } from 'react-router-dom';
+import { initArticlePageState } from '../model/services/initArticlePageState/initArticlePageState';
+import { ArticlePageFilters } from '../ui/ArticlePageFilters/ArticlePageFilters';
 import { fetchNextArticles } from '../model/services/fetchNextArticles/fetchNextArticles';
 import { ArticlePageReducer, articlePageSelectors } from '../model/slice/articlePageSlice';
 import {

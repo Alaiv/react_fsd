@@ -1,3 +1,3 @@
-import { PageErrorMessage } from 'widgets/PageErrorMessage/ui/PageErrorMessage';
+import { PageErrorMessage } from './ui/PageErrorMessage';
 
 export { PageErrorMessage };

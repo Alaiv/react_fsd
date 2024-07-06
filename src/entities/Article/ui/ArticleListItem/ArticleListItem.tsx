@@ -6,10 +6,10 @@ import ViewIcon from 'shared/assets/icons/viewed.svg';
 import { Card } from 'shared/ui/Card/Card';
 import { HTMLAttributeAnchorTarget, HTMLAttributes } from 'react';
 import { Avatar } from 'shared/ui/avatar/Avatar';
-import { ArticleTextBlock } from 'entities/Article/ui/ArticleTextBlock/ArticleTextBlock';
 import { Button, ButtonType } from 'shared/ui/button/Button';
 import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
 import { MyLink } from 'shared/ui/link/MyLink';
+import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';
 import {
     Article, ArticleViewType, BlockType, TextBlock,
 } from '../../model/types/types';

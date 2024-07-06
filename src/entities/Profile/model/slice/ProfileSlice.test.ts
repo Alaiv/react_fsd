@@ -1,8 +1,8 @@
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
-import { ProfileError, saveProfileInfoData } from 'entities/Profile';
+import { saveProfileInfoData } from '../services/saveProfileInfoData/SaveProfileInfoData';
+import { ProfileError, IProfile, ProfileSchema } from '../types/ProfileSchema';
 import { ProfileSliceActions, ProfileSliceReducer } from './ProfileSlice';
-import { IProfile, ProfileSchema } from '../types/ProfileSchema';
 
 const data: IProfile = {
     username: 'user123',

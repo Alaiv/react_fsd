@@ -21,6 +21,7 @@ module.exports = {
         'react',
         '@typescript-eslint',
         'i18next',
+        'alaiv-plugin',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -49,6 +50,7 @@ module.exports = {
         'no-param-reassign': 'off',
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
+        'alaiv-plugin/path-checker': 'error',
     },
     globals: {
         __IS_DEV__: true,

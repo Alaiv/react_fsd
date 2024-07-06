@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Select, SelectOption } from 'shared/ui/select/Select';
-import { Currency } from 'entities/Currency';
 import { classNames } from 'shared/lib/classNames';
 import { memo, useCallback } from 'react';
+import { Currency } from '../model/types/types';
 
 export interface CurrencySelectorProps {
     extraClassName?: string;

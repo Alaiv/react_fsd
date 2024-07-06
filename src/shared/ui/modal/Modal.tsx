@@ -3,7 +3,7 @@ import {
     MutableRefObject,
     ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
-import { Portal } from 'shared/ui/portal/Portal';
+import { Portal } from '../portal/Portal';
 import cl from './Modal.module.scss';
 
 export interface ModalProps {

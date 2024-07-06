@@ -11,11 +11,11 @@ import { DynamicReducersHandler } from 'shared/lib/components/DynamicReducersHan
 import { useConditionalEffect } from 'shared/lib/hooks/useConditionalEffect';
 import { AddNewCommentForm } from 'features/addNewComment';
 import { Page } from 'widgets/Page/ui/Page';
-import { recommendationSelectors } from 'pages/articleDetailsPage/model/slice/ArticleDetailsRecommendationsSlice';
+import { recommendationSelectors } from '../model/slice/ArticleDetailsRecommendationsSlice';
 import {
     getRecommendationsError,
     getRecommendationsIsLoading,
-} from 'pages/articleDetailsPage/model/selectors/recommendationsSelectors';
+} from '../model/selectors/recommendationsSelectors';
 import { fetchArticleRecommendationsList } from '../model/services/fetchRecommendations/fetchRecommendations';
 import { ArticleDetailsPageHeader } from '../ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { ArticleDetailsPageReducer } from '../model/slice';

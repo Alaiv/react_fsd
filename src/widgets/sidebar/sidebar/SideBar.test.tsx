@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
-import { SideBar } from 'widgets/sidebar';
 import { RenderForTest } from 'shared/lib/tests/renderForTest';
+import { SideBar } from './sidebar';
 
 describe('Sidebar', () => {
     test('shows sidebar', () => {

@@ -2,13 +2,13 @@ import { classNames } from 'shared/lib/classNames';
 import { MutableRefObject, UIEvent, useRef } from 'react';
 import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll';
 import { useSelector } from 'react-redux';
-import { getPageScrollByPath } from 'widgets/Page/model/selectors/pageSelectors';
 import { StateSchema } from 'app/providers/storeProvider';
 import { useLocation } from 'react-router-dom';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { PageSliceActions } from 'widgets/Page';
 import { useConditionalEffect } from 'shared/lib/hooks/useConditionalEffect';
 import { useThrottling } from 'shared/lib/hooks/useThrottling';
+import { getPageScrollByPath } from '../model/selectors/pageSelectors';
+import { PageSliceActions } from '../model/slice/PageSlice';
 import cl from './Page.module.scss';
 
 export interface PageProps {

@@ -5,7 +5,7 @@ import Home from 'shared/assets/icons/Home.svg';
 import About from 'shared/assets/icons/About.svg';
 import Profile from 'shared/assets/icons/profile_icon.svg';
 import Article from 'shared/assets/icons/articles_icon.svg';
-import { ISideBarItem } from 'widgets/sidebar/model/items';
+import { ISideBarItem } from '../../../model/items';
 
 export const getSideBarItems = createSelector(
     getUserAuthData,

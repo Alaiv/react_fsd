@@ -1,9 +1,6 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
-import { UserAction } from 'entities/User';
-import {
-    fetchCommentsByArticleId,
-} from 'pages/articleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import { IComment } from 'pages/articleDetailsPage/model/types';
+import { fetchCommentsByArticleId } from '../../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { IComment } from '../../../model/types';
 
 describe('fetchCommentsByArticleId.test', () => {
     test('succsess', async () => {

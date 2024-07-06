@@ -4,22 +4,22 @@ import { classNames } from 'shared/lib/classNames';
 import { ConsoleInput } from 'shared/ui/input/ConsoleInput/ConsoleInput';
 import { ViewSwitcher } from 'widgets/viewSwitcher';
 import { useSelector } from 'react-redux';
+import { ArticleSortType, ArticleTypes, ArticleViewType } from 'entities/Article/model/types/types';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { Card } from 'shared/ui/Card/Card';
+import { ArticleSortSelector } from 'entities/Article/ui/ArticleSortSelectors/ArticleSortSelector';
+import { SortOrder } from 'shared/lib/types/sortOrderTypes';
+import { useDebounce } from 'shared/lib/hooks/useDebounce';
+import { PageArticleTabs } from 'entities/Article';
 import {
     getArticlePageOrder,
     getArticlePageSearch,
     getArticlePageSort,
     getArticlePageType,
     getArticlePageView,
-} from 'pages/articlePage/model/selectors/articlePageSelectors';
-import { ArticleSortType, ArticleTypes, ArticleViewType } from 'entities/Article/model/types/types';
-import { ArticlePageActions } from 'pages/articlePage/model/slice/articlePageSlice';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { Card } from 'shared/ui/Card/Card';
-import { fetchArticlesList } from 'pages/articlePage/model/services/fetchArticlesList/fetchArticlesList';
-import { ArticleSortSelector } from 'entities/Article/ui/ArticleSortSelectors/ArticleSortSelector';
-import { SortOrder } from 'shared/lib/types/sortOrderTypes';
-import { useDebounce } from 'shared/lib/hooks/useDebounce';
-import { PageArticleTabs } from 'entities/Article';
+} from '../../model/selectors/articlePageSelectors';
+import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
+import { ArticlePageActions } from '../../model/slice/articlePageSlice';
 import cl from './ArticlePageFilters.module.scss';
 
 export interface ArticlePageFiltersProps {

@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { ISideBarItem } from 'widgets/sidebar/model/items';
 import { LinkTheme, MyLink } from 'shared/ui/link/MyLink';
 import React, { memo } from 'react';
 import { classNames } from 'shared/lib/classNames';
+import { ISideBarItem } from '../model/items';
 import cl from './SideBarItem.module.scss';
 
 export interface SideBarItemProps extends ISideBarItem{

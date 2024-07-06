@@ -1,6 +1,6 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
-import { fetchNextArticles } from 'pages/articlePage/model/services/fetchNextArticles/fetchNextArticles';
 import { StateSchema } from 'app/providers/storeProvider';
+import { fetchNextArticles } from '../../../model/services/fetchNextArticles/fetchNextArticles';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 
 jest.mock('../fetchArticlesList/fetchArticlesList');

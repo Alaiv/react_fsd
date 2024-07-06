@@ -1,14 +1,13 @@
 import { classNames } from 'shared/lib/classNames';
-import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
 import { Text, TextSize } from 'shared/ui/text/Text';
 import { useTranslation } from 'react-i18next';
 import { HTMLAttributeAnchorTarget } from 'react';
 import { List, ListRowProps, WindowScroller } from 'react-virtualized';
 import { PAGE_ID } from 'widgets/Page/ui/Page';
+import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../../ui/ArticleListItem/ArticleListItem';
 import { Article, ArticleViewType } from '../../model/types/types';
 import cl from './ArticleList.module.scss';
-import cls from '*.scss';
 
 export interface ArticleListProps {
     extraClassName?: string;

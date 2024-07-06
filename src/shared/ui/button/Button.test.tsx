@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Button, ButtonType } from 'shared/ui/button/Button';
+import { Button, ButtonType } from './Button';
 
 describe('Button', () => {
     test('shows button', () => {
