@@ -20,6 +20,14 @@ export enum TextSize {
     XL = 'xl_size',
 }
 
+export type TagType = 'h1' | 'h2' | 'h3';
+
+const TitleTagClasses: Record<TextSize, TagType> = {
+    [TextSize.M]: 'h3',
+    [TextSize.L]: 'h2',
+    [TextSize.XL]: 'h1',
+};
+
 export interface TextProps {
     extraClassName?: string;
     title?: string;
@@ -39,9 +47,18 @@ export const Text = memo((props: TextProps) => {
         size = TextSize.M,
     } = props;
 
+    const classes = [
+        extraClassName,
+        cl[textColor],
+        cl[align],
+        cl[size],
+    ];
+
+    const TitleTag = TitleTagClasses[size];
+
     return (
-        <div className={classNames(cl.Text, {}, [extraClassName, cl[textColor], cl[align], cl[size]])}>
-            {title && <p className={cl.title}>{title}</p>}
+        <div className={classNames(cl.Text, {}, classes)}>
+            {title && <TitleTag className={cl.title}>{title}</TitleTag>}
             {text && <p className={cl.text}>{text}</p>}
         </div>
     );

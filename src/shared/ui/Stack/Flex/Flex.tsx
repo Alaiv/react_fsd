@@ -1,5 +1,5 @@
 import { classNames, Mods } from 'shared/lib/classNames';
-import { ReactNode } from 'react';
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 import cl from './Flex.module.scss';
 
 export type FlexJustify = 'start' | 'center' | 'end' | 'between';
@@ -32,7 +32,9 @@ const gapClasses: Record<FlexGap, string> = {
     32: cl.gap32,
 };
 
-export interface FlexProps {
+export type DivType = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+
+export interface FlexProps extends DivType{
     extraClassName?: string;
     children?: ReactNode;
     justify?: FlexJustify,
@@ -51,6 +53,7 @@ export const Flex = (props: FlexProps) => {
         direction = 'column',
         gap,
         max,
+        ...restProps
     } = props;
 
     const classes = [
@@ -66,7 +69,7 @@ export const Flex = (props: FlexProps) => {
     };
 
     return (
-        <div className={classNames(cl.Flex, mods, classes)}>
+        <div {...restProps} className={classNames(cl.Flex, mods, classes)}>
             {children}
         </div>
     );

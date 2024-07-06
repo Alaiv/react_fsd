@@ -49,9 +49,9 @@ export const Page = ({
     }, 500);
 
     return (
-        <section id={PAGE_ID} onScroll={scrollHandler} ref={rootRef} className={classNames(cl.Page, {}, [extraClassName])}>
+        <main id={PAGE_ID} onScroll={scrollHandler} ref={rootRef} className={classNames(cl.Page, {}, [extraClassName])}>
             {children}
             <span ref={triggerRef} style={{ width: '40px', height: '40px', display: 'inline-block' }} />
-        </section>
+        </main>
     );
 };
