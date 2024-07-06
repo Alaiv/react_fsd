@@ -5,8 +5,9 @@ import { Avatar } from 'shared/ui/avatar/Avatar';
 import { memo } from 'react';
 import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
 import { MyLink } from 'shared/ui/link/MyLink';
-import { Loader } from 'shared/ui/loader/Loader';
 import { Skeleton } from 'shared/ui/skeleton/Skeleton';
+import { HStack } from 'shared/ui/Stack/HStack/HStack';
+import { VStack } from 'shared/ui/Stack/VStack/VStack';
 import cl from './Comment.module.scss';
 
 export interface CommentProps {
@@ -39,12 +40,14 @@ export const Comment = memo((props: CommentProps) => {
     }
 
     return (
-        <div className={classNames(cl.Comment, {}, [extraClassName])}>
-            <MyLink extraClassName={cl.userInfo} to={`${RoutePaths.profile}${comment?.user?.id}`}>
-                {comment.user.avatar && <Avatar size={30} src={comment.user.avatar} alt={comment.user.username} />}
-                <Text text={comment.user.username} />
+        <VStack max extraClassName={classNames(cl.Comment, {}, [extraClassName])}>
+            <MyLink to={`${RoutePaths.profile}${comment?.user?.id}`}>
+                <HStack justify="start" gap={8}>
+                    {comment.user.avatar && <Avatar size={30} src={comment.user.avatar} alt={comment.user.username} />}
+                    <Text text={comment.user.username} />
+                </HStack>
             </MyLink>
             <Text text={comment.text || ''} />
-        </div>
+        </VStack>
     );
 });

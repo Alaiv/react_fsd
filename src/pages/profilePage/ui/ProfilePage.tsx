@@ -21,6 +21,7 @@ import { Text, TextColor } from 'shared/ui/text/Text';
 import { useConditionalEffect } from 'shared/lib/hooks/useConditionalEffect';
 import { useParams } from 'react-router-dom';
 import { Page } from 'widgets/Page/ui/Page';
+import { VStack } from 'shared/ui/Stack/VStack/VStack';
 import { ProfileHeader } from './ProfileHeader/ProfileHeader';
 
 const baseReducers: ReducersList = {
@@ -92,22 +93,24 @@ const ProfilePage = () => {
     return (
         <DynamicReducersHandler reducers={baseReducers} isRemove>
             <Page>
-                <ProfileHeader profileId={id} />
-                {validationErrors && errors}
-                <Profile
-                    formData={formData}
-                    isLoading={isLoading}
-                    isReadonly={readonly}
-                    error={error}
-                    onFirstNameChange={onFirstNameChange}
-                    onLastNameChange={onLastNameChange}
-                    onAgeChange={onAgeChange}
-                    onCityChange={onCityChange}
-                    onUsernameChange={onUsernameChange}
-                    onAvatarChange={onAvatarChange}
-                    onCurrencyChange={onCurrencyChange}
-                    onCountryChange={onCountryChange}
-                />
+                <VStack max gap={16}>
+                    <ProfileHeader profileId={id} />
+                    {validationErrors && errors}
+                    <Profile
+                        formData={formData}
+                        isLoading={isLoading}
+                        isReadonly={readonly}
+                        error={error}
+                        onFirstNameChange={onFirstNameChange}
+                        onLastNameChange={onLastNameChange}
+                        onAgeChange={onAgeChange}
+                        onCityChange={onCityChange}
+                        onUsernameChange={onUsernameChange}
+                        onAvatarChange={onAvatarChange}
+                        onCurrencyChange={onCurrencyChange}
+                        onCountryChange={onCountryChange}
+                    />
+                </VStack>
             </Page>
         </DynamicReducersHandler>
     );

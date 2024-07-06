@@ -10,6 +10,8 @@ import { Avatar } from 'shared/ui/avatar/Avatar';
 import DateIcon from 'shared/assets/icons/dateIcon.svg';
 import ViewIcon from 'shared/assets/icons/viewed.svg';
 import { Icon } from 'shared/ui/icon/Icon';
+import { VStack } from 'shared/ui/Stack/VStack/VStack';
+import { HStack } from 'shared/ui/Stack/HStack/HStack';
 import { fetchArticlesData } from '../../model/services/fetchArticlesData';
 import { getArticleDetailsData, getError, getIsLoading } from '../../model/selectors/articleSelectors';
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock';
@@ -49,7 +51,14 @@ export const ArticleDetails = memo(({ extraClassName, id }: ArticleDetailsProps)
                 />
             );
         case BlockType.IMAGE:
-            return <ArticleImageBlock extraClassName={cl.block} key={block.id} title={block.title} src={block.src} />;
+            return (
+                <ArticleImageBlock
+                    extraClassName={cl.block}
+                    key={block.id}
+                    title={block.title}
+                    src={block.src}
+                />
+            );
         default:
             return null;
         }
@@ -72,52 +81,51 @@ export const ArticleDetails = memo(({ extraClassName, id }: ArticleDetailsProps)
         );
     } else if (isLoading) {
         content = (
-            <div>
+            <VStack gap={16} max>
                 <Skeleton extraClassName={cl.avatar} borderRadius="50%" height={200} width={200} />
                 <Skeleton extraClassName={cl.title} height={31} width={669} />
                 <Skeleton extraClassName={cl.skeleton} height={31} width={399} />
                 <Skeleton extraClassName={cl.skeleton} height={231} width={1090} />
                 <Skeleton extraClassName={cl.skeleton} height={231} width={1090} />
-            </div>
+            </VStack>
         );
     } else {
         content = (
-            <>
-                <div className={cl.avatarWrapper}>
+            <VStack max gap={16}>
+                <HStack max extraClassName={cl.avatarWrapper}>
                     <Avatar
                         size={200}
                         src={articleData?.img}
                         alt="article_image"
                         extraClassName={cl.avatar}
                     />
-                </div>
-                <Text
-                    title={articleData?.title}
-                    text={articleData?.subtitle}
-                    extraClassName={cl.title}
-                    size={TextSize.XL}
-                />
-                <div className={cl.articleInfo}>
-                    <Icon Svg={DateIcon} />
-                    <Text text={articleData?.createdAt} />
-                </div>
-                <div className={cl.articleInfo}>
-                    <Icon Svg={ViewIcon} />
-                    <Text text={articleData?.views.toString()} />
-                </div>
-
-                <div className={cl.blocks}>
-                    {articleData?.blocks.map(renderBlock)}
-                </div>
-            </>
+                </HStack>
+                <VStack gap={4}>
+                    <Text
+                        title={articleData?.title}
+                        text={articleData?.subtitle}
+                        extraClassName={cl.title}
+                        size={TextSize.XL}
+                    />
+                    <HStack gap={4} extraClassName={cl.articleInfo}>
+                        <Icon Svg={DateIcon} />
+                        <Text text={articleData?.createdAt} />
+                    </HStack>
+                    <HStack gap={4} extraClassName={cl.articleInfo}>
+                        <Icon Svg={ViewIcon} />
+                        <Text text={articleData?.views.toString()} />
+                    </HStack>
+                </VStack>
+                {articleData?.blocks.map(renderBlock)}
+            </VStack>
         );
     }
 
     return (
         <DynamicReducersHandler reducers={baseReducers} isRemove>
-            <div className={classNames(cl.ArticleDetails, {}, [extraClassName])}>
+            <VStack gap={16} max extraClassName={classNames(cl.ArticleDetails, {}, [extraClassName])}>
                 {content}
-            </div>
+            </VStack>
         </DynamicReducersHandler>
     );
 });

@@ -7,6 +7,8 @@ import { Text, TextAlignment, TextColor } from 'shared/ui/text/Text';
 import { Avatar } from 'shared/ui/avatar/Avatar';
 import { Currency, CurrencySelector } from 'entities/Currency';
 import { Country, CountrySelector } from 'entities/Country';
+import { VStack } from 'shared/ui/Stack/VStack/VStack';
+import { HStack } from 'shared/ui/Stack/HStack/HStack';
 import { IProfile } from '../model/types/ProfileSchema';
 import cl from './Profile.module.scss';
 
@@ -56,71 +58,75 @@ export const Profile = memo((props: ProfileProps) => {
         );
     }
 
+    if (isLoading) {
+        return (
+            <HStack max justify="center" align="center">
+                <Loader />
+            </HStack>
+        );
+    }
+
     return (
-        <div className={classNames(cl.Profile, { [cl.editing]: !isReadonly }, [extraClassName])}>
-            {
-                isLoading
-                    ? <Loader />
-                    : (
-                        <div className={cl.profileInfo}>
-                            {formData?.avatar && <Avatar src={formData?.avatar} size={200} alt="avatar" />}
-                            <ConsoleInput
-                                placeholder={t('Введите имя')}
-                                value={formData?.first}
-                                extraClassName={cl.profileInput}
-                                readonly={isReadonly}
-                                onChange={onFirstNameChange}
-                            />
-                            <ConsoleInput
-                                placeholder={t('Введите фамилию')}
-                                value={formData?.lastname}
-                                extraClassName={cl.profileInput}
-                                readonly={isReadonly}
-                                onChange={onLastNameChange}
-                            />
-                            <ConsoleInput
-                                placeholder={t('Введите возраст')}
-                                value={formData?.age}
-                                extraClassName={cl.profileInput}
-                                readonly={isReadonly}
-                                onChange={onAgeChange}
-                            />
-                            <ConsoleInput
-                                placeholder={t('Введите город')}
-                                value={formData?.city}
-                                extraClassName={cl.profileInput}
-                                readonly={isReadonly}
-                                onChange={onCityChange}
-                            />
-                            <ConsoleInput
-                                placeholder={t('Введите имя пользователя')}
-                                value={formData?.username}
-                                extraClassName={cl.profileInput}
-                                readonly={isReadonly}
-                                onChange={onUsernameChange}
-                            />
-                            <ConsoleInput
-                                placeholder={t('Введите ссылку для аватара')}
-                                value={formData?.avatar}
-                                extraClassName={cl.profileInput}
-                                readonly={isReadonly}
-                                onChange={onAvatarChange}
-                            />
-                            <CurrencySelector
-                                extraClassName={cl.profileInput}
-                                onChange={onCurrencyChange}
-                                value={formData?.currency}
-                                readonly={isReadonly}
-                            />
-                            <CountrySelector
-                                extraClassName={cl.profileInput}
-                                onChange={onCountryChange}
-                                value={formData?.country}
-                                readonly={isReadonly}
-                            />
-                        </div>
-                    )
-            }
-        </div>
+        <VStack max gap={16} extraClassName={classNames(cl.Profile, { [cl.editing]: !isReadonly }, [extraClassName])}>
+            {formData?.avatar && (
+                <HStack align="center" justify="center" max>
+                    <Avatar src={formData?.avatar} size={200} alt="avatar" />
+                </HStack>
+            )}
+            <ConsoleInput
+                placeholder={t('Введите имя')}
+                value={formData?.first}
+                extraClassName={cl.profileInput}
+                readonly={isReadonly}
+                onChange={onFirstNameChange}
+            />
+            <ConsoleInput
+                placeholder={t('Введите фамилию')}
+                value={formData?.lastname}
+                extraClassName={cl.profileInput}
+                readonly={isReadonly}
+                onChange={onLastNameChange}
+            />
+            <ConsoleInput
+                placeholder={t('Введите возраст')}
+                value={formData?.age}
+                extraClassName={cl.profileInput}
+                readonly={isReadonly}
+                onChange={onAgeChange}
+            />
+            <ConsoleInput
+                placeholder={t('Введите город')}
+                value={formData?.city}
+                extraClassName={cl.profileInput}
+                readonly={isReadonly}
+                onChange={onCityChange}
+            />
+            <ConsoleInput
+                placeholder={t('Введите имя пользователя')}
+                value={formData?.username}
+                extraClassName={cl.profileInput}
+                readonly={isReadonly}
+                onChange={onUsernameChange}
+            />
+            <ConsoleInput
+                placeholder={t('Введите ссылку для аватара')}
+                value={formData?.avatar}
+                extraClassName={cl.profileInput}
+                readonly={isReadonly}
+                onChange={onAvatarChange}
+            />
+            <CurrencySelector
+                extraClassName={cl.profileInput}
+                onChange={onCurrencyChange}
+                value={formData?.currency}
+                readonly={isReadonly}
+            />
+            <CountrySelector
+                extraClassName={cl.profileInput}
+                onChange={onCountryChange}
+                value={formData?.country}
+                readonly={isReadonly}
+            />
+        </VStack>
     );
 });

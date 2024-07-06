@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { DynamicReducersHandler } from 'shared/lib/components/DynamicReducersHandler';
 import { Text, TextColor } from 'shared/ui/text/Text';
+import { HStack } from 'shared/ui/Stack/HStack/HStack';
 import { AddNewCommentReducer, AddNewCommentSliceActions } from '../model/slice/AddNewCommentSlice';
 import cl from './AddNewCommentForm.module.scss';
 import { getError, getText } from '../model/selectors/addNewCommentSelectors';
@@ -38,12 +39,12 @@ const AddNewCommentForm = memo(({ extraClassName, sendComment }: AddNewCommentFo
     return (
         <DynamicReducersHandler reducers={reducers} isRemove>
             {error && <Text textColor={TextColor.ERROR} text={t('Текст отсутствует')} />}
-            <div className={classNames(cl.AddNewCommentForm, {}, [extraClassName])}>
+            <HStack max justify="between" gap={8} extraClassName={classNames(cl.AddNewCommentForm, {}, [extraClassName])}>
                 <ConsoleInput placeholder={t('Введите текст комментария')} onChange={changeTextHandler} value={text} />
                 <Button btnType={ButtonType.OUTLINE} onClick={sendCommentHandler}>
                     {t('Отправить')}
                 </Button>
-            </div>
+            </HStack>
         </DynamicReducersHandler>
     );
 });

@@ -11,6 +11,7 @@ import { DynamicReducersHandler } from 'shared/lib/components/DynamicReducersHan
 import { useConditionalEffect } from 'shared/lib/hooks/useConditionalEffect';
 import { AddNewCommentForm } from 'features/addNewComment';
 import { Page } from 'widgets/Page/ui/Page';
+import { VStack } from 'shared/ui/Stack/VStack/VStack';
 import { recommendationSelectors } from '../model/slice/ArticleDetailsRecommendationsSlice';
 import {
     getRecommendationsError,
@@ -62,21 +63,23 @@ const ArticleDetailsPage = ({ extraClassName }: ArticleDetailsPageProps) => {
     return (
         <DynamicReducersHandler reducers={reducers} isRemove>
             <Page extraClassName={classNames(cl.ArticleDetailsPage, {}, [extraClassName])}>
-                <ArticleDetailsPageHeader id={id} />
-                <ArticleDetails id={id || '1'} />
-                <div className={cl.recommendationsBlock}>
-                    <Text title={t('Рекоммендации')} size={TextSize.L} />
-                    <ArticleList
-                        extraClassName={cl.recommends}
-                        articles={recommendations}
-                        isLoading={recommendationsLoading}
-                        error={recommendationsError}
-                        target="_blank"
-                    />
-                </div>
-                <Text title={t('Комментарии')} size={TextSize.L} />
-                <AddNewCommentForm sendComment={sendCommentHandler} />
-                <CommentList comments={comments} />
+                <VStack gap={16} max>
+                    <ArticleDetailsPageHeader id={id} />
+                    <ArticleDetails id={id || '1'} />
+                    <div className={cl.recommendationsBlock}>
+                        <Text title={t('Рекоммендации')} size={TextSize.L} />
+                        <ArticleList
+                            extraClassName={cl.recommends}
+                            articles={recommendations}
+                            isLoading={recommendationsLoading}
+                            error={recommendationsError}
+                            target="_blank"
+                        />
+                    </div>
+                    <Text title={t('Комментарии')} size={TextSize.L} />
+                    <AddNewCommentForm sendComment={sendCommentHandler} />
+                    <CommentList comments={comments} />
+                </VStack>
             </Page>
         </DynamicReducersHandler>
     );
