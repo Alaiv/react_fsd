@@ -23,7 +23,8 @@
     "test:report:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:report": "npm run test:report:json && npm run test:report:html",
     "start-server": "node ./json-server/index.js",
-    "prepare": "husky"
+    "prepare": "husky",
+    "template:slice": "node ./scripts/createSlice/index.js"
   },
   "keywords": [],
   "author": "",
