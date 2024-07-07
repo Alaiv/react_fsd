@@ -8,6 +8,9 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    decorators: [
+        (Story) => <div style={{ padding: 300 }}><Story /></div>,
+    ],
 } as ComponentMeta<typeof AppListBox>;
 
 const Template: ComponentStory<typeof AppListBox> = (args) => <AppListBox {...args} />;
@@ -17,8 +20,56 @@ Primary.args = {
     value: undefined,
     defaultValue: 'idl click me',
     items: [
-        { value: 'asdas', content: 'asdasdsa' },
-        { value: 'asdas2', content: 'asdasdsa2' },
-        { value: 'asdas3', content: 'asdasdsa3', disabled: true },
+        { value: 'sdadasdasdasdsa', text: 'sdadasdasdasdsa' },
+        { value: 'sdadasdasdasdsa', text: 'sdadasdasdasdsa' },
+        { value: 'sdadasdasdasdsa', text: 'sdadasdasdasdsa', disabled: true },
     ],
+};
+
+export const PrimaryTopLeft = Template.bind({});
+PrimaryTopLeft.args = {
+    value: undefined,
+    defaultValue: 'idl click me',
+    items: [
+        { value: 'sdadasdasdasdsasdadasdasdasdsa', text: 'sdadasdasdasdsasdadasdasdasdsa' },
+        { value: 'sdadasdasdasdsasdadasdasdasdsa', text: 'sdadasdasdasdsasdadasdasdasdsa' },
+        { value: 'sdadasdasdasdsasdadasdasdasdsa', text: 'sdadasdasdasdsasdadasdasdasdsa', disabled: true },
+    ],
+    direction: 'top left',
+};
+
+export const PrimaryTopRight = Template.bind({});
+PrimaryTopRight.args = {
+    value: undefined,
+    defaultValue: 'idl click me',
+    items: [
+        { value: 'sdadasdasdasdsasdadasdasdasdsa', text: 'sdadasdasdasdsasdadasdasdasdsa' },
+        { value: 'sdadasdasdasdsasdadasdasdasdsa', text: 'sdadasdasdasdsasdadasdasdasdsa' },
+        { value: 'sdadasdasdasdsasdadasdasdasdsa', text: 'sdadasdasdasdsasdadasdasdasdsa', disabled: true },
+    ],
+    direction: 'top right',
+};
+
+export const PrimaryDownLeft = Template.bind({});
+PrimaryDownLeft.args = {
+    value: undefined,
+    defaultValue: 'idl click me',
+    items: [
+        { value: 'sdadasdasdasdsasdadasdasdasdsa', text: 'sdadasdasdasdsasdadasdasdasdsa' },
+        { value: 'sdadasdasdasdsasdadasdasdasdsa', text: 'sdadasdasdasdsasdadasdasdasdsa' },
+        { value: 'sdadasdasdasdsasdadasdasdasdsa', text: 'sdadasdasdasdsasdadasdasdasdsa', disabled: true },
+    ],
+    direction: 'down left',
+};
+
+export const PrimaryDownRight = Template.bind({});
+PrimaryDownRight.args = {
+    value: undefined,
+    defaultValue: 'idl click me',
+    items: [
+        { value: 'sdadasdasdasdsasdadasdasdasdsa', text: 'sdadasdasdasdsasdadasdasdasdsa' },
+        { value: 'sdadasdasdasdsasdadasdasdasdsa', text: 'sdadasdasdasdsasdadasdasdasdsa' },
+        { value: 'sdadasdasdasdsasdadasdasdasdsa', text: 'sdadasdasdasdsasdadasdasdasdsa', disabled: true },
+    ],
+    direction: 'down right',
 };

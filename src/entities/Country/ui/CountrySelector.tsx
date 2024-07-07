@@ -39,7 +39,7 @@ export const CountrySelector = memo(({
                 value={value}
                 extraClassName={extraClassName}
                 readonly={readonly}
-                direction="top"
+                direction="top right"
             />
         </HStack>
     );

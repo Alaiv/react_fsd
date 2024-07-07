@@ -9,7 +9,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData, UserAction } from 'entities/User';
 import { Text, TextColor, TextSize } from 'shared/ui/text/Text';
 import { LinkTheme, MyLink } from 'shared/ui/link/MyLink';
-import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
+import { AppRoutes, RoutePaths } from 'shared/config/routeConfig/RouteConfig';
+import { AppMenu, AppMenuItem } from 'shared/ui/Menu/AppMenu';
+import { Avatar } from 'shared/ui/avatar/Avatar';
+import { navigate } from '@storybook/addon-links';
 import cl from './Navbar.module.scss';
 
 export interface NavbarProps {
@@ -34,6 +37,17 @@ export const Navbar = memo(({ extraClassName }: NavbarProps) => {
         dispatch(UserAction.removeAuthData());
     }, [dispatch]);
 
+    const menuItems: AppMenuItem[] = [
+        {
+            content: t('Профиль'),
+            href: `${RoutePaths.profile}${userAuthData?.id}`,
+        },
+        {
+            content: t('Выйти'),
+            onClick: onLogout,
+        },
+    ];
+
     if (userAuthData) {
         return (
             <header className={classNames(cl.Navbar, {}, [extraClassName])}>
@@ -46,15 +60,12 @@ export const Navbar = memo(({ extraClassName }: NavbarProps) => {
                 <MyLink to={RoutePaths.articleNew} theme={LinkTheme.SECONDARY}>
                     {t('Создать статьи')}
                 </MyLink>
-                <Button
-                    btnType={ButtonType.CLEAR}
-                    btnText={ButtonText.INVERTED}
-                    onClick={onLogout}
+                <AppMenu
+                    direction="down left"
                     extraClassName={cl.loginBtn}
-                    buttonSize={ButtonSize.L}
-                >
-                    {t('Выйти')}
-                </Button>
+                    items={menuItems}
+                    trigger={<Avatar alt={userAuthData.username} src={userAuthData.avatar} size={40} />}
+                />
             </header>
         );
     }
