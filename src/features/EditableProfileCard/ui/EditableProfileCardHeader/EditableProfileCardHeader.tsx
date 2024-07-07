@@ -22,7 +22,7 @@ export const EditableProfileCardHeader = ({ extraClassName, profileId }: Profile
     const dispatch = useAppDispatch();
     const readonly = useSelector(getReadonly);
     const currentUser = useSelector(getUserAuthData);
-    const canEditProfile = profileId === currentUser?.id;
+    const canEditProfile = Number(profileId) === currentUser?.id;
 
     const setEditMode = useCallback(() => {
         dispatch(ProfileSliceActions.setReadonly(false));
@@ -46,6 +46,7 @@ export const EditableProfileCardHeader = ({ extraClassName, profileId }: Profile
                             <Button
                                 btnType={ButtonType.OUTLINE}
                                 onClick={setEditMode}
+                                data-testid="EditableProfileCardHeader.EditBtn"
                             >
                                 {t('Редактировать')}
                             </Button>
@@ -56,12 +57,14 @@ export const EditableProfileCardHeader = ({ extraClassName, profileId }: Profile
                             <Button
                                 btnType={ButtonType.OUTLINE}
                                 onClick={saveChanges}
+                                data-testid="EditableProfileCardHeader.SaveBtn"
                             >
                                 {t('Сохранить')}
                             </Button>
                             <Button
                                 btnType={ButtonType.OUTLINE_RED}
                                 onClick={cancelChanges}
+                                data-testid="EditableProfileCardHeader.CancelBtn"
                             >
                                 {t('Отменить')}
                             </Button>

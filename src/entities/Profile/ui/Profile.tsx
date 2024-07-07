@@ -79,6 +79,7 @@ export const Profile = memo((props: ProfileProps) => {
                 extraClassName={cl.profileInput}
                 readonly={isReadonly}
                 onChange={onFirstNameChange}
+                data-testid="Profile.Name"
             />
             <ConsoleInput
                 placeholder={t('Введите фамилию')}
@@ -86,6 +87,7 @@ export const Profile = memo((props: ProfileProps) => {
                 extraClassName={cl.profileInput}
                 readonly={isReadonly}
                 onChange={onLastNameChange}
+                data-testid="Profile.Lastname"
             />
             <ConsoleInput
                 placeholder={t('Введите возраст')}

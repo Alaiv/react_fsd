@@ -35,6 +35,7 @@ export interface TextProps {
     textColor?: TextColor;
     align?: TextAlignment;
     size?: TextSize;
+    'data-testid'?: string;
 }
 
 export const Text = memo((props: TextProps) => {
@@ -45,6 +46,7 @@ export const Text = memo((props: TextProps) => {
         textColor = TextColor.NORMAL,
         align = TextAlignment.LEFT,
         size = TextSize.M,
+        'data-testid': dataTestId = 'Text',
     } = props;
 
     const classes = [
@@ -58,8 +60,8 @@ export const Text = memo((props: TextProps) => {
 
     return (
         <div className={classNames(cl.Text, {}, classes)}>
-            {title && <TitleTag className={cl.title}>{title}</TitleTag>}
-            {text && <p className={cl.text}>{text}</p>}
+            {title && <TitleTag data-testid={`${dataTestId}.Title`} className={cl.title}>{title}</TitleTag>}
+            {text && <p data-testid={`${dataTestId}.Text`} className={cl.text}>{text}</p>}
         </div>
     );
 });

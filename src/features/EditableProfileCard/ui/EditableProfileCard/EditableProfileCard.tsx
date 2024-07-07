@@ -10,6 +10,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useConditionalEffect } from 'shared/lib/hooks/useConditionalEffect';
 import { VStack } from 'shared/ui/Stack/VStack/VStack';
 import { DynamicReducersHandler, ReducersList } from 'shared/lib/components/DynamicReducersHandler';
+import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
 import { getFormData } from '../../model/selectors/getFormData/getFormData';
 import { getIsLoading } from '../../model/selectors/getIsLoading/getIsLoading';
 import { getError } from '../../model/selectors/getError/getError';
@@ -89,11 +90,18 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     }, [dispatch]);
 
     const errors = validationErrors?.map((err) => (
-        <Text textColor={TextColor.ERROR} key={err} text={validationErrorTranslations[err]} />));
+        <Text
+            textColor={TextColor.ERROR}
+            key={err}
+            text={validationErrorTranslations[err]}
+            data-testid="EditableProfileCard.Error"
+        />
+    ));
 
     return (
         <DynamicReducersHandler reducers={baseReducers}>
             <VStack max gap={8} className={classNames('', {}, [extraClassName])}>
+                <EditableProfileCardHeader profileId={id} />
                 {validationErrors && errors}
                 <Profile
                     formData={formData}

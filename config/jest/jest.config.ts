@@ -55,7 +55,7 @@ module.exports = {
         ['jest-html-reporters', {
             publicPath: '<rootDir>/reports/unit',
             filename: 'report.html',
-            openReport: true,
+            // openReport: true,
         }],
     ],
     // Indicates whether the coverage information should be collected while executing the test

@@ -5,18 +5,20 @@ import { ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { StateSchema, StoreProvider } from 'app/providers/storeProvider';
+import { ReducersMapObject } from '@reduxjs/toolkit';
 
 interface RenderForTestProps {
     path?: string;
     initialState?: DeepPartial<StateSchema>;
+    extraReducers?: DeepPartial<ReducersMapObject<StateSchema>>
 }
 
-export const RenderForTest = (component: ReactNode, props: RenderForTestProps = {}) => {
-    const { path = '/', initialState } = props;
+export const renderForTest = (component: ReactNode, props: RenderForTestProps = {}) => {
+    const { path = '/', initialState, extraReducers } = props;
 
     render(
         <MemoryRouter initialEntries={[path]}>
-            <StoreProvider initialState={initialState as StateSchema}>
+            <StoreProvider extraReducers={extraReducers} initialState={initialState as StateSchema}>
                 <I18nextProvider i18n={i18n}>
                     {component}
                 </I18nextProvider>
