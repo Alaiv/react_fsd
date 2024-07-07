@@ -2,6 +2,9 @@ import { useTranslation } from 'react-i18next';
 import { Select, SelectOption } from 'shared/ui/select/Select';
 import { classNames } from 'shared/lib/classNames';
 import { memo, useCallback } from 'react';
+import { HStack } from 'shared/ui/Stack/HStack/HStack';
+import { Text } from 'shared/ui/text/Text';
+import { AppListBox } from 'shared/ui/AppListBox/AppListBox';
 import { Country } from '../model/types/types';
 
 export interface CountrySelectorProps {
@@ -27,13 +30,17 @@ export const CountrySelector = memo(({
     }, [onChange]);
 
     return (
-        <Select
-            extraClassName={classNames('', {}, [extraClassName])}
-            value={value}
-            label={t('Выберите страну')}
-            options={countries}
-            onChange={onChangeHandler}
-            readonly={readonly}
-        />
+        <HStack gap={8}>
+            <Text text={t('Выберите страну')} />
+            <AppListBox
+                items={countries}
+                defaultValue={t('Выберите страну')}
+                onValueChange={onChangeHandler}
+                value={value}
+                extraClassName={extraClassName}
+                readonly={readonly}
+                direction="top"
+            />
+        </HStack>
     );
 });

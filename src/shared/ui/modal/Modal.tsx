@@ -3,6 +3,7 @@ import {
     MutableRefObject,
     ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
+import { Listbox } from '@headlessui/react';
 import { Portal } from '../portal/Portal';
 import cl from './Modal.module.scss';
 

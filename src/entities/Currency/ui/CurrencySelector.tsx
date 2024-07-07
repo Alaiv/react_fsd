@@ -2,6 +2,9 @@ import { useTranslation } from 'react-i18next';
 import { Select, SelectOption } from 'shared/ui/select/Select';
 import { classNames } from 'shared/lib/classNames';
 import { memo, useCallback } from 'react';
+import { AppListBox } from 'shared/ui/AppListBox/AppListBox';
+import { Text } from 'shared/ui/text/Text';
+import { HStack } from 'shared/ui/Stack/HStack/HStack';
 import { Currency } from '../model/types/types';
 
 export interface CurrencySelectorProps {
@@ -27,13 +30,16 @@ export const CurrencySelector = memo(({
     }, [onChange]);
 
     return (
-        <Select
-            extraClassName={classNames('', {}, [extraClassName])}
-            value={value}
-            label={t('Выберите валюту')}
-            options={currencies}
-            onChange={onChangeHandler}
-            readonly={readonly}
-        />
+        <HStack gap={8}>
+            <Text text={t('Выберите валюту')} />
+            <AppListBox
+                items={currencies}
+                defaultValue={t('Выберите валюту')}
+                onValueChange={onChangeHandler}
+                value={value}
+                extraClassName={extraClassName}
+                readonly={readonly}
+            />
+        </HStack>
     );
 });

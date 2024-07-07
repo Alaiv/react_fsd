@@ -22,7 +22,6 @@ export function createStore(
     const extraArgs: ThunkExtra = {
         api: $api,
     };
-    console.log('RENDER_STORE');
 
     const store = configureStore({
         reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,

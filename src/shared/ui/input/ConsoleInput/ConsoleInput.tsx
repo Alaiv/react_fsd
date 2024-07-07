@@ -2,6 +2,7 @@ import { classNames } from 'shared/lib/classNames';
 import {
     InputHTMLAttributes, memo, useCallback, useEffect, useRef, useState,
 } from 'react';
+import { HStack } from '../../Stack/HStack/HStack';
 import cl from './ConsoleInput.module.scss';
 
 type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readonly'>
@@ -56,7 +57,7 @@ export const ConsoleInput = memo((props: ConsoleInputProps) => {
     }, [autoFocus]);
 
     return (
-        <div className={classNames(cl.ConsoleInput, { [cl.readonly]: readonly }, [extraClassName])}>
+        <HStack gap={8} max className={classNames('', { [cl.readonly]: readonly }, [extraClassName])}>
             {placeholder && (
                 <div className={cl.placeHolder}>{`${placeholder}>`}</div>
             )}
@@ -76,6 +77,6 @@ export const ConsoleInput = memo((props: ConsoleInputProps) => {
                     isCaretVisible && <span className={cl.caret} style={{ left: position * 9 }} />
                 }
             </div>
-        </div>
+        </HStack>
     );
 });
