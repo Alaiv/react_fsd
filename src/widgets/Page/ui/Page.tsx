@@ -23,8 +23,8 @@ export const PAGE_ID = 'page_id';
 export const Page = ({
     extraClassName, children, scrollIntersectionHandler, isSaveScroll = true,
 }: PageProps) => {
-    const rootRef = useRef() as MutableRefObject<HTMLElement>;
-    const triggerRef = useRef() as MutableRefObject<HTMLElement>;
+    const rootRef = useRef() as MutableRefObject<HTMLDivElement>;
+    const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
     const { pathname } = useLocation();
     const dispatch = useAppDispatch();
     const scrollPathLocation = useSelector((state: StateSchema) => getPageScrollByPath(state, pathname));
@@ -51,7 +51,7 @@ export const Page = ({
     return (
         <main id={PAGE_ID} onScroll={scrollHandler} ref={rootRef} className={classNames(cl.Page, {}, [extraClassName])}>
             {children}
-            <span ref={triggerRef} style={{ width: '40px', height: '40px', display: 'inline-block' }} />
+            <div ref={triggerRef} className={cl.trigger} />
         </main>
     );
 };

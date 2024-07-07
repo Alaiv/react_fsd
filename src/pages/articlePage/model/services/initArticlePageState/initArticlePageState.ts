@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/storeProvider';
 import { ArticleSortType, ArticleTypes } from 'entities/Article/model/types/types';
 import { SortOrder } from 'shared/lib/types/sortOrderTypes';
+import { Logger } from 'sass';
 import { getArticlePageInited } from '../../selectors/articlePageSelectors';
 import { ArticlePageActions } from '../../slice/articlePageSlice';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
@@ -24,6 +25,7 @@ export const initArticlePageState = createAsyncThunk<void, URLSearchParams | und
             dispatch(ArticlePageActions.setSearch(search));
             dispatch(ArticlePageActions.setType(type));
             dispatch(ArticlePageActions.init());
+
             dispatch(fetchArticlesList({ page: 1 }));
         }
     },

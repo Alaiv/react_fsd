@@ -1,9 +1,10 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ArticleDetailsPageHeader } from './ArticleDetailsPageHeader';
 
 export default {
-    title: 'ArticleDetailsPageHeader',
+    title: 'pages/ArticleDetailsPageHeader',
     component: ArticleDetailsPageHeader,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -15,4 +16,4 @@ const Template: ComponentStory<typeof ArticleDetailsPageHeader> = (args) => <Art
 export const Base = Template.bind({});
 Base.args = {};
 
-Base.decorators = [];
+Base.decorators = [StoreDecorator({})];

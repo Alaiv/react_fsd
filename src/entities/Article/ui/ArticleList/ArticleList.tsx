@@ -40,12 +40,8 @@ export const ArticleList = (props: ArticleListProps) => {
     const { t } = useTranslation();
     const isBig = viewType === ArticleViewType.LINE;
 
-    if (!isLoading && !articles.length) {
-        return (
-            <div className={classNames(cl.ArticleList, {}, [extraClassName])}>
-                <Text title={t('Статьи не найдены')} size={TextSize.L} />
-            </div>
-        );
+    if (!articles) {
+        return null;
     }
 
     const itemsPerRow = isBig ? 1 : (Math.floor(window.innerWidth / 270) - 1);
@@ -75,6 +71,14 @@ export const ArticleList = (props: ArticleListProps) => {
         );
     };
 
+    if (!isLoading && !articles.length) {
+        return (
+            <div className={classNames(cl.ArticleList, {}, [extraClassName])}>
+                <Text title={t('Статьи не найдены')} size={TextSize.L} />
+            </div>
+        );
+    }
+
     return (
         <WindowScroller scrollElement={document.getElementById(PAGE_ID) as Element}>
             {
@@ -84,7 +88,7 @@ export const ArticleList = (props: ArticleListProps) => {
                     <div ref={registerChild} className={classNames(cl.ArticleList, {}, [extraClassName, cl[viewType]])}>
                         <List
                             autoHeight
-                            height={height}
+                            height={height ?? 700}
                             isScrolling={isScrolling}
                             onScroll={onChildScroll}
                             scrollTop={scrollTop}

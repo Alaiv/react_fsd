@@ -18,7 +18,7 @@ describe('fetchNextArticles.test', () => {
 
         const result = await testThunk.callAsyncThunk(undefined);
 
-        expect(testThunk.dispatch).toHaveBeenCalledTimes(4);
+        expect(testThunk.dispatch).toHaveBeenCalledTimes(8);
         expect(result.meta.requestStatus).toEqual('fulfilled');
         expect(fetchArticlesList).toBeCalledWith({ page: 1 });
     });

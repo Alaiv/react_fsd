@@ -517,6 +517,18 @@
       "text": "dssdf",
       "userId": "1",
       "id": "nKa8DZJ"
+    },
+    {
+      "articleId": "1",
+      "text": "ljlk;jklj",
+      "userId": "2",
+      "id": "ZtxlvWs"
+    },
+    {
+      "articleId": "4",
+      "text": "dasdas",
+      "userId": "2",
+      "id": "mVDK6Qt"
     }
   ],
   "users": [
@@ -538,10 +550,10 @@
   "profile": [
     {
       "id": 1,
-      "first": "jgh1",
+      "first": "jgh1dasdsa",
       "lastname": "asf",
-      "age": 465,
-      "currency": "USD",
+      "age": 32,
+      "currency": "RUB",
       "country": "Belarus",
       "city": "Moscow",
       "username": "admin213",

@@ -1,7 +1,6 @@
 import { UserSchema } from 'entities/User';
 import { AuthSchema } from 'features/AuthByUsername/model/type/authSchema';
 import { EnhancedStore } from '@reduxjs/toolkit';
-import { ProfileSchema } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
 import { NavigateFunction } from 'react-router';
 import { ArticleDetailsSchema } from 'entities/Article';
@@ -9,12 +8,15 @@ import { ArticleDetailsPageSchema } from 'pages/articleDetailsPage';
 import { AddNewCommentSchema } from 'features/addNewComment';
 import { ArticlePageSchema } from 'pages/articlePage/model/types/articlePageSchema';
 import { PageSchema } from 'widgets/Page';
+import { rtkApi } from 'shared/lib/api/rtkApi';
+import { ProfileSchema } from 'features/EditableProfileCard';
 import { createStore } from './store';
 import { IReducerManager } from './reducerManager';
 
 export interface StateSchema {
     user: UserSchema,
     page: PageSchema,
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>,
     auth?: AuthSchema,
     profile?: ProfileSchema,
     articleDetails?: ArticleDetailsSchema,

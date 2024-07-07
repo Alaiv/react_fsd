@@ -1,5 +1,6 @@
 {
   "Alaiv app": "Alaiv app",
+  "No articles found": "",
   "decrement": "decrement",
   "error fetching articles data": "error fetching articles data",
   "error fetching comments data": "error fetching comments data",
