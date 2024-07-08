@@ -18,11 +18,13 @@ export const ArticleDetailsRecommendations = memo((props: ArticleDetailsRecommen
     if (isLoading || isError) {
         return null;
     }
+    console.log(articles);
 
     return (
         <VStack gap={8} className={classNames('', {}, [extraClassName])}>
             <Text title={t('Рекоммендации')} size={TextSize.L} />
             <ArticleList
+                virualized={false}
                 articles={articles}
                 target="_blank"
             />

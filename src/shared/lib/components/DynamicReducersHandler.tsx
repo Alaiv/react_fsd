@@ -1,6 +1,6 @@
 import { useStore } from 'react-redux';
 import { StateSchemaKey, StoreWithManager } from 'app/providers/storeProvider';
-import { FC, useEffect } from 'react';
+import { FC, ReactNode, useEffect } from 'react';
 import { Reducer } from '@reduxjs/toolkit';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 
@@ -10,10 +10,11 @@ export type ReducersList = {
 
 export interface DynamicReducersHandlerProps {
     reducers: ReducersList,
-    isRemove?: boolean
+    isRemove?: boolean,
+    children?: ReactNode,
 }
 
-export const DynamicReducersHandler: FC<DynamicReducersHandlerProps> = (props) => {
+export const DynamicReducersHandler = (props: DynamicReducersHandlerProps) => {
     const store = useStore() as StoreWithManager;
     const dispatch = useAppDispatch();
     const {

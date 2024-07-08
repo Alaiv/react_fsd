@@ -1,5 +1,7 @@
 import { classNames } from 'shared/lib/classNames';
 import {
+    ChangeEvent,
+    ChangeEventHandler,
     InputHTMLAttributes, memo, useCallback, useEffect, useRef, useState,
 } from 'react';
 import { HStack } from '../../Stack/HStack/HStack';
@@ -32,7 +34,7 @@ export const ConsoleInput = memo((props: ConsoleInputProps) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const isCaretVisible = focused && !readonly;
 
-    const onChangeHandler = useCallback((e) => {
+    const onChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
         setPosition(e.target.value.length);
     }, [onChange]);

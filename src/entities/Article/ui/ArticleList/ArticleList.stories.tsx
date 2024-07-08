@@ -94,22 +94,26 @@ export const NormalCard = Template.bind({});
 NormalCard.args = {
     articles: Array(9).fill(article as Article),
     viewType: ArticleViewType.CARD,
+    virualized: false,
 };
 
 export const NormalLine = Template.bind({});
 NormalLine.args = {
     articles: Array(3).fill(article as Article),
     viewType: ArticleViewType.LINE,
+    virualized: false,
 };
 
 export const LoadingCard = Template.bind({});
 LoadingCard.args = {
     isLoading: true,
     viewType: ArticleViewType.CARD,
+    virualized: false,
 };
 
 export const LoadingLine = Template.bind({});
 LoadingLine.args = {
     isLoading: true,
     viewType: ArticleViewType.LINE,
+    virualized: false,
 };

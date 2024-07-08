@@ -1,6 +1,5 @@
 import { Theme, ThemeProvider } from 'app/providers/themeProvider';
 import { Story } from '@storybook/react';
-import { useEffect } from 'react';
 
 export const ThemeDecorator = (theme: Theme) => (StoryComponent: Story) => {
     document.body.className = theme;

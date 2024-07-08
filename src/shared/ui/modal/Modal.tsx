@@ -1,5 +1,6 @@
 import { classNames } from 'shared/lib/classNames';
 import {
+    EventHandler, KeyboardEvent, KeyboardEventHandler,
     MutableRefObject,
     ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
@@ -44,7 +45,7 @@ export const Modal = (props: ModalProps) => {
         }
     }, [onClose]);
 
-    const keyDownHandler = useCallback((e) => {
+    const keyDownHandler = useCallback((e: any) => {
         if (e.key === 'Escape') {
             onCloseHandler();
         }
