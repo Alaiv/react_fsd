@@ -22,7 +22,7 @@ export const EditableProfileCardHeader = ({ extraClassName, profileId }: Profile
     const dispatch = useAppDispatch();
     const readonly = useSelector(getReadonly);
     const currentUser = useSelector(getUserAuthData);
-    const canEditProfile = Number(profileId) === currentUser?.id;
+    const canEditProfile = Number(profileId) === Number(currentUser?.id);
 
     const setEditMode = useCallback(() => {
         dispatch(ProfileSliceActions.setReadonly(false));

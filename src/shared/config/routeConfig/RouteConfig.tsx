@@ -6,9 +6,13 @@ import { ProfilePage } from 'pages/profilePage';
 import { ArticlePage } from 'pages/articlePage';
 import { ArticleDetailsPage } from 'pages/articleDetailsPage';
 import { ArticleEditPage } from 'pages/articleEditPage';
+import { AdminPage } from 'pages/adminPage';
+import { ForbiddenPage } from 'pages/forbiddenPage';
+import { UserRoles } from 'entities/User/model/types/UserSchema';
 
 export type AppRouteProps = RouteProps & {
-    authOnly?: boolean
+    authOnly?: boolean,
+    roles?: UserRoles[]
 }
 
 export enum RouteName {
@@ -19,6 +23,8 @@ export enum RouteName {
     ARTICLE_DETAIL = 'articleDetail',
     ARTICLE_EDIT = 'articleEdit',
     ARTICLE_NEW = 'articleNew',
+    ADMIN = 'admin',
+    FORBIDDEN = 'forbidden',
     NOT_FOUND = 'not-found',
 }
 
@@ -30,6 +36,8 @@ export const RoutePaths: Record<RouteName, string> = {
     [RouteName.ARTICLE_DETAIL]: '/article/',
     [RouteName.ARTICLE_EDIT]: '/article/',
     [RouteName.ARTICLE_NEW]: '/article/new',
+    [RouteName.ADMIN]: '/admin',
+    [RouteName.FORBIDDEN]: '/forbidden',
     [RouteName.NOT_FOUND]: '*',
 };
 
@@ -66,6 +74,16 @@ export const AppRoutes: Array<AppRouteProps> = [
         path: `${RoutePaths.articleNew}`,
         element: <ArticleEditPage />,
         authOnly: true,
+    },
+    {
+        path: RoutePaths.admin,
+        element: <AdminPage />,
+        authOnly: true,
+        roles: [UserRoles.MANAGER, UserRoles.ADMIN],
+    },
+    {
+        path: RoutePaths.forbidden,
+        element: <ForbiddenPage />,
     },
     {
         path: RoutePaths['not-found'],

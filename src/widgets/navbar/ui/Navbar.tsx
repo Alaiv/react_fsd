@@ -6,13 +6,15 @@ import {
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserAuthData, UserAction } from 'entities/User';
+import {
+    getUserAuthData, getUserRoles, isAdmin, UserAction,
+} from 'entities/User';
 import { Text, TextColor, TextSize } from 'shared/ui/text/Text';
 import { LinkTheme, MyLink } from 'shared/ui/link/MyLink';
-import { AppRoutes, RoutePaths } from 'shared/config/routeConfig/RouteConfig';
+import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
 import { AppMenu, AppMenuItem } from 'shared/ui/Menu/AppMenu';
 import { Avatar } from 'shared/ui/avatar/Avatar';
-import { navigate } from '@storybook/addon-links';
+import { UserRoles } from 'entities/User/model/types/UserSchema';
 import cl from './Navbar.module.scss';
 
 export interface NavbarProps {
@@ -24,6 +26,8 @@ export const Navbar = memo(({ extraClassName }: NavbarProps) => {
     const [isOpen, setModalState] = useState(false);
     const userAuthData = useSelector(getUserAuthData);
     const dispatch = useDispatch();
+    const isUserAdmin = useSelector(isAdmin);
+    const R = useSelector(getUserRoles);
 
     const onModalOpen = useCallback(() => {
         setModalState(true);
@@ -37,17 +41,27 @@ export const Navbar = memo(({ extraClassName }: NavbarProps) => {
         dispatch(UserAction.removeAuthData());
     }, [dispatch]);
 
+    const adminItems = isUserAdmin
+        ? [
+            {
+                content: t('Админка'),
+                href: RoutePaths.admin,
+            },
+        ]
+        : [];
+
     const menuItems: AppMenuItem[] = [
+        ...adminItems,
         {
             content: t('Профиль'),
             href: `${RoutePaths.profile}${userAuthData?.id}`,
         },
         {
             content: t('Выйти'),
-            onClick: onLogout,
+            onClick:
+            onLogout,
         },
     ];
-
     if (userAuthData) {
         return (
             <header className={classNames(cl.Navbar, {}, [extraClassName])}>

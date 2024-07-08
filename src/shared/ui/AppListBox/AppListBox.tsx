@@ -1,5 +1,5 @@
 import { Listbox } from '@headlessui/react';
-import { ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 import { classNames } from 'shared/lib/classNames';
 import { DropDownDirection } from 'app/types/types';
 import { HStack } from '../Stack/HStack/HStack';
@@ -52,7 +52,7 @@ export function AppListBox(props: AppListBoxProps) {
                 onChange={onValueChange}
                 className={classNames(cl.AppListBox, {}, [extraClassName])}
             >
-                <Listbox.Button className={cl.lbtn}>
+                <Listbox.Button as={Fragment}>
                     <Button
                         disabled={readonly}
                         btnType={ButtonType.OUTLINE}
