@@ -9,9 +9,10 @@ import { Avatar } from 'shared/ui/avatar/Avatar';
 import { Button, ButtonType } from 'shared/ui/button/Button';
 import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
 import { MyLink } from 'shared/ui/link/MyLink';
+import { ArticleViewType, BlockType } from '../../model/const/constants';
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';
 import {
-    Article, ArticleViewType, BlockType, TextBlock,
+    Article, TextBlock,
 } from '../../model/types/types';
 import cl from './ArticleListItem.module.scss';
 

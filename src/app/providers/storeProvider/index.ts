@@ -8,12 +8,15 @@ import {
     ThunkConfig,
 } from './config/StateSchema';
 
-export {
-    StoreProvider,
+export type {
     StateSchema,
     StoreWithManager,
     StateSchemaKey,
     DispatchType,
     ThunkExtra,
     ThunkConfig,
+};
+
+export {
+    StoreProvider,
 };

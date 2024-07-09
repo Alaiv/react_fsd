@@ -1,5 +1,6 @@
 import { StateSchema } from 'app/providers/storeProvider';
-import { ProfileError, ProfileSchema } from '../../types/ProfileSchema';
+import { ProfileError } from '../../const/constants';
+import { ProfileSchema } from '../../types/ProfileSchema';
 import { getProfileValidationErrors } from './getProfileValidationErrors';
 
 describe('getPassword.test', () => {

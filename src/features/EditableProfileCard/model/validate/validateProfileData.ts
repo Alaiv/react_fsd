@@ -1,5 +1,6 @@
 import { IProfile } from 'entities/Profile';
-import { ProfileError } from '../types/ProfileSchema';
+
+import { ProfileError } from '../../model/const/constants';
 
 export const validateProfileData = (profile?: IProfile) => {
     if (!profile) {

@@ -12,6 +12,7 @@ import ViewIcon from 'shared/assets/icons/viewed.svg';
 import { Icon } from 'shared/ui/icon/Icon';
 import { VStack } from 'shared/ui/Stack/VStack/VStack';
 import { HStack } from 'shared/ui/Stack/HStack/HStack';
+import { BlockType } from '../../model/const/constants';
 import { fetchArticlesData } from '../../model/services/fetchArticlesData';
 import { getArticleDetailsData, getError, getIsLoading } from '../../model/selectors/articleSelectors';
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock';
@@ -19,7 +20,7 @@ import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';
 import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock';
 import cl from './ArticleDetails.module.scss';
 import { ArticleDetailsReducer } from '../../model/slice/ArticleDetailsSlice';
-import { ArticleBlock, BlockType } from '../../model/types/types';
+import { ArticleBlock } from '../../model/types/types';
 
 export interface ArticleDetailsProps {
     extraClassName?: string;

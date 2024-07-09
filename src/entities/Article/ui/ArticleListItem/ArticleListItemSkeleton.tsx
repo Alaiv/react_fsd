@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames';
 import { Card } from 'shared/ui/Card/Card';
 import { HTMLAttributes } from 'react';
 import { Skeleton } from 'shared/ui/skeleton/Skeleton';
-import { ArticleViewType } from '../../model/types/types';
+import { ArticleViewType } from '../../model/const/constants';
 import cl from './ArticleListItem.module.scss';
 
 export interface ArticleListItemSkeletonProps extends HTMLAttributes<HTMLDivElement> {

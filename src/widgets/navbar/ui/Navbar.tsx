@@ -14,7 +14,7 @@ import { LinkTheme, MyLink } from 'shared/ui/link/MyLink';
 import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
 import { AppMenu, AppMenuItem } from 'shared/ui/Menu/AppMenu';
 import { Avatar } from 'shared/ui/avatar/Avatar';
-import { UserRoles } from 'entities/User/model/types/UserSchema';
+import { UserRoles } from 'entities/User/model/const/constants';
 import cl from './Navbar.module.scss';
 
 export interface NavbarProps {

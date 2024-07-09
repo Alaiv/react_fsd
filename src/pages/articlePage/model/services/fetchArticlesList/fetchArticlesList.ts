@@ -3,7 +3,7 @@ import i18n from 'i18next';
 import { ThunkConfig } from 'app/providers/storeProvider';
 import { Article } from 'entities/Article';
 import { setSearchParams } from 'shared/lib/url/addQueryParam/addQueryParams';
-import { ArticleTypes } from 'entities/Article/model/types/types';
+import { ArticleTypes } from 'entities/Article/model/const/constants';
 import {
     getArticlePageLimit,
     getArticlePageOrder,

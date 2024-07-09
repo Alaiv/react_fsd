@@ -2,9 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/storeProvider';
 import { LOCAL_STORAGE_USER_KEY } from 'shared/const/localStorageConst';
 import { IProfile } from 'entities/Profile';
+import { ProfileError } from '../../const/constants';
 import { validateProfileData } from '../../../model/validate/validateProfileData';
 import { getFormData } from '../../selectors/getFormData/getFormData';
-import { ProfileError } from '../../types/ProfileSchema';
 
 export const saveProfileInfoData = createAsyncThunk<IProfile, void, ThunkConfig<ProfileError[]>>(
     'profile/savePorfileInfoData',

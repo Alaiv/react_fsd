@@ -10,6 +10,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useConditionalEffect } from 'shared/lib/hooks/useConditionalEffect';
 import { VStack } from 'shared/ui/Stack/VStack/VStack';
 import { DynamicReducersHandler, ReducersList } from 'shared/lib/components/DynamicReducersHandler';
+import { ProfileError } from '../../model/const/constants';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
 import { getFormData } from '../../model/selectors/getFormData/getFormData';
 import { getIsLoading } from '../../model/selectors/getIsLoading/getIsLoading';
@@ -19,7 +20,6 @@ import { getProfileValidationErrors } from '../../model/selectors/getProfileVali
 import {
     fetchProfileInfoData,
 } from '../../model/services/fetchProfileInfoData/FetchProfileInfoData';
-import { ProfileError } from '../../model/types/ProfileSchema';
 import { ProfileSliceActions, ProfileSliceReducer } from '../../model/slice/ProfileSlice';
 
 interface EditableProfileCardProps {

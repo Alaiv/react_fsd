@@ -3,8 +3,8 @@ import { Currency } from 'entities/Currency';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
 import { StateSchema } from 'app/providers/storeProvider';
 import { IProfile } from 'entities/Profile';
+import { ProfileError } from '../../const/constants';
 import { saveProfileInfoData } from './SaveProfileInfoData';
-import { ProfileError } from '../../types/ProfileSchema';
 
 const data: IProfile = {
     username: 'user123',
