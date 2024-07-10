@@ -2,9 +2,11 @@ import { Listbox } from '@headlessui/react';
 import { Fragment, ReactNode } from 'react';
 import { classNames } from 'shared/lib/classNames';
 import { DropDownDirection } from 'app/types/types';
-import { HStack } from '../Stack/HStack/HStack';
-import { Button, ButtonType } from '../button/Button';
+import { directionClasses } from '../../styles/directions';
+import { HStack } from '../../../Stack/HStack/HStack';
+import { Button, ButtonType } from '../../../button/Button';
 import cl from './AppListBox.module.scss';
+import popupCl from '../../styles/Popup.module.scss';
 
 export interface ListBoxItem {
     value: string;
@@ -21,13 +23,6 @@ export interface AppListBoxProps {
     readonly?: boolean,
     direction?: DropDownDirection,
 }
-
-const directionClasses: Record<DropDownDirection, string> = {
-    'top left': cl.topLeftDirection,
-    'top right': cl.topRightDirection,
-    'down left': cl.downLeftDirection,
-    'down right': cl.downRightDirection,
-};
 
 export function AppListBox(props: AppListBoxProps) {
     const {
@@ -50,7 +45,7 @@ export function AppListBox(props: AppListBoxProps) {
                 as="div"
                 value={value}
                 onChange={onValueChange}
-                className={classNames(cl.AppListBox, {}, [extraClassName])}
+                className={classNames(popupCl.Popup, {}, [extraClassName])}
             >
                 <Listbox.Button as={Fragment}>
                     <Button
@@ -66,7 +61,9 @@ export function AppListBox(props: AppListBoxProps) {
                         <Listbox.Option key={item.value} value={item.value} disabled={item.disabled}>
                             {({ active, selected }) => (
                                 <li
-                                    className={classNames(cl.item, { [cl.active]: active, [cl.disabled]: item.disabled })}
+                                    className={classNames(cl.item, {
+                                        [popupCl.active]: active, [popupCl.disabled]: item.disabled,
+                                    })}
                                 >
                                     {selected && '$'}
                                     {item.text}

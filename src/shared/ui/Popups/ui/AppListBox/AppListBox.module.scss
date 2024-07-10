@@ -1,0 +1,19 @@
+.options {
+    background: var(--card-color);
+    position: absolute;
+    z-index: 1000;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px var(--card-color);
+}
+
+.item {
+    padding: 10px 18px;
+}
+
+.readonly {
+    cursor: not-allowed;
+}
+
+.btn {
+    border-radius: 5px;
+}

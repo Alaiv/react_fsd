@@ -18,7 +18,7 @@ const Template: ComponentStory<typeof AppListBox> = (args) => <AppListBox {...ar
 export const Primary = Template.bind({});
 Primary.args = {
     value: undefined,
-    defaultValue: 'idl click me',
+    defaultValue: 'idl click me adsds',
     items: [
         { value: 'sdadasdasdasdsa', text: 'sdadasdasdasdsa' },
         { value: 'sdadasdasdasdsa', text: 'sdadasdasdasdsa' },

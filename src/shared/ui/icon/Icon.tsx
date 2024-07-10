@@ -5,9 +5,10 @@ import cl from './Icon.module.scss';
 export interface IconProps {
     extraClassName?: string;
     Svg?: FunctionComponent<SVGAttributes<SVGElement>>;
+    inverted?: boolean;
 }
 
-export const Icon = ({ extraClassName, Svg }: IconProps) => (
+export const Icon = ({ extraClassName, Svg, inverted }: IconProps) => (
     // @ts-ignore
-    <Svg className={classNames(cl.Icon, {}, [extraClassName])} />
+    <Svg className={classNames(inverted ? cl.Inverted : cl.Icon, {}, [extraClassName])} />
 );

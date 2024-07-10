@@ -5,16 +5,14 @@ import {
 } from 'shared/ui/button/Button';
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUsername';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-    getUserAuthData, getUserRoles, isAdmin, UserAction,
-} from 'entities/User';
+import { useSelector } from 'react-redux';
+import { getUserAuthData } from 'entities/User';
 import { Text, TextColor, TextSize } from 'shared/ui/text/Text';
 import { LinkTheme, MyLink } from 'shared/ui/link/MyLink';
 import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
-import { AppMenu, AppMenuItem } from 'shared/ui/Menu/AppMenu';
-import { Avatar } from 'shared/ui/avatar/Avatar';
-import { UserRoles } from 'entities/User/model/const/constants';
+import { HStack } from 'shared/ui/Stack/HStack/HStack';
+import { NotificationPopover } from 'features/NotificationPopover';
+import { AvatarMenu } from 'features/AvatarMenu';
 import cl from './Navbar.module.scss';
 
 export interface NavbarProps {
@@ -25,9 +23,6 @@ export const Navbar = memo(({ extraClassName }: NavbarProps) => {
     const { t } = useTranslation();
     const [isOpen, setModalState] = useState(false);
     const userAuthData = useSelector(getUserAuthData);
-    const dispatch = useDispatch();
-    const isUserAdmin = useSelector(isAdmin);
-    const R = useSelector(getUserRoles);
 
     const onModalOpen = useCallback(() => {
         setModalState(true);
@@ -37,31 +32,6 @@ export const Navbar = memo(({ extraClassName }: NavbarProps) => {
         setModalState(false);
     }, []);
 
-    const onLogout = useCallback(() => {
-        dispatch(UserAction.removeAuthData());
-    }, [dispatch]);
-
-    const adminItems = isUserAdmin
-        ? [
-            {
-                content: t('Админка'),
-                href: RoutePaths.admin,
-            },
-        ]
-        : [];
-
-    const menuItems: AppMenuItem[] = [
-        ...adminItems,
-        {
-            content: t('Профиль'),
-            href: `${RoutePaths.profile}${userAuthData?.id}`,
-        },
-        {
-            content: t('Выйти'),
-            onClick:
-            onLogout,
-        },
-    ];
     if (userAuthData) {
         return (
             <header className={classNames(cl.Navbar, {}, [extraClassName])}>
@@ -74,12 +44,10 @@ export const Navbar = memo(({ extraClassName }: NavbarProps) => {
                 <MyLink to={RoutePaths.articleNew} theme={LinkTheme.SECONDARY}>
                     {t('Создать статьи')}
                 </MyLink>
-                <AppMenu
-                    direction="down left"
-                    extraClassName={cl.loginBtn}
-                    items={menuItems}
-                    trigger={<Avatar alt={userAuthData.username} src={userAuthData.avatar} size={40} />}
-                />
+                <HStack gap={16} extraClassName={cl.actions}>
+                    <NotificationPopover />
+                    <AvatarMenu userData={userAuthData} />
+                </HStack>
             </header>
         );
     }

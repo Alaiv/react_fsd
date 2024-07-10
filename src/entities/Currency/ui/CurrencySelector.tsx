@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Select, SelectOption } from 'shared/ui/select/Select';
 import { classNames } from 'shared/lib/classNames';
 import { memo, useCallback } from 'react';
-import { AppListBox } from 'shared/ui/AppListBox/AppListBox';
+import { AppListBox } from 'shared/ui/Popups/ui/AppListBox/AppListBox';
 import { Text } from 'shared/ui/text/Text';
 import { HStack } from 'shared/ui/Stack/HStack/HStack';
 import { Currency } from '../model/types/types';

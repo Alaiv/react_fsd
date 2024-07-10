@@ -2,9 +2,11 @@ import { Menu } from '@headlessui/react';
 import { Fragment, ReactNode } from 'react';
 import { DropDownDirection } from 'app/types/types';
 import { classNames } from 'shared/lib/classNames';
-import { MyLink } from '../link/MyLink';
-import { Button, ButtonType } from '../button/Button';
+import { directionClasses } from '../../styles/directions';
+import { MyLink } from '../../../link/MyLink';
+import { Button, ButtonType } from '../../../button/Button';
 import cl from './AppMenu.module.scss';
+import popupCl from '../../styles/Popup.module.scss';
 
 export interface AppMenuItem {
     disabled?: boolean;
@@ -20,13 +22,6 @@ export interface AppMenuProps {
     direction?: DropDownDirection,
 }
 
-const directionClasses: Record<DropDownDirection, string> = {
-    'top left': cl.topLeftDirection,
-    'top right': cl.topRightDirection,
-    'down left': cl.downLeftDirection,
-    'down right': cl.downRightDirection,
-};
-
 export function AppMenu(props: AppMenuProps) {
     const {
         extraClassName,
@@ -40,13 +35,13 @@ export function AppMenu(props: AppMenuProps) {
     ];
 
     return (
-        <Menu as="div" className={classNames(cl.AppMenu, {}, [extraClassName])}>
-            <Menu.Button className={cl.lbtn}>{trigger}</Menu.Button>
+        <Menu as="div" className={classNames(popupCl.Popup, {}, [extraClassName])}>
+            <Menu.Button className={popupCl.trigger}>{trigger}</Menu.Button>
             <Menu.Items className={classNames(cl.items, {}, options)}>
                 {items.map((item) => {
-                    const content = ({ active }: {active: boolean}) => (
+                    const content = ({ active }: { active: boolean }) => (
                         <Button
-                            extraClassName={classNames(cl.item, { [cl.active]: active })}
+                            extraClassName={classNames(cl.item, { [popupCl.active]: active })}
                             onClick={item.onClick}
                             disabled={item.disabled}
                             btnType={ButtonType.CLEAR}
