@@ -1,10 +1,8 @@
 import { classNames } from 'shared/lib/classNames';
 import {
-    EventHandler, KeyboardEvent, KeyboardEventHandler,
-    MutableRefObject,
-    ReactNode, useCallback, useEffect, useRef, useState,
+    MutableRefObject, ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
-import { Listbox } from '@headlessui/react';
+import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../portal/Portal';
 import cl from './Modal.module.scss';
 
@@ -78,12 +76,10 @@ export const Modal = (props: ModalProps) => {
                 className={
                     classNames(cl.Modal, mods, [extraClassName])
                 }
-                onClick={onCloseHandler}
             >
-                <div className={cl.area}>
-                    <div className={cl.content} onClick={(e) => e.stopPropagation()}>
-                        {children}
-                    </div>
+                <Overlay onClick={onCloseHandler} />
+                <div className={cl.content} onClick={(e) => e.stopPropagation()}>
+                    {children}
                 </div>
             </div>
         </Portal>

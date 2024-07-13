@@ -14,7 +14,7 @@ export const NotificationItem = memo((props: NotificationProps) => {
     const { extraClassName, notification } = props;
 
     const content = (
-        <Card extraClassName={classNames(cl.Notification, {}, [extraClassName])}>
+        <Card extraClassName={classNames(cl.NotificationItem, {}, [extraClassName])}>
             <Text size={TextSize.L} title={notification.title} text={notification.description} />
         </Card>
     );
