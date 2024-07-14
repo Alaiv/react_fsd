@@ -49,3 +49,10 @@
         transform: translateY(0%);
     }
 }
+
+.closing {
+    .content {
+        transition: 0.3s transform;
+        transform: translateY(100%)
+    }
+}
