@@ -115,7 +115,9 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "react-virtualized": "^9.22.3",
-    "react-device-detect": "^2.2.2"
+    "react-device-detect": "^2.2.2",
+    "@react-spring/web": "^9.5.2",
+    "@use-gesture/react": "^10.2.19"
   },
   "loki": {
     "configurations": {

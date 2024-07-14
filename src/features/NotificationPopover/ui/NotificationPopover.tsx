@@ -7,6 +7,7 @@ import NotificationIcon from 'shared/assets/icons/notification_icon.svg';
 import { NotificationList } from 'entities/notification';
 import { Drawer } from 'shared/ui/Drawer/Drawer';
 import { BrowserView, MobileView } from 'react-device-detect';
+import { AnimationContextProvider } from 'shared/lib/components/AnimationProvider';
 import cl from './NotificationPopover.module.scss';
 
 interface NotificationPopoverProps {
@@ -44,11 +45,12 @@ export const NotificationPopover = memo((props: NotificationPopoverProps) => {
             </BrowserView>
             <MobileView>
                 {trigger}
-                <Drawer isOpen={isOpen} onClose={closeDrawerHandler}>
-                    <NotificationList />
-                </Drawer>
+                <AnimationContextProvider>
+                    <Drawer isOpen={isOpen} onClose={closeDrawerHandler}>
+                        <NotificationList />
+                    </Drawer>
+                </AnimationContextProvider>
             </MobileView>
-
         </div>
 
     );
