@@ -1,9 +1,9 @@
-import { classNames } from 'shared/lib/classNames';
 import {
     ChangeEvent,
     ChangeEventHandler,
     InputHTMLAttributes, memo, useCallback, useEffect, useRef, useState,
 } from 'react';
+import { classNames } from '@/shared/lib/classNames';
 import { HStack } from '../../Stack/HStack/HStack';
 import cl from './ConsoleInput.module.scss';
 

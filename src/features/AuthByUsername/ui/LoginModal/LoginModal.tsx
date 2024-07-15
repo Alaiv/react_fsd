@@ -1,5 +1,5 @@
-import { classNames } from 'shared/lib/classNames';
-import { Modal } from 'shared/ui/modal/Modal';
+import { classNames } from '@/shared/lib/classNames';
+import { Modal } from '@/shared/ui/modal/Modal';
 import { LoginFormAsync } from '../../ui/LoginForm/LoginFormAsync';
 
 export interface LoginModalProps {

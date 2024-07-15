@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import i18n from 'i18next';
-import { ThunkConfig } from 'app/providers/storeProvider';
-import { Article } from 'entities/Article';
+import { ThunkConfig } from '@/app/providers/storeProvider';
+import { Article } from '@/entities/Article';
 
 export const fetchArticleRecommendationsList = createAsyncThunk<Article[], void, ThunkConfig<string>>(
     'articleDetailsPage/fetchRecommendationsList',

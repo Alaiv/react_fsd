@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames';
 import { useParams } from 'react-router-dom';
-import { Page } from 'widgets/Page';
+import { classNames } from '@/shared/lib/classNames';
+import { Page } from '@/widgets/Page';
 import cl from './ArticleEditPage.module.scss';
 
 export interface ArticleEditPageProps {

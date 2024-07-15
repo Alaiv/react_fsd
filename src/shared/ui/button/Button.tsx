@@ -1,5 +1,5 @@
-import { AdditionalMods, classNames } from 'shared/lib/classNames';
 import { ButtonHTMLAttributes, FC } from 'react';
+import { AdditionalMods, classNames } from '@/shared/lib/classNames';
 import cl from './Button.module.scss';
 
 export const enum ButtonType {

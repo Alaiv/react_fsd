@@ -1,13 +1,13 @@
-import { classNames } from 'shared/lib/classNames';
-import { IComment } from 'pages/articleDetailsPage/model/types';
-import { Text } from 'shared/ui/text/Text';
-import { Avatar } from 'shared/ui/avatar/Avatar';
 import { memo } from 'react';
-import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
-import { MyLink } from 'shared/ui/link/MyLink';
-import { Skeleton } from 'shared/ui/skeleton/Skeleton';
-import { HStack } from 'shared/ui/Stack/HStack/HStack';
-import { VStack } from 'shared/ui/Stack/VStack/VStack';
+import { classNames } from '@/shared/lib/classNames';
+import { IComment } from '@/pages/articleDetailsPage/model/types';
+import { Text } from '@/shared/ui/text/Text';
+import { Avatar } from '@/shared/ui/avatar/Avatar';
+import { RoutePaths } from '@/shared/config/routeConfig/RouteConfig';
+import { MyLink } from '@/shared/ui/link/MyLink';
+import { Skeleton } from '@/shared/ui/skeleton/Skeleton';
+import { HStack } from '@/shared/ui/Stack/HStack/HStack';
+import { VStack } from '@/shared/ui/Stack/VStack/VStack';
 import cl from './Comment.module.scss';
 
 export interface CommentProps {

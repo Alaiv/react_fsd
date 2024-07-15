@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { LinkTheme, MyLink } from 'shared/ui/link/MyLink';
 import React, { memo } from 'react';
-import { classNames } from 'shared/lib/classNames';
+import { LinkTheme, MyLink } from '@/shared/ui/link/MyLink';
+import { classNames } from '@/shared/lib/classNames';
 import { ISideBarItem } from '../model/items';
 import cl from './SideBarItem.module.scss';
 

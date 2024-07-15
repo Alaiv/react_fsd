@@ -1,6 +1,6 @@
-import { classNames } from 'shared/lib/classNames';
 import { memo } from 'react';
-import { Text, TextSize } from 'shared/ui/text/Text';
+import { classNames } from '@/shared/lib/classNames';
+import { Text, TextSize } from '@/shared/ui/text/Text';
 import cl from './ArticleTextBlock.module.scss';
 
 export interface ArticleTextBlockProps {

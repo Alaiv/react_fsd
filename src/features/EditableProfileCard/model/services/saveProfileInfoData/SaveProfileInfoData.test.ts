@@ -1,8 +1,8 @@
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
-import { StateSchema } from 'app/providers/storeProvider';
-import { IProfile } from 'entities/Profile';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk';
+import { StateSchema } from '@/app/providers/storeProvider';
+import { IProfile } from '@/entities/Profile';
 import { ProfileError } from '../../const/constants';
 import { saveProfileInfoData } from './SaveProfileInfoData';
 

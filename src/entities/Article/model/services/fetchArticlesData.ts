@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import i18n from 'i18next';
-import { ThunkConfig } from 'app/providers/storeProvider';
-import { LOCAL_STORAGE_USER_KEY } from 'shared/const/localStorageConst';
+import { ThunkConfig } from '@/app/providers/storeProvider';
+import { LOCAL_STORAGE_USER_KEY } from '@/shared/const/localStorageConst';
 import { Article } from '../types/types';
 
 export const fetchArticlesData = createAsyncThunk<Article, number | string, ThunkConfig<string>>(

@@ -1,11 +1,11 @@
-import { classNames } from 'shared/lib/classNames';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { IComment } from 'pages/articleDetailsPage/model/types';
-import { Text } from 'shared/ui/text/Text';
 import { useTranslation } from 'react-i18next';
-import { getIsLoading } from 'pages/articleDetailsPage/model/selectors/commentSelectors';
-import { VStack } from 'shared/ui/Stack/VStack/VStack';
+import { classNames } from '@/shared/lib/classNames';
+import { IComment } from '@/pages/articleDetailsPage/model/types';
+import { Text } from '@/shared/ui/text/Text';
+import { getIsLoading } from '@/pages/articleDetailsPage/model/selectors/commentSelectors';
+import { VStack } from '@/shared/ui/Stack/VStack/VStack';
 import { Comment } from '../../ui/comment/Comment';
 
 export interface CommentListProps {

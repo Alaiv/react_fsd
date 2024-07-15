@@ -1,6 +1,6 @@
-import { classNames } from 'shared/lib/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'shared/ui/button/Button';
+import { classNames } from '@/shared/lib/classNames';
+import { Button } from '@/shared/ui/button/Button';
 
 export interface PageErrorMessageProps {
     extraClassName?: string;

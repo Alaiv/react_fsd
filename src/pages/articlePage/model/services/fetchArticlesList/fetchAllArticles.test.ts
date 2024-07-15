@@ -1,6 +1,6 @@
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
-import { Article } from 'entities/Article';
-import { StateSchema } from 'app/providers/storeProvider';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk';
+import { Article } from '@/entities/Article';
+import { StateSchema } from '@/app/providers/storeProvider';
 import { fetchArticlesList, FetchArticlesListResult } from './fetchArticlesList';
 
 describe('fetchCommentsByArticleId.test', () => {

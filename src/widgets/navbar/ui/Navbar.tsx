@@ -1,18 +1,18 @@
-import { classNames } from 'shared/lib/classNames';
 import React, { memo, useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { classNames } from '@/shared/lib/classNames';
 import {
     Button, ButtonSize, ButtonText, ButtonType,
-} from 'shared/ui/button/Button';
-import { useTranslation } from 'react-i18next';
-import { LoginModal } from 'features/AuthByUsername';
-import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User';
-import { Text, TextColor, TextSize } from 'shared/ui/text/Text';
-import { LinkTheme, MyLink } from 'shared/ui/link/MyLink';
-import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
-import { HStack } from 'shared/ui/Stack/HStack/HStack';
-import { NotificationPopover } from 'features/NotificationPopover';
-import { AvatarMenu } from 'features/AvatarMenu';
+} from '@/shared/ui/button/Button';
+import { LoginModal } from '@/features/AuthByUsername';
+import { getUserAuthData } from '@/entities/User';
+import { Text, TextColor, TextSize } from '@/shared/ui/text/Text';
+import { LinkTheme, MyLink } from '@/shared/ui/link/MyLink';
+import { RoutePaths } from '@/shared/config/routeConfig/RouteConfig';
+import { HStack } from '@/shared/ui/Stack/HStack/HStack';
+import { NotificationPopover } from '@/features/NotificationPopover';
+import { AvatarMenu } from '@/features/AvatarMenu';
 import cl from './Navbar.module.scss';
 
 export interface NavbarProps {

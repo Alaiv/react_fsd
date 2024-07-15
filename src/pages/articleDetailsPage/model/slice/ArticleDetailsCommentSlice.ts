@@ -1,5 +1,5 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { StateSchema } from 'app/providers/storeProvider';
+import { StateSchema } from '@/app/providers/storeProvider';
 import { ArticleCommentSchema, IComment } from '../../model/types';
 import { sendArticleComment } from '../../model/services/sendArticleComment/sendArticleComment';
 import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/fetchCommentsByArticleId';

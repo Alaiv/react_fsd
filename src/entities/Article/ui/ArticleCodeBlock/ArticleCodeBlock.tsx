@@ -1,6 +1,6 @@
-import { classNames } from 'shared/lib/classNames';
 import { memo } from 'react';
-import { Code } from 'shared/ui/code/Code';
+import { classNames } from '@/shared/lib/classNames';
+import { Code } from '@/shared/ui/code/Code';
 import cl from './ArticleCodeBlock.module.scss';
 
 export interface ArticleCodeBlockProps {

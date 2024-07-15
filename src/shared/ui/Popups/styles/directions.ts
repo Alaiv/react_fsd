@@ -1,4 +1,4 @@
-import { DropDownDirection } from 'app/types/types';
+import { DropDownDirection } from '@/app/types/types';
 import cl from './Popup.module.scss';
 
 export const directionClasses: Record<DropDownDirection, string> = {

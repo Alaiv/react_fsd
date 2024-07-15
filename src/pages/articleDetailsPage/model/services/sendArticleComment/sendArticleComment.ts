@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/storeProvider';
-import LoginForm from 'features/AuthByUsername/ui/LoginForm/LoginForm';
+import { ThunkConfig } from '@/app/providers/storeProvider';
+import LoginForm from '@/features/AuthByUsername/ui/LoginForm/LoginForm';
 import { IComment } from '../../types';
 
 export const sendArticleComment = createAsyncThunk<IComment, string | undefined, ThunkConfig<string>>(

@@ -1,9 +1,9 @@
-import { classNames } from 'shared/lib/classNames';
 import { memo } from 'react';
-import { Text } from 'shared/ui/text/Text';
 import { useTranslation } from 'react-i18next';
-import { VStack } from 'shared/ui/Stack/VStack/VStack';
-import { Skeleton } from 'shared/ui/skeleton/Skeleton';
+import { classNames } from '@/shared/lib/classNames';
+import { Text } from '@/shared/ui/text/Text';
+import { VStack } from '@/shared/ui/Stack/VStack/VStack';
+import { Skeleton } from '@/shared/ui/skeleton/Skeleton';
 import { NotificationItem } from '../../ui/NotificationItem/NotificationItem';
 import { useGetNotifications } from '../../api/notificationApi';
 

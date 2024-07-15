@@ -1,11 +1,11 @@
 import { I18nextProvider } from 'react-i18next';
-import i18n from 'shared/config/i18n/i18nTestConfig';
 import * as React from 'react';
 import { ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { StateSchema, StoreProvider } from 'app/providers/storeProvider';
 import { ReducersMapObject } from '@reduxjs/toolkit';
+import { StateSchema, StoreProvider } from '@/app/providers/storeProvider';
+import i18n from '@/shared/config/i18n/i18nTestConfig';
 
 interface RenderForTestProps {
     path?: string;

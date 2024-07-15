@@ -1,16 +1,16 @@
 import React, { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames';
-import { ConsoleInput } from 'shared/ui/input/ConsoleInput/ConsoleInput';
-import { ViewSwitcher } from 'widgets/viewSwitcher';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { Card } from 'shared/ui/Card/Card';
-import { ArticleSortSelector } from 'entities/Article/ui/ArticleSortSelectors/ArticleSortSelector';
-import { SortOrder } from 'shared/lib/types/sortOrderTypes';
-import { useDebounce } from 'shared/lib/hooks/useDebounce';
-import { PageArticleTabs } from 'entities/Article';
-import { ArticleSortType, ArticleTypes, ArticleViewType } from 'entities/Article/model/const/constants';
+import { classNames } from '@/shared/lib/classNames';
+import { ConsoleInput } from '@/shared/ui/input/ConsoleInput/ConsoleInput';
+import { ViewSwitcher } from '@/widgets/viewSwitcher';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { Card } from '@/shared/ui/Card/Card';
+import { ArticleSortSelector } from '@/entities/Article/ui/ArticleSortSelectors/ArticleSortSelector';
+import { SortOrder } from '@/shared/lib/types/sortOrderTypes';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce';
+import { PageArticleTabs } from '@/entities/Article';
+import { ArticleSortType, ArticleTypes, ArticleViewType } from '@/entities/Article/model/const/constants';
 import {
     getArticlePageOrder,
     getArticlePageSearch,

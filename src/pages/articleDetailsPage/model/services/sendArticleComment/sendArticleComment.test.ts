@@ -1,5 +1,5 @@
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
-import { StateSchema } from 'app/providers/storeProvider';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk';
+import { StateSchema } from '@/app/providers/storeProvider';
 import { sendArticleComment } from '../../../model/services/sendArticleComment/sendArticleComment';
 import { IComment } from '../../../model/types';
 

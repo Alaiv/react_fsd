@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { Select, SelectOption } from 'shared/ui/select/Select';
-import { classNames } from 'shared/lib/classNames';
 import { memo, useCallback } from 'react';
-import { HStack } from 'shared/ui/Stack/HStack/HStack';
-import { Text } from 'shared/ui/text/Text';
-import { AppListBox } from 'shared/ui/Popups/ui/AppListBox/AppListBox';
+import { Select, SelectOption } from '@/shared/ui/select/Select';
+import { classNames } from '@/shared/lib/classNames';
+import { HStack } from '@/shared/ui/Stack/HStack/HStack';
+import { Text } from '@/shared/ui/text/Text';
+import { AppListBox } from '@/shared/ui/Popups/ui/AppListBox/AppListBox';
 import { Country } from '../model/types/types';
 
 export interface CountrySelectorProps {

@@ -1,5 +1,5 @@
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
-import { StateSchema } from 'app/providers/storeProvider';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk';
+import { StateSchema } from '@/app/providers/storeProvider';
 import { fetchNextArticles } from '../../../model/services/fetchNextArticles/fetchNextArticles';
 import { initArticlePageState } from '../../../model/services/initArticlePageState/initArticlePageState';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';

@@ -1,11 +1,11 @@
 import React, { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames';
-import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
 import { useNavigate } from 'react-router-dom';
-import { Button, ButtonType } from 'shared/ui/button/Button';
 import { useSelector } from 'react-redux';
-import { HStack } from 'shared/ui/Stack/HStack/HStack';
+import { classNames } from '@/shared/lib/classNames';
+import { RoutePaths } from '@/shared/config/routeConfig/RouteConfig';
+import { Button, ButtonType } from '@/shared/ui/button/Button';
+import { HStack } from '@/shared/ui/Stack/HStack/HStack';
 import { getCanEditaArticle } from '../../model/selectors/articleSelectors';
 
 export interface ArticleDetailsPageHeaderProps {

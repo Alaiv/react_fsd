@@ -1,6 +1,6 @@
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-import { IProfile } from 'entities/Profile';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import { IProfile } from '@/entities/Profile';
 import { ProfileError } from '../../model/const/constants';
 import { saveProfileInfoData } from '../services/saveProfileInfoData/SaveProfileInfoData';
 import { ProfileSchema } from '../types/ProfileSchema';

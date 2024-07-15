@@ -1,5 +1,5 @@
-import { classNames } from 'shared/lib/classNames';
 import React, { FunctionComponent, SVGAttributes } from 'react';
+import { classNames } from '@/shared/lib/classNames';
 import cl from './Icon.module.scss';
 
 export interface IconProps {

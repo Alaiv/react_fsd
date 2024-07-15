@@ -1,13 +1,13 @@
-import { classNames } from 'shared/lib/classNames';
 import React, { memo, useCallback, useState } from 'react';
-import { Popover } from 'shared/ui/Popups';
-import { Button, ButtonType } from 'shared/ui/button/Button';
-import { Icon } from 'shared/ui/icon/Icon';
-import NotificationIcon from 'shared/assets/icons/notification_icon.svg';
-import { NotificationList } from 'entities/notification';
-import { Drawer } from 'shared/ui/Drawer/Drawer';
 import { BrowserView, MobileView } from 'react-device-detect';
-import { AnimationContextProvider } from 'shared/lib/components/AnimationProvider';
+import { classNames } from '@/shared/lib/classNames';
+import { Popover } from '@/shared/ui/Popups';
+import { Button, ButtonType } from '@/shared/ui/button/Button';
+import { Icon } from '@/shared/ui/icon/Icon';
+import NotificationIcon from '@/shared/assets/icons/notification_icon.svg';
+import { NotificationList } from '@/entities/notification';
+import { Drawer } from '@/shared/ui/Drawer/Drawer';
+import { AnimationContextProvider } from '@/shared/lib/components/AnimationProvider';
 import cl from './NotificationPopover.module.scss';
 
 interface NotificationPopoverProps {

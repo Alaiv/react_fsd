@@ -2,12 +2,12 @@ import '@testing-library/jest-dom';
 
 import * as React from 'react';
 import { screen } from '@testing-library/react';
-import { renderForTest } from 'shared/lib/tests/renderForTest';
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
 import { userEvent } from '@testing-library/user-event';
-import { UserReducer } from 'entities/User';
-import { $api } from 'shared/lib/api/api';
+import { renderForTest } from '@/shared/lib/tests/renderForTest';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import { UserReducer } from '@/entities/User';
+import { $api } from '@/shared/lib/api/api';
 import { ProfileSliceReducer } from '../../model/slice/ProfileSlice';
 import { EditableProfileCard } from './EditableProfileCard';
 

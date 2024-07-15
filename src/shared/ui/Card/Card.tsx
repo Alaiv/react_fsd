@@ -1,5 +1,5 @@
-import { classNames } from 'shared/lib/classNames';
 import { HTMLProps } from 'react';
+import { classNames } from '@/shared/lib/classNames';
 import cl from './Card.module.scss';
 
 export enum CardType {

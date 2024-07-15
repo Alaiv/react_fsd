@@ -1,4 +1,4 @@
-import { IUser } from 'entities/User';
+import { IUser } from '@/entities/User';
 import { ArticleTypes, BlockType } from '../const/constants';
 
 export interface GenericBlock {

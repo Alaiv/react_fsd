@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Avatar from 'shared/assets/imgs/AvatarLogo.png';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import Avatar from '@/shared/assets/imgs/AvatarLogo.png';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { CommentList } from './CommentList';
 
 export default {

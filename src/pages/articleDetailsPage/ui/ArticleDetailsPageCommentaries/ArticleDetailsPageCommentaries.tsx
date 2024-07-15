@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { memo, Suspense, useCallback } from 'react';
-import { Text, TextSize } from 'shared/ui/text/Text';
-import { VStack } from 'shared/ui/Stack/VStack/VStack';
-import { classNames } from 'shared/lib/classNames';
-import { AddNewCommentForm } from 'features/addNewComment';
-import { CommentList } from 'entities/Comment';
 import { useSelector } from 'react-redux';
-import { useConditionalEffect } from 'shared/lib/hooks/useConditionalEffect';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { Loader } from 'shared/ui/loader/Loader';
+import { Text, TextSize } from '@/shared/ui/text/Text';
+import { VStack } from '@/shared/ui/Stack/VStack/VStack';
+import { classNames } from '@/shared/lib/classNames';
+import { AddNewCommentForm } from '@/features/addNewComment';
+import { CommentList } from '@/entities/Comment';
+import { useConditionalEffect } from '@/shared/lib/hooks/useConditionalEffect';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { Loader } from '@/shared/ui/loader/Loader';
 import { sendArticleComment } from '../../model/services/sendArticleComment/sendArticleComment';
 import {
     fetchCommentsByArticleId,

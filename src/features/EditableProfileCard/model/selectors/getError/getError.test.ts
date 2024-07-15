@@ -1,8 +1,8 @@
-import { StateSchema } from 'app/providers/storeProvider';
-import { UserSchema } from 'entities/User';
-import { getUserAuthData } from 'entities/User/model/selectors/getUserData/getUserAuthData';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import { StateSchema } from '@/app/providers/storeProvider';
+import { UserSchema } from '@/entities/User';
+import { getUserAuthData } from '@/entities/User/model/selectors/getUserData/getUserAuthData';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
 import { ProfileSchema } from '../../types/ProfileSchema';
 import { getError } from './getError';
 

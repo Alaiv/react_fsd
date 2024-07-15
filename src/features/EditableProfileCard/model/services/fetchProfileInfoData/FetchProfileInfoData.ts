@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import i18n from 'i18next';
-import { ThunkConfig } from 'app/providers/storeProvider';
-import { LOCAL_STORAGE_USER_KEY } from 'shared/const/localStorageConst';
-import { IProfile } from 'entities/Profile';
+import { ThunkConfig } from '@/app/providers/storeProvider';
+import { LOCAL_STORAGE_USER_KEY } from '@/shared/const/localStorageConst';
+import { IProfile } from '@/entities/Profile';
 
 export const fetchProfileInfoData = createAsyncThunk<IProfile, string | undefined, ThunkConfig<string>>(
     'profile/fetchProfileInfoData',

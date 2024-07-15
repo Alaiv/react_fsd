@@ -1,6 +1,6 @@
-import { StateSchema } from 'app/providers/storeProvider';
+import { StateSchema } from '@/app/providers/storeProvider';
 
-import { ArticleSortType, ArticleTypes } from 'entities/Article/model/const/constants';
+import { ArticleSortType, ArticleTypes } from '@/entities/Article/model/const/constants';
 
 export const getArticlePageIsLoading = (state: StateSchema) => state.articlePage?.isLoading;
 export const getArticlePageError = (state: StateSchema) => state.articlePage?.error;

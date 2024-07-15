@@ -1,7 +1,7 @@
-import { classNames } from 'shared/lib/classNames';
-import { Card } from 'shared/ui/Card/Card';
 import { HTMLAttributes } from 'react';
-import { Skeleton } from 'shared/ui/skeleton/Skeleton';
+import { classNames } from '@/shared/lib/classNames';
+import { Card } from '@/shared/ui/Card/Card';
+import { Skeleton } from '@/shared/ui/skeleton/Skeleton';
 import { ArticleViewType } from '../../model/const/constants';
 import cl from './ArticleListItem.module.scss';
 

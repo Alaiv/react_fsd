@@ -3,6 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
+// @ts-ignore
 const { resolve } = require('path');
 
 module.exports = {

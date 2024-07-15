@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { SuspenseDecorator } from 'shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
-import { ArticleTypes, BlockType } from 'entities/Article/model/const/constants';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { SuspenseDecorator } from '@/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
+import { ArticleTypes, BlockType } from '@/entities/Article/model/const/constants';
 import ArticleDetailsPage from './ArticleDetailsPage';
 
 export default {

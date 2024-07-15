@@ -1,4 +1,4 @@
-import { IProfile } from 'entities/Profile';
+import { IProfile } from '@/entities/Profile';
 import { ProfileError } from '../const/constants';
 
 export interface ProfileSchema {

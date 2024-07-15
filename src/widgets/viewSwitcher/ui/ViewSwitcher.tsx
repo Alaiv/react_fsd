@@ -1,10 +1,10 @@
-import { classNames } from 'shared/lib/classNames';
-import { Button, ButtonType } from 'shared/ui/button/Button';
-import { Icon } from 'shared/ui/icon/Icon';
-import CardIcon from 'shared/assets/icons/Card.svg';
-import LineIcon from 'shared/assets/icons/List.svg';
 import { memo, useCallback } from 'react';
-import { ArticleViewType } from 'entities/Article/model/const/constants';
+import { classNames } from '@/shared/lib/classNames';
+import { Button, ButtonType } from '@/shared/ui/button/Button';
+import { Icon } from '@/shared/ui/icon/Icon';
+import CardIcon from '@/shared/assets/icons/Card.svg';
+import LineIcon from '@/shared/assets/icons/List.svg';
+import { ArticleViewType } from '@/entities/Article/model/const/constants';
 import cl from './ViewSwitcher.module.scss';
 
 export interface ViewSwitcherProps {

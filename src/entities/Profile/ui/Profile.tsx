@@ -1,14 +1,14 @@
-import { classNames } from 'shared/lib/classNames';
 import { useTranslation } from 'react-i18next';
 import React, { memo } from 'react';
-import { ConsoleInput } from 'shared/ui/input/ConsoleInput/ConsoleInput';
-import { Loader } from 'shared/ui/loader/Loader';
-import { Text, TextAlignment, TextColor } from 'shared/ui/text/Text';
-import { Avatar } from 'shared/ui/avatar/Avatar';
-import { Currency, CurrencySelector } from 'entities/Currency';
-import { Country, CountrySelector } from 'entities/Country';
-import { VStack } from 'shared/ui/Stack/VStack/VStack';
-import { HStack } from 'shared/ui/Stack/HStack/HStack';
+import { classNames } from '@/shared/lib/classNames';
+import { ConsoleInput } from '@/shared/ui/input/ConsoleInput/ConsoleInput';
+import { Loader } from '@/shared/ui/loader/Loader';
+import { Text, TextAlignment, TextColor } from '@/shared/ui/text/Text';
+import { Avatar } from '@/shared/ui/avatar/Avatar';
+import { Currency, CurrencySelector } from '@/entities/Currency';
+import { Country, CountrySelector } from '@/entities/Country';
+import { VStack } from '@/shared/ui/Stack/VStack/VStack';
+import { HStack } from '@/shared/ui/Stack/HStack/HStack';
 import { IProfile } from '../model/types/ProfileSchema';
 import cl from './Profile.module.scss';
 

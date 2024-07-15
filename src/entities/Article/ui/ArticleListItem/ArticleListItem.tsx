@@ -1,14 +1,14 @@
-import { classNames } from 'shared/lib/classNames';
 import { useTranslation } from 'react-i18next';
-import { Text, TextSize } from 'shared/ui/text/Text';
-import { Icon } from 'shared/ui/icon/Icon';
-import ViewIcon from 'shared/assets/icons/viewed.svg';
-import { Card } from 'shared/ui/Card/Card';
 import { HTMLAttributeAnchorTarget, HTMLAttributes } from 'react';
-import { Avatar } from 'shared/ui/avatar/Avatar';
-import { Button, ButtonType } from 'shared/ui/button/Button';
-import { RoutePaths } from 'shared/config/routeConfig/RouteConfig';
-import { MyLink } from 'shared/ui/link/MyLink';
+import { classNames } from '@/shared/lib/classNames';
+import { Text, TextSize } from '@/shared/ui/text/Text';
+import { Icon } from '@/shared/ui/icon/Icon';
+import ViewIcon from '@/shared/assets/icons/viewed.svg';
+import { Card } from '@/shared/ui/Card/Card';
+import { Avatar } from '@/shared/ui/avatar/Avatar';
+import { Button, ButtonType } from '@/shared/ui/button/Button';
+import { RoutePaths } from '@/shared/config/routeConfig/RouteConfig';
+import { MyLink } from '@/shared/ui/link/MyLink';
 import { ArticleViewType, BlockType } from '../../model/const/constants';
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';
 import {

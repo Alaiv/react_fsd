@@ -1,6 +1,6 @@
-import { IUser } from 'entities/User';
 import { EntityState } from '@reduxjs/toolkit';
-import { Article } from 'entities/Article';
+import { IUser } from '@/entities/User';
+import { Article } from '@/entities/Article';
 
 export interface IComment {
     id: string
