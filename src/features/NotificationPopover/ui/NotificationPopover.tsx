@@ -45,11 +45,9 @@ export const NotificationPopover = memo((props: NotificationPopoverProps) => {
             </BrowserView>
             <MobileView>
                 {trigger}
-                <AnimationContextProvider>
-                    <Drawer isOpen={isOpen} onClose={closeDrawerHandler}>
-                        <NotificationList />
-                    </Drawer>
-                </AnimationContextProvider>
+                <Drawer isOpen={isOpen} onClose={closeDrawerHandler}>
+                    <NotificationList />
+                </Drawer>
             </MobileView>
         </div>
 
