@@ -16,7 +16,6 @@ export const ArticlePageList = memo((props: ArticlePageListProps) => {
 
     return (
         <ArticleList
-            virualized={false}
             isLoading={isLoading}
             articles={articles}
             viewType={viewType}
