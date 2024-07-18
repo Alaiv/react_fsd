@@ -38,7 +38,7 @@ export function AppMenu(props: AppMenuProps) {
         <Menu as="div" className={classNames(popupCl.Popup, {}, [extraClassName])}>
             <Menu.Button className={popupCl.trigger}>{trigger}</Menu.Button>
             <Menu.Items className={classNames(cl.items, {}, options)}>
-                {items.map((item) => {
+                {items.map((item, i) => {
                     const content = ({ active }: { active: boolean }) => (
                         <Button
                             extraClassName={classNames(cl.item, { [popupCl.active]: active })}
@@ -52,14 +52,14 @@ export function AppMenu(props: AppMenuProps) {
 
                     if (item.href) {
                         return (
-                            <Menu.Item as={MyLink} to={item.href} disabled={item.disabled}>
+                            <Menu.Item as={MyLink} to={item.href} disabled={item.disabled} key={`item${i}`}>
                                 {content}
                             </Menu.Item>
                         );
                     }
 
                     return (
-                        <Menu.Item as={Fragment} disabled={item.disabled}>
+                        <Menu.Item as={Fragment} disabled={item.disabled} key={`item${i}`}>
                             {content}
                         </Menu.Item>
                     );
