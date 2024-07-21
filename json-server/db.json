@@ -563,6 +563,12 @@
       "text": "dasdas",
       "userId": "2",
       "id": "mVDK6Qt"
+    },
+    {
+      "articleId": "7",
+      "text": "dasdasd",
+      "userId": "1",
+      "id": "GlzTCay"
     }
   ],
   "users": [
@@ -570,21 +576,28 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": ["ADMIN", "MANAGER"],
+      "role": [
+        "ADMIN",
+        "MANAGER"
+      ],
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJzG0ODho5ISyWcGc7-ww5GaAEh4FwZz_Fgw&s"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": ["USER"],
+      "role": [
+        "USER"
+      ],
       "avatar": "https://styles.redditmedia.com/t5_6o8gf/styles/communityIcon_mzkqy732d3p31.png"
     },
     {
       "id": "3",
       "username": "manager",
       "password": "123",
-      "role": ["MANAGER"],
+      "role": [
+        "MANAGER"
+      ],
       "avatar": "https://i.pinimg.com/originals/e7/4a/e4/e74ae4415b9e70cb00a4db31d29fb0b2.jpg"
     }
   ],
@@ -621,6 +634,55 @@
       "city": "Moscow",
       "username": "manager",
       "avatar": "https://i.pinimg.com/originals/e7/4a/e4/e74ae4415b9e70cb00a4db31d29fb0b2.jpg"
+    }
+  ],
+  "article-ratings": [
+    {
+      "id": 1,
+      "rate": 3,
+      "feedback": "Good stuff",
+      "userId": 1,
+      "articleId": 1
+    },
+    {
+      "id": 2,
+      "rate": 4,
+      "feedback": "Good stuff2",
+      "userId": 2,
+      "articleId": 2
+    },
+    {
+      "userId": "1",
+      "articleId": "4",
+      "rate": 3,
+      "feedback": "MEDIOCRE",
+      "id": 3
+    },
+    {
+      "userId": "1",
+      "articleId": "4",
+      "rate": 3,
+      "id": 4
+    },
+    {
+      "userId": "1",
+      "articleId": "9",
+      "rate": 1,
+      "id": 5
+    },
+    {
+      "userId": "1",
+      "articleId": "11",
+      "rate": 3,
+      "feedback": "dasdasdsa",
+      "id": 6
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 2,
+      "feedback": "sdada",
+      "id": 7
     }
   ]
 }

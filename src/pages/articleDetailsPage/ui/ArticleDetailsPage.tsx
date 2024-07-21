@@ -14,6 +14,7 @@ import {
 import { ArticleDetailsPageHeader } from '../ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { ArticleDetailsPageReducer } from '../model/slice';
 import cl from './ArticleDetailsPage.module.scss';
+import { ArticleRating } from '@/features/ArticleRating';
 
 export interface ArticleDetailsPageProps {
     extraClassName?: string;
@@ -36,6 +37,10 @@ const ArticleDetailsPage = ({ extraClassName }: ArticleDetailsPageProps) => {
         );
     }
 
+    if (!id) {
+        return null;
+    }
+
     return (
         <DynamicReducersHandler reducers={reducers} isRemove>
             <Page extraClassName={classNames(cl.ArticleDetailsPage, {}, [extraClassName])}>
@@ -43,6 +48,7 @@ const ArticleDetailsPage = ({ extraClassName }: ArticleDetailsPageProps) => {
                     <ArticleDetailsPageHeader id={id} />
                     <ArticleDetails id={id || '1'} />
                     <ArticleDetailsRecommendations />
+                    <ArticleRating articleId={id} />
                     <ArticleDetailsPageCommentaries id={id} />
                 </VStack>
             </Page>

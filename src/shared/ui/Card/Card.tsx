@@ -10,13 +10,14 @@ export enum CardType {
 export interface CardProps extends HTMLProps<HTMLDivElement> {
     extraClassName?: string;
     children?: React.ReactNode;
-    type?: CardType
+    type?: CardType;
+    fullWidth?: boolean
 }
 
 export const Card = ({
-    extraClassName, children, type = CardType.NORMAL, ...props
+    extraClassName, children, type = CardType.NORMAL, fullWidth, ...props
 }: CardProps) => (
-    <div {...props} className={classNames(cl.Card, {}, [extraClassName, cl[type]])}>
+    <div {...props} className={classNames(cl.Card, { [cl.fullWidth]: fullWidth }, [extraClassName, cl[type]])}>
         {children}
     </div>
 );

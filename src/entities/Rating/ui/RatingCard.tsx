@@ -17,6 +17,7 @@ interface RatingCardProps {
     title?: string;
     feedBackTitle?: string;
     hasFeedback?: boolean;
+    rate?: number;
     onCancel?: (count: number) => void;
     onAccept?: (count: number, feedback?: string) => void;
 }
@@ -29,10 +30,12 @@ export const RatingCard = memo((props: RatingCardProps) => {
         feedBackTitle,
         hasFeedback = true,
         title,
+        rate = 0,
     } = props;
+
     const { t } = useTranslation();
     const [modalOpen, setModalOpen] = useState(false);
-    const [starsCount, setStarsCount] = useState(0);
+    const [starsCount, setStarsCount] = useState(rate);
     const [feedBack, setFeedBack] = useState('');
 
     const onRatingSelect = useCallback((count: number) => {
@@ -45,14 +48,15 @@ export const RatingCard = memo((props: RatingCardProps) => {
     }, [hasFeedback, onAccept, starsCount]);
 
     const onModalClose = useCallback(() => {
+        onCancel?.(starsCount);
         setFeedBack('');
         setModalOpen(false);
-        onCancel?.(starsCount);
     }, [onCancel, starsCount]);
 
     const onModalAccept = useCallback(() => {
         if (onAccept) {
             onAccept(starsCount, feedBack);
+            setModalOpen(false);
         }
     }, [feedBack, onAccept, starsCount]);
 
@@ -76,7 +80,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
     );
 
     return (
-        <Card className={classNames('', {}, [extraClassName])}>
+        <Card className={classNames('', {}, [extraClassName])} fullWidth>
             <VStack align="center" gap={8}>
                 <Text title={title} />
                 <StarsRating size={40} onSelect={onRatingSelect} selected={starsCount} />
